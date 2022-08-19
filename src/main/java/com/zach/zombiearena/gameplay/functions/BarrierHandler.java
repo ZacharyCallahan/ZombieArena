@@ -110,69 +110,77 @@ public class BarrierHandler extends FunctionHandler {
         Location centerOne = ZombieArena.getInstance().regionHandler.playersArena.get(ZombieArena.getInstance().matchMaking.playersInGame.get(attacker.getUniqueId())).getCenter();
         Location centerTwo = ZombieArena.getInstance().regionHandler.playersArena.get(ZombieArena.getInstance().matchMaking.playersInGame.get(attacker.getUniqueId())).getCenter();
         centerOne.add(11, 0, 0).getBlock().setType(Material.OAK_FENCE);
-        for (int i = 0 ; i <= 21 ; i++) {
+        for (int i = 0; i <= 21; i++) {
             centerOne.subtract(1, 0, 0).getBlock().setType(Material.OAK_FENCE);
         }
         centerTwo.add(11, 0, 1).getBlock().setType(Material.OAK_FENCE);
-        for (int i = 0 ; i <= 21 ; i++) {
+        for (int i = 0; i <= 21; i++) {
             centerTwo.subtract(1, 0, 0).getBlock().setType(Material.OAK_FENCE);
         }
 
 
     }
+
     public void createCyanBarrier(Player attacker) {
         Location center = ZombieArena.getInstance().regionHandler.playersArena.get(ZombieArena.getInstance().matchMaking.playersInGame.get(attacker.getUniqueId())).getCenter();
         center.subtract(-12, 0, 6).getBlock().setType(Material.OAK_FENCE);
-        for (int i = 0 ; i <= 12 ; i++) {
+        for (int i = 0; i <= 12; i++) {
             center.add(0, 0, 1).getBlock().setType(Material.OAK_FENCE);
         }
     }
+
     public void createLimeGreenBarrier(Player attacker) {
         Location center = ZombieArena.getInstance().regionHandler.playersArena.get(ZombieArena.getInstance().matchMaking.playersInGame.get(attacker.getUniqueId())).getCenter();
         center.subtract(12, 0, 6).getBlock().setType(Material.OAK_FENCE);
-        for (int i = 0 ; i <= 12 ; i++) {
+        for (int i = 0; i <= 12; i++) {
             center.add(0, 0, 1).getBlock().setType(Material.OAK_FENCE);
         }
     }
+
     public void createPinkBarrier(Player attacker) {
         Location center = ZombieArena.getInstance().regionHandler.playersArena.get(ZombieArena.getInstance().matchMaking.playersInGame.get(attacker.getUniqueId())).getCenter();
         center.subtract(6, 0, -4).getBlock().setType(Material.OAK_FENCE);
-        for (int i = 0 ; i <= 5 ; i++) {
+        for (int i = 0; i <= 5; i++) {
             center.add(0, 0, 1).getBlock().setType(Material.OAK_FENCE);
         }
     }
+
     public void createLightBlueBarrier(Player attacker) {
         Location center = ZombieArena.getInstance().regionHandler.playersArena.get(ZombieArena.getInstance().matchMaking.playersInGame.get(attacker.getUniqueId())).getCenter();
         center.subtract(6, 0, 3).getBlock().setType(Material.OAK_FENCE);
-        for (int i = 0 ; i <= 5 ; i++) {
+        for (int i = 0; i <= 5; i++) {
             center.subtract(0, 0, 1).getBlock().setType(Material.OAK_FENCE);
         }
     }
+
     public void createPurpleBarrier(Player attacker) {
         Location center = ZombieArena.getInstance().regionHandler.playersArena.get(ZombieArena.getInstance().matchMaking.playersInGame.get(attacker.getUniqueId())).getCenter();
         center.add(6, 0, 4).getBlock().setType(Material.OAK_FENCE);
-        for (int i = 0 ; i <= 5 ; i++) {
+        for (int i = 0; i <= 5; i++) {
             center.add(0, 0, 1).getBlock().setType(Material.OAK_FENCE);
         }
     }
+
     public void createGreenBarrier(Player attacker) {
         Location center = ZombieArena.getInstance().regionHandler.playersArena.get(ZombieArena.getInstance().matchMaking.playersInGame.get(attacker.getUniqueId())).getCenter();
         center.add(6, 0, -3).getBlock().setType(Material.OAK_FENCE);
-        for (int i = 0 ; i <= 5 ; i++) {
+        for (int i = 0; i <= 5; i++) {
             center.subtract(0, 0, 1).getBlock().setType(Material.OAK_FENCE);
         }
     }
+
     public void createRedBarrier(Player attacker) {
         Location center = ZombieArena.getInstance().regionHandler.playersArena.get(ZombieArena.getInstance().matchMaking.playersInGame.get(attacker.getUniqueId())).getCenter();
         center.subtract(0, 0, 1).getBlock().setType(Material.OAK_FENCE);
-        for (int i = 0 ; i <= 5 ; i++) {
+        for (int i = 0; i <= 5; i++) {
             center.subtract(0, 0, 1).getBlock().setType(Material.OAK_FENCE);
         }
     }
+
     public void createBlueBarrier(Player attacker) {
         Location center = ZombieArena.getInstance().regionHandler.playersArena.get(ZombieArena.getInstance().matchMaking.playersInGame.get(attacker.getUniqueId())).getCenter();
         center.add(0, 0, 2).getBlock().setType(Material.OAK_FENCE);
-        for (int i = 0 ; i <= 5 ; i++) {
+        for (int i = 0; i <= 5; i++) {
             center.add(0, 0, 1).getBlock().setType(Material.OAK_FENCE);
         }
     }

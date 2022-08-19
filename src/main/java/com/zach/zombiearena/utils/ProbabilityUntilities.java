@@ -8,8 +8,15 @@ public class ProbabilityUntilities {
     private final List<Chance> chances;
     private final Random random;
     private int sum;
+
     public ProbabilityUntilities() {
         this.random = new Random();
+        this.chances = new ArrayList<>();
+        this.sum = 0;
+    }
+
+    public ProbabilityUntilities(long seed) {
+        this.random = new Random(seed);
         this.chances = new ArrayList<>();
         this.sum = 0;
     }
@@ -19,11 +26,6 @@ public class ProbabilityUntilities {
         this.sum = 0;
     }
 
-    public ProbabilityUntilities(long seed) {
-        this.random = new Random(seed);
-        this.chances = new ArrayList<>();
-        this.sum = 0;
-    }
     public void addChance(Object element, int chance) {
         if (!this.chances.contains(element)) {
             this.chances.add(new Chance(element, this.sum, this.sum + chance));

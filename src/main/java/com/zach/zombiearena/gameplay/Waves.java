@@ -1,6 +1,5 @@
 package com.zach.zombiearena.gameplay;
 
-import com.zach.zombiearena.DataManager;
 import com.zach.zombiearena.Messages;
 import com.zach.zombiearena.ZombieArena;
 import com.zach.zombiearena.utils.ProbabilityUntilities;
@@ -16,19 +15,17 @@ import java.util.Iterator;
 import java.util.UUID;
 
 public class Waves {
-    private DataManager dataManager = new DataManager();
-    int sectionNumber = 0;
-    ConfigurationSection section;
-    HashMap<UUID, Integer> waveTimer = new HashMap<>();
-    HashMap<UUID, Integer> gracePeriod = new HashMap<>();
-    HashMap<UUID, Integer> waveNumber = new HashMap<>();
     public HashMap<UUID, Integer> endOfWaveAttackLevel = new HashMap<>();
     public HashMap<UUID, Integer> waveManagerRunnables = new HashMap<>();
     public HashMap<UUID, Integer> waveSpawningRunnables = new HashMap<>();
     public HashMap<UUID, Integer> regularMobUpgradeLevel = new HashMap<>();
     public HashMap<UUID, Integer> archerQueenHealthUpgradeLevel = new HashMap<>();
+    int sectionNumber = 0;
+    ConfigurationSection section;
+    HashMap<UUID, Integer> waveTimer = new HashMap<>();
+    HashMap<UUID, Integer> gracePeriod = new HashMap<>();
+    HashMap<UUID, Integer> waveNumber = new HashMap<>();
     ProbabilityUntilities probabilities = new ProbabilityUntilities();
-
 
     public void startGame(Player attacker, UUID defender) {
 
@@ -122,6 +119,7 @@ public class Waves {
                 break;
         }
     }
+
     public void spawnHealerQueenOnRoundFive(Player attacker) {
 
         //TODO: spawn the correct healer queen based on what level the player is

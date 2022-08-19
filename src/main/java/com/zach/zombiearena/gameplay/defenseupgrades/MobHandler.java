@@ -36,6 +36,7 @@ public class MobHandler {
         }
 
     }
+
     public NPC getMobType(Player attacker, EntityType entityType) {
         for (NPCRegistry npcRegistry : CitizensAPI.getNPCRegistries()) {
             Iterator npcIter = npcRegistry.sorted().iterator();
@@ -49,6 +50,7 @@ public class MobHandler {
         }
         return null;
     }
+
     public Entity[] getNearbyEntities(Player attacker, int radius, EntityType entityType) {
         //interate through all npc's
         for (NPCRegistry npcRegistry : CitizensAPI.getNPCRegistries()) {
