@@ -37,13 +37,9 @@ public class DataManager implements Listener {
     static FileConfiguration config;
     static FileConfiguration dataConfig;
     static File folder = new File(instance.getDataFolder(), "playerdata" + File.separator);
-    ;
     static File playerDataFolder = new File(instance.getDataFolder(), "playerdata");
-    ;
     static File folderData = new File(instance.getDataFolder(), "data" + File.separator);
-    ;
     static File dataFolder = new File(instance.getDataFolder(), "data");
-    ;
     private Region region;
     private Region cancelRegionOne;
 
@@ -106,8 +102,9 @@ public class DataManager implements Listener {
         }
         save();
     }
+
     public void saveEndOfWaveAttackerUpgrade(UUID uuid) {
-        if(ZombieArena.getInstance().waves.endOfWaveAttackLevel.get(uuid) != null) {
+        if (ZombieArena.getInstance().waves.endOfWaveAttackLevel.get(uuid) != null) {
             getConfig().set("end-of-wave-attacker-upgrade-level", ZombieArena.getInstance().waves.endOfWaveAttackLevel.get(uuid));
         } else {
             getConfig().set("end-of-wave-attacker-upgrade-level", 0);

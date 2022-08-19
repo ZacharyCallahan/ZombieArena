@@ -78,6 +78,7 @@ public class Region {
     public boolean contains(int x, int y, int z) {
         return x >= this.x1 && x <= this.x2 && y >= this.y1 && y <= this.y2 && z >= this.z1 && z <= this.z2;
     }
+
     public boolean containsLocation(Location loc) {
         return world.equals(loc.getWorld().getName()) && this.contains(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
     }

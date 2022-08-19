@@ -16,7 +16,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class MenuHandler {
-    private ConcurrentHashMap<UUID, Menu> openMenus = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<UUID, Menu> openMenus = new ConcurrentHashMap<>();
 
     public void openMenu(Player player, Menu menu) {
         openMenus.put(player.getUniqueId(), menu);
@@ -32,7 +32,7 @@ public class MenuHandler {
 
     public boolean openedMenu(Player player) {
         if (!openMenus.isEmpty()) {
-            return openMenus.keySet().contains(player.getUniqueId());
+            return openMenus.containsKey(player.getUniqueId());
         }
         return false;
     }
@@ -82,7 +82,7 @@ public class MenuHandler {
 
             @EventHandler
             public void onPlayerLeave(PlayerQuitEvent e) {
-                if (openedMenu((Player) e.getPlayer())) closeMenu(e.getPlayer());
+                if (openedMenu(e.getPlayer())) closeMenu(e.getPlayer());
             }
 
             @EventHandler

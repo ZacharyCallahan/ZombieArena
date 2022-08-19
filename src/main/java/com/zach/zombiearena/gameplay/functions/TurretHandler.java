@@ -17,9 +17,10 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-public class TurretHandler extends FunctionHandler{
+public class TurretHandler extends FunctionHandler {
 
-    private Cache<UUID, Long> cooldown = CacheBuilder.newBuilder().expireAfterWrite(ZombieArena.getInstance().getConfig().getLong("functions.turrets.cooldown"), TimeUnit.SECONDS).build();
+    private final Cache<UUID, Long> cooldown = CacheBuilder.newBuilder().expireAfterWrite(ZombieArena.getInstance().getConfig().getLong("functions.turrets.cooldown"), TimeUnit.SECONDS).build();
+
     public void turretShoot(Player attacker, UUID defender, Location buttonLocation) {
 
         int cost = ZombieArena.getInstance().getConfig().getInt("functions.turrets.cost");

@@ -35,14 +35,10 @@ import java.util.List;
 import java.util.logging.Logger;
 
 public final class ZombieArena extends JavaPlugin {
-    private static ZombieArena instance;
     private static final Logger log = Logger.getLogger("Minecraft");
+    private static ZombieArena instance;
     private static Economy economy = null;
-
-    public static String color(String string) {
-        return ChatColor.translateAlternateColorCodes('&', string);
-    }
-
+    private static MenuHandler menuHandler;
     public WorldManager worldManager;
     public RegionHandler regionHandler;
     public TrophiesHandler trophiesHandler;
@@ -61,15 +57,9 @@ public final class ZombieArena extends JavaPlugin {
     public Messages messages;
     public List<Player> toggle = new ArrayList();
     public HashMap<Player, Long> cooldown = new HashMap();
-    private VoidChunkGenerator voidChunkGenerator;
     public BarrierHandler barrier;
-    private static MenuHandler menuHandler;
     public ItemManager itemManager;
-
-    public static ZombieArena getInstance() {
-        return instance;
-    }
-
+    private final VoidChunkGenerator voidChunkGenerator;
     public ZombieArena() {
         instance = this;
         menuHandler = new MenuHandler();
@@ -92,6 +82,14 @@ public final class ZombieArena extends JavaPlugin {
         this.worldManager = new WorldManager();
         this.wavesHandler = new WavesHandler();
         this.itemManager = new ItemManager();
+    }
+
+    public static String color(String string) {
+        return ChatColor.translateAlternateColorCodes('&', string);
+    }
+
+    public static ZombieArena getInstance() {
+        return instance;
     }
 
     public static Economy getEconomy() {
@@ -120,10 +118,7 @@ public final class ZombieArena extends JavaPlugin {
     }
 
     public boolean isBentoBoxPresent() {
-        if (getServer().getPluginManager().getPlugin("BentoBox") != null) {
-            return true;
-        }
-        return false;
+        return getServer().getPluginManager().getPlugin("BentoBox") != null;
     }
 
     public void onEnable() {

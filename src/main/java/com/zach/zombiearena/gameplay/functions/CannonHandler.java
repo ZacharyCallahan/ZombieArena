@@ -14,12 +14,13 @@ import java.util.concurrent.TimeUnit;
 
 public class CannonHandler extends FunctionHandler {
 
-    private Cache<UUID, Long> redButtonCooldown = CacheBuilder.newBuilder().expireAfterWrite(ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown"), TimeUnit.SECONDS).build();
-    private Cache<UUID, Long> orangeButtonCooldown = CacheBuilder.newBuilder().expireAfterWrite(ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown"), TimeUnit.SECONDS).build();
-    private Cache<UUID, Long> yellowButtonCooldown = CacheBuilder.newBuilder().expireAfterWrite(ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown"), TimeUnit.SECONDS).build();
-    private Cache<UUID, Long> greenButtonCooldown = CacheBuilder.newBuilder().expireAfterWrite(ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown"), TimeUnit.SECONDS).build();
-    private Cache<UUID, Long> blueButtonCooldown = CacheBuilder.newBuilder().expireAfterWrite(ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown"), TimeUnit.SECONDS).build();
-    private Cache<UUID, Long> prupleButtonCooldown = CacheBuilder.newBuilder().expireAfterWrite(ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown"), TimeUnit.SECONDS).build();
+    private final Cache<UUID, Long> redButtonCooldown = CacheBuilder.newBuilder().expireAfterWrite(ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown"), TimeUnit.SECONDS).build();
+    private final Cache<UUID, Long> orangeButtonCooldown = CacheBuilder.newBuilder().expireAfterWrite(ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown"), TimeUnit.SECONDS).build();
+    private final Cache<UUID, Long> yellowButtonCooldown = CacheBuilder.newBuilder().expireAfterWrite(ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown"), TimeUnit.SECONDS).build();
+    private final Cache<UUID, Long> greenButtonCooldown = CacheBuilder.newBuilder().expireAfterWrite(ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown"), TimeUnit.SECONDS).build();
+    private final Cache<UUID, Long> blueButtonCooldown = CacheBuilder.newBuilder().expireAfterWrite(ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown"), TimeUnit.SECONDS).build();
+    private final Cache<UUID, Long> prupleButtonCooldown = CacheBuilder.newBuilder().expireAfterWrite(ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown"), TimeUnit.SECONDS).build();
+
     public void cannonShoot(Player attacker, UUID defender, Location buttonLocation) {
         int cost = ZombieArena.getInstance().getConfig().getInt("functions.cannons.cost");
 
@@ -42,7 +43,7 @@ public class CannonHandler extends FunctionHandler {
                 if (!redButtonCooldown.asMap().containsKey(attacker.getUniqueId())) {
                     redButtonCooldown.put(attacker.getUniqueId(), System.currentTimeMillis() + (ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown") * 1000));
                     purchaseSuccess(attacker, cost);
-                    TNTPrimed tnt = (TNTPrimed) redCannon.getWorld().spawn(redCannon.getBlock().getLocation(), TNTPrimed.class);
+                    TNTPrimed tnt = redCannon.getWorld().spawn(redCannon.getBlock().getLocation(), TNTPrimed.class);
                     tnt.setVelocity(new Vector(0, 0.2, -0.6));
                 } else {
                     long timeLeft = redButtonCooldown.asMap().get(attacker.getUniqueId()) - System.currentTimeMillis();
@@ -57,9 +58,9 @@ public class CannonHandler extends FunctionHandler {
                 if (!orangeButtonCooldown.asMap().containsKey(attacker.getUniqueId())) {
                     orangeButtonCooldown.put(attacker.getUniqueId(), System.currentTimeMillis() + (ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown") * 1000));
                     purchaseSuccess(attacker, cost);
-                    TNTPrimed tnt = (TNTPrimed) orangeCannon.getWorld().spawn(orangeCannon.getBlock().getLocation(), TNTPrimed.class);
+                    TNTPrimed tnt = orangeCannon.getWorld().spawn(orangeCannon.getBlock().getLocation(), TNTPrimed.class);
                     tnt.setVelocity(new Vector(0, 0.2, 0.6));
-                }else {
+                } else {
                     long timeLeft = orangeButtonCooldown.asMap().get(attacker.getUniqueId()) - System.currentTimeMillis();
                     Messages.sendCoolDownMessage(attacker, TimeUnit.MILLISECONDS.toSeconds(timeLeft), "functionIsOnCooldown");
                 }
@@ -72,9 +73,9 @@ public class CannonHandler extends FunctionHandler {
                 if (!yellowButtonCooldown.asMap().containsKey(attacker.getUniqueId())) {
                     yellowButtonCooldown.put(attacker.getUniqueId(), System.currentTimeMillis() + (ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown") * 1000));
                     purchaseSuccess(attacker, cost);
-                    TNTPrimed tnt = (TNTPrimed) yellowCannon.getWorld().spawn(yellowCannon.getBlock().getLocation(), TNTPrimed.class);
+                    TNTPrimed tnt = yellowCannon.getWorld().spawn(yellowCannon.getBlock().getLocation(), TNTPrimed.class);
                     tnt.setVelocity(new Vector(0, 0.2, -0.6));
-                }else {
+                } else {
                     long timeLeft = yellowButtonCooldown.asMap().get(attacker.getUniqueId()) - System.currentTimeMillis();
                     Messages.sendCoolDownMessage(attacker, TimeUnit.MILLISECONDS.toSeconds(timeLeft), "functionIsOnCooldown");
                 }
@@ -87,9 +88,9 @@ public class CannonHandler extends FunctionHandler {
                 if (!greenButtonCooldown.asMap().containsKey(attacker.getUniqueId())) {
                     greenButtonCooldown.put(attacker.getUniqueId(), System.currentTimeMillis() + (ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown") * 1000));
                     purchaseSuccess(attacker, cost);
-                    TNTPrimed tnt = (TNTPrimed) greenCannon.getWorld().spawn(greenCannon.getBlock().getLocation(), TNTPrimed.class);
+                    TNTPrimed tnt = greenCannon.getWorld().spawn(greenCannon.getBlock().getLocation(), TNTPrimed.class);
                     tnt.setVelocity(new Vector(0, 0.2, 0.6));
-                }else {
+                } else {
                     long timeLeft = greenButtonCooldown.asMap().get(attacker.getUniqueId()) - System.currentTimeMillis();
                     Messages.sendCoolDownMessage(attacker, TimeUnit.MILLISECONDS.toSeconds(timeLeft), "functionIsOnCooldown");
                 }
@@ -102,9 +103,9 @@ public class CannonHandler extends FunctionHandler {
                 if (!blueButtonCooldown.asMap().containsKey(attacker.getUniqueId())) {
                     blueButtonCooldown.put(attacker.getUniqueId(), System.currentTimeMillis() + (ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown") * 1000));
                     purchaseSuccess(attacker, cost);
-                    TNTPrimed tnt = (TNTPrimed) blueCannon.getWorld().spawn(blueCannon.getBlock().getLocation(), TNTPrimed.class);
+                    TNTPrimed tnt = blueCannon.getWorld().spawn(blueCannon.getBlock().getLocation(), TNTPrimed.class);
                     tnt.setVelocity(new Vector(0, 0.2, -0.6));
-                }else {
+                } else {
                     long timeLeft = blueButtonCooldown.asMap().get(attacker.getUniqueId()) - System.currentTimeMillis();
                     Messages.sendCoolDownMessage(attacker, TimeUnit.MILLISECONDS.toSeconds(timeLeft), "functionIsOnCooldown");
                 }
@@ -117,9 +118,9 @@ public class CannonHandler extends FunctionHandler {
                 if (!prupleButtonCooldown.asMap().containsKey(attacker.getUniqueId())) {
                     prupleButtonCooldown.put(attacker.getUniqueId(), System.currentTimeMillis() + (ZombieArena.getInstance().getConfig().getLong("functions.barrack.cooldown") * 1000));
                     purchaseSuccess(attacker, cost);
-                    TNTPrimed tnt = (TNTPrimed) purpleCannon.getWorld().spawn(purpleCannon.getBlock().getLocation(), TNTPrimed.class);
+                    TNTPrimed tnt = purpleCannon.getWorld().spawn(purpleCannon.getBlock().getLocation(), TNTPrimed.class);
                     tnt.setVelocity(new Vector(0, 0.2, 0.6));
-                }else {
+                } else {
                     long timeLeft = prupleButtonCooldown.asMap().get(attacker.getUniqueId()) - System.currentTimeMillis();
                     Messages.sendCoolDownMessage(attacker, TimeUnit.MILLISECONDS.toSeconds(timeLeft), "functionIsOnCooldown");
                 }
