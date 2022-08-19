@@ -31,9 +31,311 @@ functions:
     cost: 5
     cooldown: 3
     duration: 10
-# TraderGUI customization
-# To get the correct Enchantment name you can check this website out https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
-# Cost is how much "money-item"'s it will take to purchase these functions
+archer-queen:
+  entity-type: SKELETON
+  health: 20
+  speed: 1.0
+  improve-radius: 2
+  improve-speed-amount: 0.25
+  armor:
+    helmet:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_HELMET
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+    chestplate:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_CHESTPLATE
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+    leggings:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_LEGGINGS
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+    boots:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_BOOTS
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+  health-upgrade-level-one:
+    health: 30
+  health-upgrade-level-two:
+    health: 50
+  health-upgrade-level-three:
+    health: 70
+  health-upgrade-level-four:
+    health: 90
+  improve-radius-upgrade-level-one:
+    improve-radius: 3
+  improve-radius-upgrade-level-two:
+    improve-radius: 4
+  improve-radius-upgrade-level-three:
+    improve-radius: 5
+  improve-radius-upgrade-level-four:
+    improve-radius: 6
+  improve-speed-amount-upgrade-level-one:
+    improve-speed-amount: 0.5
+  improve-speed-amount-upgrade-level-two:
+    improve-speed-amount: 0.75
+  improve-speed-amount-upgrade-level-three:
+    improve-speed-amount: 1.0
+  improve-speed-amount-upgrade-level-four:
+    improve-speed-amount: 1.25
+defensegui:
+  placeholders:
+    '0':
+      material: LIGHT_BLUE_STAINED_GLASS_PANE
+      slots:
+        - 0
+        - 4
+        - 8
+        - 9
+        - 17
+        - 18
+        - 22
+        - 26
+    '1':
+      material: ORANGE_STAINED_GLASS_PANE
+      slots:
+        - 1
+        - 2
+        - 3
+        - 5
+        - 6
+        - 7
+        - 19
+        - 20
+        - 21
+        - 23
+        - 24
+        - 25
+  upgrades:
+    archer-queen-gui:
+      material:
+      display-name: "&bArcher Queen"
+      lore:
+        -
+        - "&7This is the upgrade for the archer queen"
+      enchanted:
+      slot: 10
+      health-upgrade-display-item:
+        material:
+        display-name:
+        lore:
+          -
+          -
+          -
+          -
+        enchanted:
+        slot:
+      placeholders:
+        '0':
+          material:
+          display-name:
+          slots:
+            -
+            -
+            -
+            -
+      health-upgrade-level-one-gui:
+        material:
+        display-name:
+        lore:
+          -
+        slot:
+        cost:
+        placeholders:
+          '0':
+            material:
+            display-name:
+            slots:
+              -
+              -
+              -
+              -
+      health-upgrade-level-two-gui:
+        material:
+        display-name:
+        lore:
+          -
+        slot:
+        cost:
+        placeholders:
+          '0':
+            material:
+            display-name:
+            slots:
+              -
+              -
+              -
+              -
+      health-upgrade-level-three-gui:
+        material:
+        display-name:
+        lore:
+          -
+        slot:
+        cost:
+        placeholders:
+          '0':
+            material:
+            display-name:
+            slots:
+              -
+              -
+              -
+              -
+      health-upgrade-level-four-gui:
+        material:
+        display-name:
+        lore:
+          -
+        slot:
+        cost:
+        placeholders:
+          '0':
+            material:
+            display-name:
+            slots:
+              -
+              -
+              -
+              -
+      improve-radius-upgrade-level-one-gui:
+        material:
+        display-name:
+        lore:
+          -
+        slot:
+        cost:
+        placeholders:
+          '0':
+            material:
+            display-name:
+            slots:
+              -
+              -
+              -
+              -
+      improve-radius-upgrade-level-two-gui:
+        material:
+        display-name:
+        lore:
+          -
+        slot:
+        cost:
+        placeholders:
+          '0':
+            material:
+            display-name:
+            slots:
+              -
+              -
+              -
+              -
+      improve-radius-upgrade-level-three-gui:
+        material:
+        display-name:
+        lore:
+          -
+        slot:
+        cost:
+        placeholders:
+          '0':
+            material:
+            display-name:
+            slots:
+              -
+              -
+              -
+              -
+      improve-radius-upgrade-level-four-gui:
+        material:
+        display-name:
+        lore:
+          -
+        slot:
+        cost:
+        placeholders:
+          '0':
+            material:
+            display-name:
+            slots:
+              -
+              -
+              -
+              -
+      improve-speed-amount-upgrade-level-one-gui:
+        material:
+        display-name:
+        lore:
+          -
+        slot:
+        cost:
+        placeholders:
+          '0':
+            material:
+            display-name:
+            slots:
+              -
+              -
+              -
+              -
+      improve-speed-amount-upgrade-level-two-gui:
+        material:
+        display-name:
+        lore:
+          -
+        slot:
+        cost:
+        placeholders:
+          '0':
+            material:
+            display-name:
+            slots:
+              -
+              -
+              -
+              -
+      improve-speed-amount-upgrade-level-three-gui:
+        material:
+        display-name:
+        lore:
+          -
+        slot:
+        cost:
+        placeholders:
+          '0':
+            material:
+            display-name:
+            slots:
+              -
+              -
+              -
+              -
+      improve-speed-amount-upgrade-level-four-gui:
+        material:
+        display-name:
+        lore:
+          -
+        slot:
+        cost:
+        placeholders:
+          '0':
+            material:
+            display-name:
+            slots:
+              -
+              -
+              -
+              - # TraderGUI customization
+                # To get the correct Enchantment name you can check this website out https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
+              # Cost is how much "money-item"'s it will take to purchase these functions
 tradergui:
   money-item: # The item that is received when a zombie is killed and used for buying items/functions!
     material: GOLD_INGOT
@@ -48,7 +350,7 @@ tradergui:
     '0':
       slot: 10
       material: BOW
-      displayname: "&bLevel One Bow"
+      display-name: "&bLevel One Bow"
       lore:
         - " "
         - "&7Ooo seems the damage is"
@@ -59,7 +361,7 @@ tradergui:
     '1':
       slot: 11
       material: BOW
-      displayname: "&bLevel Two Bow"
+      display-name: "&bLevel Two Bow"
       lore:
         - " "
         - "&7Woahh... A damage buff? That'll help!"
@@ -69,7 +371,7 @@ tradergui:
     '2':
       slot: 12
       material: BOW
-      displayname: "&bLevel Three Bow"
+      display-name: "&bLevel Three Bow"
       lore:
         - " "
         - "&7Hahaa, take this zombies!"
@@ -80,7 +382,7 @@ tradergui:
     '3':
       slot: 13
       material: BOW
-      displayname: "&bLevel Four Bow"
+      display-name: "&bLevel Four Bow"
       lore:
         - " "
         - "&7It just gets better and better, huh?"
@@ -91,7 +393,7 @@ tradergui:
     '4':
       slot: 14
       material: BOW
-      displayname: "&bLevel Five Bow"
+      display-name: "&bLevel Five Bow"
       lore:
         - " "
         - "&7OMG, Im about to smoke these zombies!"
@@ -102,7 +404,7 @@ tradergui:
   placeholders:
     '0':
       material: LIGHT_BLUE_STAINED_GLASS_PANE
-      displayname: " "
+      display-name: " "
       slots:
         - 0
         - 4
@@ -114,7 +416,7 @@ tradergui:
         - 26
     '1':
       material: ORANGE_STAINED_GLASS_PANE
-      displayname: " "
+      display-name: " "
       slots:
         - 1
         - 2
@@ -205,37 +507,6 @@ barbarian-king:
   speed: 1.0
   upgrade-radius: 5
   upgrade-armor-type: LEATHER
-  armor:
-    helmet:
-      equip: false
-      enable-enchants: true
-      item: DIAMOND_HELMET
-      enchants:
-        - PROTECTION_ENVIRONMENTAL:3
-    chestplate:
-      equip: false
-      enable-enchants: true
-      item: DIAMOND_CHESTPLATE
-      enchants:
-        - PROTECTION_ENVIRONMENTAL:3
-    leggings:
-      equip: false
-      enable-enchants: true
-      item: DIAMOND_LEGGINGS
-      enchants:
-        - PROTECTION_ENVIRONMENTAL:3
-    boots:
-      equip: false
-      enable-enchants: true
-      item: DIAMOND_BOOTS
-      enchants:
-        - PROTECTION_ENVIRONMENTAL:3
-archer-queen:
-  entity-type: SKELETON
-  health: 20
-  speed: 1.0
-  improve-radius: 2
-  improve-speed-amount: 0.25
   armor:
     helmet:
       equip: false

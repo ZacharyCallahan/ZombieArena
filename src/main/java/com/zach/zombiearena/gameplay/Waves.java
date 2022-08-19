@@ -11,7 +11,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.UUID;
 
 public class Waves {
     private DataManager dataManager = new DataManager();
@@ -20,10 +22,11 @@ public class Waves {
     HashMap<UUID, Integer> waveTimer = new HashMap<>();
     HashMap<UUID, Integer> gracePeriod = new HashMap<>();
     HashMap<UUID, Integer> waveNumber = new HashMap<>();
-    public HashMap<UUID, Integer> regularMobUpgradeLevel = new HashMap<>();
     public HashMap<UUID, Integer> endOfWaveAttackLevel = new HashMap<>();
     public HashMap<UUID, Integer> waveManagerRunnables = new HashMap<>();
     public HashMap<UUID, Integer> waveSpawningRunnables = new HashMap<>();
+    public HashMap<UUID, Integer> regularMobUpgradeLevel = new HashMap<>();
+    public HashMap<UUID, Integer> archerQueenHealthUpgradeLevel = new HashMap<>();
     ProbabilityUntilities probabilities = new ProbabilityUntilities();
 
 
@@ -120,6 +123,9 @@ public class Waves {
         }
     }
     public void spawnHealerQueenOnRoundFive(Player attacker) {
+
+        //TODO: spawn the correct healer queen based on what level the player is
+
         if (getWaveNumber(attacker.getUniqueId()) == null) return;
         if (getWaveNumber(attacker.getUniqueId()) == 5) {
             ZombieArena.getInstance().healerQueen.spawnHealerQueen(attacker);
@@ -127,6 +133,9 @@ public class Waves {
     }
 
     public void spawnArcherQueenOnRoundTen(Player attacker) {
+
+        //TODO: spawn the correct archer queen based on what level the player is
+
         if (getWaveNumber(attacker.getUniqueId()) == null) return;
         if (getWaveNumber(attacker.getUniqueId()) == 5) {
             ZombieArena.getInstance().archerQueen.spawnArcherQueen(attacker);
@@ -134,6 +143,9 @@ public class Waves {
     }
 
     public void spawnBarbarianKingOnRoundfifteen(Player attacker) {
+
+        //TODO: spawn the correct barbarian king based on what level the player is
+
         if (getWaveNumber(attacker.getUniqueId()) == null) return;
         if (getWaveNumber(attacker.getUniqueId()) == 5) {
             ZombieArena.getInstance().barbarianKing.spawnBarbarianKing(attacker);

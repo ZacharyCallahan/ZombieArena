@@ -10,6 +10,7 @@ public class ItemManager {
 
     public ItemManager() {
         moneyItem = ItemBuilder.createItem(Material.valueOf(ZombieArena.getInstance().getConfig().getString("tradergui.money-item.material")),
+                ZombieArena.getInstance().getConfig().getString("tradergui.money-item.material"),
                 ZombieArena.color(ZombieArena.getInstance().getConfig().getString("tradergui.money-item.display-name")),
                 null,
                 ZombieArena.getInstance().getConfig().getStringList("tradergui.money-item.lore"),
@@ -18,6 +19,7 @@ public class ItemManager {
 
 
         starterBow = ItemBuilder.createItem(Material.valueOf(ZombieArena.getInstance().getConfig().getString("starter-item.material")),
+                ZombieArena.getInstance().getConfig().getString("starter-item.material"),
                 ZombieArena.getInstance().getConfig().getString("starter-item.display-name"),
                 null,
                 ZombieArena.getInstance().getConfig().getStringList("starter-item.lore"),

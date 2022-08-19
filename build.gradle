@@ -26,6 +26,9 @@ repositories {
         name = "everything"
         url = "https://repo.citizensnpcs.co/"
     }
+    maven {
+        url = 'https://jitpack.io'
+    }
 }
 
 dependencies {
@@ -33,6 +36,7 @@ dependencies {
     compileOnly 'com.sk89q.worldedit:worldedit-bukkit:7.3.0-SNAPSHOT'
     compileOnly 'world.bentobox:bentobox:1.18.1-SNAPSHOT'
     compileOnly 'net.citizensnpcs:citizens-main:2.0.30-SNAPSHOT'
+    compileOnly "com.github.MilkBowl:VaultAPI:1.7"
 }
 
 def targetJavaVersion = 17

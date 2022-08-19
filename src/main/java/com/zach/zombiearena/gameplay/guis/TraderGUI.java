@@ -37,6 +37,7 @@ public class TraderGUI implements Listener {
                 if (keys != null) {
                     menu.setButtons(ZombieArena.getInstance().getConfig().getIntegerList("tradergui.placeholders." + keys + ".slots"),
                             new Button(ItemBuilder.createItem(Material.valueOf(ZombieArena.getInstance().getConfig().getString("tradergui.placeholders." + keys + ".material")),
+                                    ZombieArena.getInstance().getConfig().getString("tradergui.placeholders." + keys + ".material"),
                                     ZombieArena.getInstance().getConfig().getString("tradergui.placeholders." + keys + ".displayname"),
                                     null,
                                     null,
@@ -66,7 +67,8 @@ public class TraderGUI implements Listener {
 
                     menu.setButton(ZombieArena.getInstance().getConfig().getInt("tradergui.purchaseable." + keys + ".slot"), new Button(ItemBuilder.createItem(
                             Material.valueOf(ZombieArena.getInstance().getConfig().getString("tradergui.purchaseable." + keys + ".material")),
-                            ZombieArena.getInstance().getConfig().getString("tradergui.purchaseable." + keys + ".displayname"),
+                            ZombieArena.getInstance().getConfig().getString("tradergui.purchaseable." + keys + ".material"),
+                            ZombieArena.getInstance().getConfig().getString("tradergui.purchaseable." + keys + ".display-name"),
                             guiLore,
                             null,
                             ZombieArena.getInstance().getConfig().getStringList("tradergui.purchaseable." + keys + ".enchants"),
@@ -81,7 +83,8 @@ public class TraderGUI implements Listener {
 
                                 player.getInventory().addItem(ItemBuilder.createItem(
                                         Material.valueOf(ZombieArena.getInstance().getConfig().getString("tradergui.purchaseable." + keys + ".material")),
-                                        ZombieArena.getInstance().getConfig().getString("tradergui.purchaseable." + keys + ".displayname"),
+                                        ZombieArena.getInstance().getConfig().getString("tradergui.purchaseable." + keys + ".material"),
+                                        ZombieArena.getInstance().getConfig().getString("tradergui.purchaseable." + keys + ".display-name"),
                                         null,
                                         ZombieArena.getInstance().getConfig().getStringList("tradergui.purchaseable." + keys + ".lore"),
                                         ZombieArena.getInstance().getConfig().getStringList("tradergui.purchaseable." + keys + ".enchants"),

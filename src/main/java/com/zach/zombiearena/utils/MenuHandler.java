@@ -1,6 +1,8 @@
 package com.zach.zombiearena.utils;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -9,6 +11,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -28,7 +31,7 @@ public class MenuHandler {
     }
 
     public boolean openedMenu(Player player) {
-        if (!openMenus.isEmpty())  {
+        if (!openMenus.isEmpty()) {
             return openMenus.keySet().contains(player.getUniqueId());
         }
         return false;
@@ -45,6 +48,7 @@ public class MenuHandler {
             player.closeInventory();
         }
     }
+
     public Listener getListeners() {
         return new Listener() {
 
@@ -86,5 +90,24 @@ public class MenuHandler {
                 if (openedMenu(e.getEntity())) closeMenu(e.getEntity());
             }
         };
+    }
+
+    public void createPlaceholders(Menu menu, ConfigurationSection section, List<Integer> slots, String materialSection) {
+        if (section != null) {
+
+            menu.setButtons(slots, new Button(ItemBuilder.createItem(Material.valueOf(materialSection),
+                    materialSection,
+                    " ",
+                    null,
+                    null,
+                    null,
+                    false)) {
+                @Override
+                public void onClick(Menu menu, InventoryClickEvent event) {
+                    event.setCancelled(true);
+                }
+            });
+
+        }
     }
 }
