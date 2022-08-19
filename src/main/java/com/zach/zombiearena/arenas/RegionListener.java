@@ -25,6 +25,7 @@ public class RegionListener implements Listener {
         }
 
     }
+
     @EventHandler
     public void inGameMove(PlayerMoveEvent e) {
         Player player = e.getPlayer();

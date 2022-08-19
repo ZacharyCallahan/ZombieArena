@@ -26,6 +26,7 @@ public class ItemManager {
                 ZombieArena.getInstance().getConfig().getStringList("starter-item.enchants"),
                 false);
     }
+
     public static Material getMoneyItemMaterial() {
 
         return moneyItem.getType();

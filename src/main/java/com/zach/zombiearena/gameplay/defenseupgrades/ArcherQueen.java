@@ -16,10 +16,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.HashMap;
 
 public class ArcherQueen {
+    public HashMap<Player, Integer> tasks = new HashMap<>();
     private ItemStack itemStack;
     private ItemMeta itemMeta;
-
-    public HashMap<Player, Integer> tasks = new HashMap<>();
 
     public void spawnArcherQueen(Player attacker) {
         ZombieArena.getInstance().mobHandler.mobCreator(

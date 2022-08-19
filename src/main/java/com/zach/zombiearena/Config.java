@@ -223,18 +223,23 @@ public class Config {
     public String getBarbarianKingType() {
         return ZombieArena.getInstance().getConfig().getString("barbarian-king.entity-type");
     }
+
     public Integer getBarbarianKingHealth() {
         return ZombieArena.getInstance().getConfig().getInt("barbarian-king.health");
     }
+
     public Integer getBarbarianKingSpeed() {
         return ZombieArena.getInstance().getConfig().getInt("barbarian-king.speed");
     }
+
     public String getHealerQueenType() {
         return ZombieArena.getInstance().getConfig().getString("healer-queen.entity-type");
     }
+
     public Integer getHealerQueenHealth() {
         return ZombieArena.getInstance().getConfig().getInt("healer-queen.health");
     }
+
     public Integer getHealerQueenSpeed() {
         return ZombieArena.getInstance().getConfig().getInt("healer-queen.default-speed");
     }

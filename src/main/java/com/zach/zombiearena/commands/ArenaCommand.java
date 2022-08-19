@@ -86,7 +86,7 @@ public class ArenaCommand implements CommandExecutor {
                     commandList(player);
                     break;
                 case "start":
-                   ZombieArena.getInstance().matchMaking.startSearch(player);
+                    ZombieArena.getInstance().matchMaking.startSearch(player);
                     break;
                 case "create":
                     ZombieArena.getInstance().regionHandler.regionCreate(player);
@@ -148,7 +148,7 @@ public class ArenaCommand implements CommandExecutor {
                             ZombieArena.getInstance().noPermission(player);
                         }
                     } else {
-                       Messages.sendMessage(player, "arenaJoinInvalidCommand");
+                        Messages.sendMessage(player, "arenaJoinInvalidCommand");
                     }
             }
         }

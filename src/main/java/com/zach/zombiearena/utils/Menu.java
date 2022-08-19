@@ -8,21 +8,22 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Menu {
-    private Inventory inv;
-    private HashMap<Integer,Button> buttons;
+    private final Inventory inv;
+    private final HashMap<Integer, Button> buttons;
 
 
     public Menu(Inventory inv) {
         this.inv = inv;
-        buttons = new HashMap<Integer,Button>();
+        buttons = new HashMap<Integer, Button>();
     }
 
     public void setButton(int slot, Button button) {
 
         buttons.put(slot, button);
     }
+
     public void setButtons(List<Integer> slot, Button button) {
-        for(Integer integer : slot) {
+        for (Integer integer : slot) {
             buttons.put(integer, button);
         }
     }
@@ -37,7 +38,7 @@ public class Menu {
     }
 
     private void loadButtons() {
-        buttons.forEach((slot,button) -> {
+        buttons.forEach((slot, button) -> {
             inv.setItem(slot, button);
         });
     }

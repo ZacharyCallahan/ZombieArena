@@ -17,7 +17,7 @@ public class TrophiesHandler {
 
         int low = ZombieArena.getInstance().getConfig().getInt("trophies.gain-amount.low");
         int high = ZombieArena.getInstance().getConfig().getInt("trophies.gain-amount.high");
-        int result = random.nextInt(high-low) + low;
+        int result = random.nextInt(high - low) + low;
         int playersTrophies = trophies.get(attacker.getUniqueId());
 
         Messages.sendTrophyGainMessage(attacker, result, "waveGameOverAddTrophies");
@@ -35,7 +35,7 @@ public class TrophiesHandler {
 
         int low = ZombieArena.getInstance().getConfig().getInt("trophies.loss-amount.low");
         int high = ZombieArena.getInstance().getConfig().getInt("trophies.loss-amount.high");
-        int result = random.nextInt(high-low) + low;
+        int result = random.nextInt(high - low) + low;
         int playersTrophies = trophies.get(attacker.getUniqueId());
 
         Messages.sendTrophyGainMessage(attacker, result, "waveGameOverLoseTrophies");

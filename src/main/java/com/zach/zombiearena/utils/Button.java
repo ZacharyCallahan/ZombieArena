@@ -17,13 +17,13 @@ public abstract class Button extends ItemStack {
         super(item);
     }
 
-    public Button(Material material,String name,String... lore) {
+    public Button(Material material, String name, String... lore) {
         this(material);
         ItemMeta meta = getItemMeta();
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
 
-        for (int i = 0; i < lore.length;i++) lore[i] = ChatColor.translateAlternateColorCodes('&', lore[i]);
+        for (int i = 0; i < lore.length; i++) lore[i] = ChatColor.translateAlternateColorCodes('&', lore[i]);
 
         meta.setLore(Arrays.asList(lore));
         setItemMeta(meta);

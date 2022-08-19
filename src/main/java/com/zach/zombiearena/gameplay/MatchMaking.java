@@ -16,8 +16,8 @@ import static com.zach.zombiearena.utils.ItemManager.starterBow;
 
 public class MatchMaking {
 
-    public int gracePeriodTimerTracker;
     private final int timeTillStart = (ZombieArena.getInstance()).getConfig().getInt("waves-grace-period");
+    public int gracePeriodTimerTracker;
     public HashMap<UUID, Integer> bronzeLeague = (ZombieArena.getInstance()).trophiesHandler.trophies;
 
     public HashMap<UUID, Integer> silverLeague = new HashMap<>();
@@ -139,6 +139,7 @@ public class MatchMaking {
             }
         }).start();
     }
+
     public void saveInventory(Player attacker) {
         playersInventoryContents.put(attacker.getUniqueId(), attacker.getInventory().getContents());
         ZombieArena.getInstance().dataManager.saveInventoryData(attacker.getUniqueId());
