@@ -1,0 +1,350 @@
+world-name: 'ZombieArena'
+arena-size: 100 # WARNING: Always make sure this number is equal to or bigger than 'distance-away'.
+distance-away: 100 # WARNING: If this number is lower than the 'arena-size:' it will cause issues and islands will overlap.
+starter-item: # This is the item given to a player when they are attacker. Can have enchants on it!
+  amount-of-arrows: 32
+  material: BOW
+  display-name: "&bStarter Bow"
+  lore:
+    - "&7Ooo, this will come in handy!"
+trophies:
+  gain-amount:
+    low: 20
+    high: 35
+  loss-amount:
+    low: 15
+    high: 25
+# Game Functions
+# Dispense-Amount is the amount of arrows the dispensers will shoot at once!
+# Cost is how much "money-item"'s it will take to purchase these functions
+functions:
+  barriers:
+    cost: 5
+  turrets:
+    cost: 5
+    cooldown: 3
+    dispense-amount: 3
+  cannons:
+    cost: 5
+    cooldown: 3
+  barrack:
+    cost: 5
+    cooldown: 3
+    duration: 10
+# TraderGUI customization
+# To get the correct Enchantment name you can check this website out https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
+# Cost is how much "money-item"'s it will take to purchase these functions
+tradergui:
+  money-item: # The item that is received when a zombie is killed and used for buying items/functions!
+    material: GOLD_INGOT
+    display-name: "&6Gold"
+    lore:
+      - " "
+      - "&7This can be used to buy"
+      - "&6Functions &7along with"
+      - "&7items from the &7Trader&7."
+    enchanted: true
+  purchaseable:
+    '0':
+      slot: 10
+      material: BOW
+      displayname: "&bLevel One Bow"
+      lore:
+        - " "
+        - "&7Ooo seems the damage is"
+        - "&7a bit better"
+      enchants:
+        - ARROW_DAMAGE:1
+      cost: 10
+    '1':
+      slot: 11
+      material: BOW
+      displayname: "&bLevel Two Bow"
+      lore:
+        - " "
+        - "&7Woahh... A damage buff? That'll help!"
+      enchants:
+        - ARROW_DAMAGE:2
+      cost: 20
+    '2':
+      slot: 12
+      material: BOW
+      displayname: "&bLevel Three Bow"
+      lore:
+        - " "
+        - "&7Hahaa, take this zombies!"
+        - "&7Even more DAMAGEEE!"
+      enchants:
+        - ARROW_DAMAGE:3
+      cost: 30
+    '3':
+      slot: 13
+      material: BOW
+      displayname: "&bLevel Four Bow"
+      lore:
+        - " "
+        - "&7It just gets better and better, huh?"
+      enchants:
+        - ARROW_DAMAGE:4
+        - ARROW_FIRE:1
+      cost: 40
+    '4':
+      slot: 14
+      material: BOW
+      displayname: "&bLevel Five Bow"
+      lore:
+        - " "
+        - "&7OMG, Im about to smoke these zombies!"
+      enchants:
+        - ARROW_DAMAGE:5
+        - ARROW_FIRE:1
+      cost: 50
+  placeholders:
+    '0':
+      material: LIGHT_BLUE_STAINED_GLASS_PANE
+      displayname: " "
+      slots:
+        - 0
+        - 4
+        - 8
+        - 9
+        - 17
+        - 18
+        - 22
+        - 26
+    '1':
+      material: ORANGE_STAINED_GLASS_PANE
+      displayname: " "
+      slots:
+        - 1
+        - 2
+        - 3
+        - 5
+        - 6
+        - 7
+        - 19
+        - 20
+        - 21
+        - 23
+        - 24
+        - 25
+# Wave Creation
+# Wave-Spawn-Rate is the rate at a zombie will spawn during the first wave! (Ex. If the spawn rate is "2" a zombie will spawn every 2 Seconds)
+# Wave-Length is how long the way will last. (Seconds)
+# Spawn-Chance - Chance is out of all chances added up (Ex. if regular-mob is 50 and speed-mob-level-one is 50. They would have 50/100 chance of spawning)
+waves-grace-period: 20 # The grace period in between each wave. (Seconds)
+number-of-lives:
+  default: 3
+waves:
+  '0':
+    wave-spawn-rate: 6
+    wave-length: 60
+  '1':
+    wave-spawn-rate: 5
+    wave-length: 90
+  '2':
+    wave-spawn-rate: 5
+    wave-length: 110
+  '3':
+    wave-spawn-rate: 4
+    wave-length: 130
+  '4':
+    wave-spawn-rate: 4
+    wave-length: 150
+  '5':
+    wave-spawn-rate: 4
+    wave-length: 160
+  '6':
+    wave-spawn-rate: 4
+    wave-length: 180
+# Speed is going to be a percentage (Ex. 0.5 = 50% and 2.0 = 200%)
+# To get the correct Enchantment name you can check this website out https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
+# If the speed is below 1 than there is a chance the zombie may get stuck and not come to the end of the arena. Recommended not to go below 0.8.
+# Recommended that the speed does not go about 4 as it will cause the Zombies to teleport.
+# Also recommended that all spawn chances are changed to your liking!
+end-of-wave-attack:
+  default: 10
+  upgrade-one: 15
+  upgrade-two: 20
+  upgrade-three: 25
+  upgrade-four: 30
+healer-queen:
+  entity-type: WITCH
+  default-health: 20
+  default-speed: 1.0
+  default-heal-radius: 5
+  default-heal-amount: 1
+  default-armor:
+    helmet:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_HELMET
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+    chestplate:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_CHESTPLATE
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+    leggings:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_LEGGINGS
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+    boots:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_BOOTS
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+barbarian-king:
+  type: HOGLIN
+  health: 20
+  speed: 1.0
+  upgrade-radius: 5
+  upgrade-armor-type: LEATHER
+  armor:
+    helmet:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_HELMET
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+    chestplate:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_CHESTPLATE
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+    leggings:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_LEGGINGS
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+    boots:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_BOOTS
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+archer-queen:
+  entity-type: SKELETON
+  health: 20
+  speed: 1.0
+  improve-radius: 2
+  improve-speed-amount: 0.25
+  armor:
+    helmet:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_HELMET
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+    chestplate:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_CHESTPLATE
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+    leggings:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_LEGGINGS
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+    boots:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_BOOTS
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+regular-mob:
+  entity-type: ZOMBIE
+  health: 20
+  speed: 1.0
+  spawn-chance: 100
+  armor:
+    helmet:
+      equip: false
+      enable-enchants: false
+    chestplate:
+      equip: false
+      enable-enchants: false
+    leggings:
+      equip: false
+      enable-enchants: false
+    boots:
+      equip: false
+      enable-enchants: false
+  upgrade-one:
+    health: 20
+    speed: 1.0
+    spawn-chance: 20
+    armor:
+      helmet:
+        equip: false
+        enable-enchants: false
+      chestplate:
+        equip: false
+        enable-enchants: false
+      leggings:
+        equip: false
+        enable-enchants: false
+      boots:
+        equip: false
+        enable-enchants: false
+  upgrade-two:
+    health: 20
+    speed: 1.0
+    spawn-chance: 100
+    armor:
+      helmet:
+        equip: false
+        enable-enchants: false
+      chestplate:
+        equip: false
+        enable-enchants: false
+      leggings:
+        equip: false
+        enable-enchants: false
+      boots:
+        equip: false
+        enable-enchants: false
+  upgrade-three:
+    health: 20
+    speed: 1.0
+    spawn-chance: 100
+    armor:
+      helmet:
+        equip: false
+        enable-enchants: false
+      chestplate:
+        equip: false
+        enable-enchants: false
+      leggings:
+        equip: false
+        enable-enchants: false
+      boots:
+        equip: false
+        enable-enchants: false
+  upgrade-four:
+    health: 20
+    speed: 1.0
+    spawn-chance: 100
+    armor:
+      helmet:
+        equip: false
+        enable-enchants: false
+      chestplate:
+        equip: false
+        enable-enchants: false
+      leggings:
+        equip: false
+        enable-enchants: false
+      boots:
+        equip: false
+        enable-enchants: false
+

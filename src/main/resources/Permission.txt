@@ -1,0 +1,10 @@
+Commands -
+    /arena create      - zombiearena.commands.arean.create
+    /arena delete      - zombiearena.commands.arena.delete  - Admin Permission or if you not using BentoBox skyblock plugin
+    /arena tp          - zombiearena.commands.arena.tp
+    /arena invite      - zombiearena.commands.arena.invite
+    /arena join        - zombiearena.commands.arena.join
+    /arena restart     - zombiearena.commands.arena.restart
+
+Regions -
+    Bypass the regions that hold players in their arena - zombiearena.region.arena.bypass - Admin Permission

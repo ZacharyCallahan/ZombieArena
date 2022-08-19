@@ -1,0 +1,11 @@
+name: ZombieArena
+version: '${version}'
+main: com.zach.zombiearena.ZombieArena
+api-version: 1.18
+depend:
+  - WorldEdit
+  - Citizens
+softdepend:
+  - BentoBox
+commands:
+  arena:
