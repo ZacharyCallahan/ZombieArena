@@ -52,6 +52,7 @@ public final class ZombieArena extends JavaPlugin {
     public HealerQueen healerQueen;
     public BarbarianKing barbarianKing;
     public ArcherQueen archerQueen;
+    public ArcherQueenGUI archerQueenGUI;
     public WavesHandler wavesHandler;
     public DataManager dataManager;
     public Messages messages;
@@ -76,6 +77,7 @@ public final class ZombieArena extends JavaPlugin {
         this.healerQueen = new HealerQueen();
         this.barbarianKing = new BarbarianKing();
         this.archerQueen = new ArcherQueen();
+        this.archerQueenGUI = new ArcherQueenGUI();
         this.barrier = new BarrierHandler();
         this.npcsHandler = new NpcHandler();
         this.matchMaking = new MatchMaking();
@@ -85,7 +87,10 @@ public final class ZombieArena extends JavaPlugin {
     }
 
     public static String color(String string) {
-        return ChatColor.translateAlternateColorCodes('&', string);
+        if (string.contains("&")) {
+            return ChatColor.translateAlternateColorCodes('&', string);
+        }
+        return string;
     }
 
     public static ZombieArena getInstance() {

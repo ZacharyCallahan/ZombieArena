@@ -18,6 +18,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public class MenuHandler {
     private final ConcurrentHashMap<UUID, Menu> openMenus = new ConcurrentHashMap<>();
 
+    public void refreshMenu(Player player, Menu menu) {
+        closeMenu(player);
+        openMenu(player, menu);
+    }
+
     public void openMenu(Player player, Menu menu) {
         openMenus.put(player.getUniqueId(), menu);
         menu.open(player);
@@ -96,7 +101,6 @@ public class MenuHandler {
         if (section != null) {
 
             menu.setButtons(slots, new Button(ItemBuilder.createItem(Material.valueOf(materialSection),
-                    materialSection,
                     " ",
                     null,
                     null,

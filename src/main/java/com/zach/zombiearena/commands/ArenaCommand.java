@@ -4,6 +4,7 @@ import com.zach.zombiearena.DefaultFontInfo;
 import com.zach.zombiearena.Messages;
 import com.zach.zombiearena.ZombieArena;
 import com.zach.zombiearena.arenas.Region;
+import com.zach.zombiearena.gameplay.guis.DefenseGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -75,9 +76,8 @@ public class ArenaCommand implements CommandExecutor {
 
             switch (args[0]) {
                 case "test":
-                    ZombieArena.getInstance().healerQueen.spawnHealerQueen(player);
-                    ZombieArena.getInstance().barbarianKing.spawnBarbarianKing(player);
-                    ZombieArena.getInstance().archerQueen.spawnArcherQueen(player);
+                    DefenseGUI defenseGUI = new DefenseGUI();
+                    ZombieArena.getMenuHandler().openMenu(player, defenseGUI.DefenseGUI());
                     break;
                 case "reload":
                     ZombieArena.getInstance().reloadConfig();
