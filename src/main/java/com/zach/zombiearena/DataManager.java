@@ -92,6 +92,19 @@ public class DataManager implements Listener {
         saveLives(player.getUniqueId());
         saveRegularMobUpgrade(player.getUniqueId());
         saveEndOfWaveAttackerUpgrade(player.getUniqueId());
+        saveArcherQueenHealthUpgradeLevel(player.getUniqueId());
+    }
+
+    public void saveArcherQueenHealthUpgradeLevel(UUID uuid) {
+        if (ZombieArena.getInstance().waves.archerQueenHealthUpgradeLevel.get(uuid) != null) {
+            ZombieArena.getInstance().waves.archerQueenHealthUpgradeLevel.remove(uuid);
+            ZombieArena.getInstance().waves.archerQueenHealthUpgradeLevel.put(uuid, getConfig().getInt("archer-queen-health-upgrade-level"));
+            getConfig().set("archer-queen-health-upgrade-level", ZombieArena.getInstance().waves.archerQueenHealthUpgradeLevel.get(uuid));
+        } else {
+            getConfig().set("archer-queen-health-upgrade-level", 0);
+            ZombieArena.getInstance().waves.archerQueenHealthUpgradeLevel.put(uuid, 0);
+        }
+        save();
     }
 
     public void saveRegularMobUpgrade(UUID uuid) {
@@ -216,6 +229,10 @@ public class DataManager implements Listener {
         save();
     }
 
+    public void loadPlayersArcherQueenHealthLevel(UUID uuid) {
+        ZombieArena.getInstance().waves.archerQueenHealthUpgradeLevel.put(uuid, getConfig().getInt("archer-queen-health-upgrade-level"));
+    }
+
     public ItemStack[] loadItemStacks() {
         Object object = getConfig().get("inventory-contents");
         return object instanceof Collection ? ((Collection<ItemStack>) object).toArray(new ItemStack[0]) : null;
@@ -311,7 +328,6 @@ public class DataManager implements Listener {
     }
 
     public void loadAllOfflinePlayerData(UUID player) {
-
         loadOfflineConfig(player);
         int mainLowerBlockX = getConfig().getInt("regions.main-region.lower-block.x");
         int mainLowerBlockY = getConfig().getInt("regions.main-region.lower-block.y");
@@ -342,6 +358,7 @@ public class DataManager implements Listener {
         playersLeague(player);
         loadLives(player);
         loadTrophies(player);
+        loadPlayersArcherQueenHealthLevel(player);
 
     }
     /*@EventHandler

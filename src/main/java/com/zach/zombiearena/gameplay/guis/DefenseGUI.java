@@ -34,22 +34,24 @@ public class DefenseGUI implements Listener {
 
         //purchasable Upgrades
 
+        //TODO add other upgrades Barb King, Healer queen, etc
+
         section = ZombieArena.getInstance().getConfig().getConfigurationSection("defensegui.upgrades");
 
         if (section != null) {
             //archerqueen upgrade
-            menu.setButtons(ZombieArena.getInstance().getConfig().getIntegerList("defensegui.upgrades.archer-queen-gui.slot"),
+            menu.setButton(ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.archer-queen-gui.slot"),
                     new Button(
                             ItemBuilder.createItem(Material.valueOf(ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.material")),
                                     ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.material"),
-                                    ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.display-name"),
                                     null,
-                                    null,
+                                    ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.archer-queen-gui.lore"),
                                     null,
                                     ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.archer-queen-gui.enchanted"))) {
                         @Override
                         public void onClick(Menu menu, InventoryClickEvent event) {
                             Player player = (Player) event.getWhoClicked();
+                            ZombieArena.getMenuHandler().closeMenu(player);
                             ZombieArena.getMenuHandler().openMenu(player, archerQueenGUI.ArcherQueenGUI());
                             event.setCancelled(true);
                         }
