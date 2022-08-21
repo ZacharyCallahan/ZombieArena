@@ -7,6 +7,18 @@ starter-item: # This is the item given to a player when they are attacker. Can h
   display-name: "&bStarter Bow"
   lore:
     - "&7Ooo, this will come in handy!"
+purchase-upgrade-item:
+  material: LIME_STAINED_GLASS_PANE
+  display-name: "&bPurchased"
+  lore:
+    - "&7You have already purchased this upgrade!"
+  enchanted: true
+upgrade-unavailable-item:
+  material: RED_STAINED_GLASS_PANE
+  display-name: "&cUpgrade Unavailable"
+  lore:
+    - "&7You have not purchased the previous upgrade!"
+  enchanted: false
 trophies:
   gain-amount:
     low: 20
@@ -116,226 +128,80 @@ defensegui:
         - 25
   upgrades:
     archer-queen-gui:
-      material:
+      material: BOW
       display-name: "&bArcher Queen"
       lore:
-        -
         - "&7This is the upgrade for the archer queen"
-      enchanted:
+      enchanted: true
       slot: 10
-      health-upgrade-display-item:
-        material:
-        display-name:
-        lore:
-          -
-          -
-          -
-          -
-        enchanted:
-        slot:
       placeholders:
         '0':
-          material:
-          display-name:
+          material: LIGHT_BLUE_STAINED_GLASS_PANE
+          display-name: " "
           slots:
-            -
-            -
-            -
-            -
-      health-upgrade-level-one-gui:
-        material:
-        display-name:
+            - 12
+      health-upgrade-gui:
+        material: BOOK
+        display-name: "&cHealth Upgrade"
         lore:
-          -
-        slot:
-        cost:
+          - "test"
+        enchanted: true
+        slot: 11
         placeholders:
           '0':
-            material:
-            display-name:
+            material: BLACK_STAINED_GLASS_PANE
+            display-name: " "
             slots:
-              -
-              -
-              -
-              -
-      health-upgrade-level-two-gui:
-        material:
-        display-name:
-        lore:
-          -
-        slot:
-        cost:
-        placeholders:
-          '0':
-            material:
-            display-name:
-            slots:
-              -
-              -
-              -
-              -
-      health-upgrade-level-three-gui:
-        material:
-        display-name:
-        lore:
-          -
-        slot:
-        cost:
-        placeholders:
-          '0':
-            material:
-            display-name:
-            slots:
-              -
-              -
-              -
-              -
-      health-upgrade-level-four-gui:
-        material:
-        display-name:
-        lore:
-          -
-        slot:
-        cost:
-        placeholders:
-          '0':
-            material:
-            display-name:
-            slots:
-              -
-              -
-              -
-              -
-      improve-radius-upgrade-level-one-gui:
-        material:
-        display-name:
-        lore:
-          -
-        slot:
-        cost:
-        placeholders:
-          '0':
-            material:
-            display-name:
-            slots:
-              -
-              -
-              -
-              -
-      improve-radius-upgrade-level-two-gui:
-        material:
-        display-name:
-        lore:
-          -
-        slot:
-        cost:
-        placeholders:
-          '0':
-            material:
-            display-name:
-            slots:
-              -
-              -
-              -
-              -
-      improve-radius-upgrade-level-three-gui:
-        material:
-        display-name:
-        lore:
-          -
-        slot:
-        cost:
-        placeholders:
-          '0':
-            material:
-            display-name:
-            slots:
-              -
-              -
-              -
-              -
-      improve-radius-upgrade-level-four-gui:
-        material:
-        display-name:
-        lore:
-          -
-        slot:
-        cost:
-        placeholders:
-          '0':
-            material:
-            display-name:
-            slots:
-              -
-              -
-              -
-              -
-      improve-speed-amount-upgrade-level-one-gui:
-        material:
-        display-name:
-        lore:
-          -
-        slot:
-        cost:
-        placeholders:
-          '0':
-            material:
-            display-name:
-            slots:
-              -
-              -
-              -
-              -
-      improve-speed-amount-upgrade-level-two-gui:
-        material:
-        display-name:
-        lore:
-          -
-        slot:
-        cost:
-        placeholders:
-          '0':
-            material:
-            display-name:
-            slots:
-              -
-              -
-              -
-              -
-      improve-speed-amount-upgrade-level-three-gui:
-        material:
-        display-name:
-        lore:
-          -
-        slot:
-        cost:
-        placeholders:
-          '0':
-            material:
-            display-name:
-            slots:
-              -
-              -
-              -
-              -
-      improve-speed-amount-upgrade-level-four-gui:
-        material:
-        display-name:
-        lore:
-          -
-        slot:
-        cost:
-        placeholders:
-          '0':
-            material:
-            display-name:
-            slots:
-              -
-              -
-              -
-              - # TraderGUI customization
-                # To get the correct Enchantment name you can check this website out https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
-              # Cost is how much "money-item"'s it will take to purchase these functions
+              - 0
+              - 1
+              - 2
+              - 3
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
+              - 17
+              - 18
+              - 19
+              - 20
+              - 21
+              - 22
+              - 23
+              - 24
+              - 25
+              - 26
+        health-upgrade-item-stats-placeholder:
+          material: GOLDEN_APPLE
+          slot: 4
+          enchanted: false
+        health-upgrade-level-one:
+          display-name: "Health Upgrade Level One"
+          lore:
+            - "Click me and I will upgrade your archer queen's Health"
+          slot: 10
+          cost: 3000
+        health-upgrade-level-two:
+          display-name: "Health Upgrade Level two"
+          lore:
+            - "Click me and I will upgrade your archer queen's Health"
+          slot: 11
+          cost: 3000
+        health-upgrade-level-three:
+          display-name: "Health Upgrade Level three"
+          lore:
+            - "Click me and I will upgrade your archer queen's Health"
+          slot: 12
+          cost: 3000
+        health-upgrade-level-four:
+          display-name: "Health Upgrade Level four"
+          lore:
+            - "Click me and I will upgrade your archer queen's Health"
+          slot: 13
+          cost: 3000
+# TraderGUI customization
+# To get the correct Enchantment name you can check this website out https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
+# Cost is how much "money-item"'s it will take to purchase these functions
 tradergui:
   money-item: # The item that is received when a zombie is killed and used for buying items/functions!
     material: GOLD_INGOT
