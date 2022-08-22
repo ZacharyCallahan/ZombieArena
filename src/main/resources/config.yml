@@ -49,8 +49,8 @@ archer-queen:
   entity-type: SKELETON
   health: 20
   speed: 1.0
-  improve-radius: 2
-  improve-speed-amount: 0.25
+  radius: 2
+  speed-amount: 0.25
   armor:
     helmet:
       equip: false
@@ -84,22 +84,22 @@ archer-queen:
     health: 70
   health-upgrade-level-four:
     health: 90
-  improve-radius-upgrade-level-one:
-    improve-radius: 3
-  improve-radius-upgrade-level-two:
-    improve-radius: 4
-  improve-radius-upgrade-level-three:
-    improve-radius: 5
-  improve-radius-upgrade-level-four:
-    improve-radius: 6
-  improve-speed-amount-upgrade-level-one:
-    improve-speed-amount: 0.5
-  improve-speed-amount-upgrade-level-two:
-    improve-speed-amount: 0.75
-  improve-speed-amount-upgrade-level-three:
-    improve-speed-amount: 1.0
-  improve-speed-amount-upgrade-level-four:
-    improve-speed-amount: 1.25
+  radius-upgrade-level-one:
+    radius: 3
+  radius-upgrade-level-two:
+    radius: 4
+  radius-upgrade-level-three:
+    radius: 5
+  radius-upgrade-level-four:
+    radius: 6
+  speed-amount-upgrade-level-one:
+    speed-amount: 0.5
+  speed-amount-upgrade-level-two:
+    speed-amount: 0.75
+  speed-amount-upgrade-level-three:
+    speed-amount: 1.0
+  speed-amount-upgrade-level-four:
+    speed-amount: 1.25
 defensegui:
   placeholders:
     '0':
@@ -183,7 +183,7 @@ defensegui:
             - 26
       health-upgrade-gui:
         material: POTION
-        display-name: "&cHealth Upgrade"
+        display-name: "&c&lHealth Upgrade"
         lore:
           - " "
           - "&7Looking to upgrade your Archer Queen's health?"
@@ -193,7 +193,7 @@ defensegui:
         enchanted: true
         slot: 13
         health-upgrade-item-stats-placeholder:
-          display-name: "&cArcher Queen Health Stats"
+          display-name: "&c&lArcher Queen Health Stats"
           material: POTION
           slot: 11
           enchanted: true
@@ -259,6 +259,89 @@ defensegui:
           lore:
             - " "
             - "&7Okay okay, this is ridiculous..."
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f12,000"
+          slot: 15
+          cost: 12000
+      radius-upgrade-gui:
+        material: PISTON
+        display-name: "&b&lRadius Upgrade"
+        lore:
+          - " "
+          - "&7Looking to upgrade your Archer Queen's radius?"
+          - "&7You've come to the right place!"
+          - " "
+          - "&dClick me to get started.."
+        enchanted: true
+        slot: 14
+        radius-upgrade-item-stats-placeholder:
+          display-name: "&b&lArcher Queen Radius Stats"
+          material: PISTON
+          slot: 11
+          enchanted: true
+        placeholders:
+          '0':
+            material: BLACK_STAINED_GLASS_PANE
+            display-name: " "
+            slots:
+              - 0
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
+              - 10
+              - 16
+              - 17
+              - 18
+              - 19
+              - 20
+              - 21
+              - 22
+              - 23
+              - 24
+              - 25
+              - 26
+        radius-upgrade-level-one:
+          display-name: "&fRadius Upgrade: &bLevel 1"
+          lore:
+            - " "
+            - "&7Ooo, this is much needed!"
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f3,000"
+          slot: 12
+          cost: 3000
+        radius-upgrade-level-two:
+          display-name: "&fRadius Upgrade: &bLevel 2"
+          lore:
+            - " "
+            - "&7Woah, this is starting to get a bit too big..."
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f6,000"
+          slot: 13
+          cost: 6000
+        radius-upgrade-level-three:
+          display-name: "&fRadius Upgrade: &bLevel 3"
+          lore:
+            - " "
+            - "&7Really.. this is getting out of hand..."
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f9,000"
+          slot: 14
+          cost: 9000
+        radius-upgrade-level-four:
+          display-name: "&fRadius Upgrade: &bLevel 4"
+          lore:
+            - " "
+            - "&7Uhm.. how is this allowed!"
             - " "
             - "&eClick to purchase!"
             - "&2Cost&f: &a$&f12,000"

@@ -21,7 +21,8 @@ public class ArcherQueenHealthUpgradeGUI {
     private ConfigurationSection section;
 
     public Menu ArcherQueenHealthUpgradeGUI(Player player) {
-        Menu menu = new Menu(Bukkit.createInventory(null, 27, "Archer Queen Health Upgrade GUI"));
+        Menu menu = new Menu(Bukkit.createInventory(null, 27, ZombieArena.color(ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.display-name") + ": "
+                + config.getArcherQueenHealthUpgradeGuiDisplayName())));
         section = ZombieArena.getInstance().getConfig().getConfigurationSection("defensegui.upgrades.archer-queen-gui.health-upgrade-gui.placeholders");
         for (String keys : section.getKeys(false)) {
             if (keys != null)
@@ -50,7 +51,7 @@ public class ArcherQueenHealthUpgradeGUI {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
                     if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenhealthUpgradeLevelOneCost())) {
-                        upgradeGUIHandler.upgradeSuccess(player, 1);
+                        upgradeGUIHandler.upgradeSuccess(player, 1, null);
                         refreshMenu(player);
                     } else {
                         upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenhealthUpgradeLevelOneCost());
@@ -71,7 +72,7 @@ public class ArcherQueenHealthUpgradeGUI {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
                     if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenhealthUpgradeLevelTwoCost())) {
-                        upgradeGUIHandler.upgradeSuccess(player, 2);
+                        upgradeGUIHandler.upgradeSuccess(player, 2, null);
                         refreshMenu(player);
                     } else {
                         upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenhealthUpgradeLevelTwoCost());
@@ -92,7 +93,7 @@ public class ArcherQueenHealthUpgradeGUI {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
                     if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenhealthUpgradeLevelThreeCost())) {
-                        upgradeGUIHandler.upgradeSuccess(player, 3);
+                        upgradeGUIHandler.upgradeSuccess(player, 3, null);
                         refreshMenu(player);
                     } else {
                         upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenhealthUpgradeLevelThreeCost());
@@ -113,7 +114,7 @@ public class ArcherQueenHealthUpgradeGUI {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
                     if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenhealthUpgradeLevelFourCost())) {
-                        upgradeGUIHandler.upgradeSuccess(player, 4);
+                        upgradeGUIHandler.upgradeSuccess(player, 4, null);
                         refreshMenu(player);
                     } else {
                         upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenhealthUpgradeLevelFourCost());

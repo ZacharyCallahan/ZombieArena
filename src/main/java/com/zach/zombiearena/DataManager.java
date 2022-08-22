@@ -92,6 +92,7 @@ public class DataManager implements Listener {
         saveLives(player.getUniqueId());
         saveArcherQueenHealthUpgradeLevel(player.getUniqueId());
         savePurchasedArcherQueen(player.getUniqueId());
+        saveArcherQueenRadiusUpgradeLevel(player.getUniqueId());
     }
 
 
@@ -127,6 +128,23 @@ public class DataManager implements Listener {
 
     public void loadPlayersArcherQueenHealthLevel(UUID uuid) {
         ZombieArena.getInstance().waves.archerQueenHealthUpgradeLevel.put(uuid, getConfig().getInt("archer-queen.health-upgrade-level"));
+    }
+
+    public void saveArcherQueenRadiusUpgradeLevel(UUID uuid) {
+        getConfig().set("archer-queen.radius-upgrade-level", 0);
+        ZombieArena.getInstance().waves.archerQueenRadiusUpgradeLevel.put(uuid, 0);
+        save();
+    }
+
+    public void updateArcherQueenRadiusUpgradeLevel(Player player, int level) {
+        loadConfig(player);
+        getConfig().set("archer-queen.radius-upgrade-level", level);
+        ZombieArena.getInstance().waves.archerQueenRadiusUpgradeLevel.put(player.getUniqueId(), level);
+        save();
+    }
+
+    public void loadPlayersArcherQueenRadiusLevel(UUID uuid) {
+        ZombieArena.getInstance().waves.archerQueenRadiusUpgradeLevel.put(uuid, getConfig().getInt("archer-queen.radius-upgrade-level"));
     }
 
     public File getDataFolder() {
@@ -360,6 +378,7 @@ public class DataManager implements Listener {
         loadTrophies(player);
         loadPlayersArcherQueenHealthLevel(player);
         loadPurchasedArcherQueen(player);
+        loadPlayersArcherQueenRadiusLevel(player);
     }
     /*@EventHandler
     public void loadPlayerData(PlayerJoinEvent e) {

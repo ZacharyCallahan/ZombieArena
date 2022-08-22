@@ -20,6 +20,7 @@ public class Waves {
     public HashMap<UUID, Integer> waveSpawningRunnables = new HashMap<>();
     public HashMap<UUID, Integer> regularMobUpgradeLevel = new HashMap<>();
     public HashMap<UUID, Integer> archerQueenHealthUpgradeLevel = new HashMap<>();
+    public HashMap<UUID, Integer> archerQueenRadiusUpgradeLevel = new HashMap<>();
     public HashMap<UUID, Boolean> purchasedArcherQueen = new HashMap<>();
     int sectionNumber = 0;
     ConfigurationSection section;
