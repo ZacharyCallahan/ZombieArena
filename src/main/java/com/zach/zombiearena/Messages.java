@@ -40,4 +40,12 @@ public class Messages {
     public static void sendCoolDownMessage(Player receiver, Long cooldown, String messageName) {
         receiver.sendMessage(ZombieArena.color(messageData.get(messageName).replace("%cooldown%", String.valueOf(cooldown))));
     }
+
+    public static void sendNotEnoughMoneyMessage(Player receiver, Double money, String messageName) {
+        receiver.sendMessage(ZombieArena.color(messageData.get(messageName).replace("%money%", String.valueOf(money))));
+    }
+
+    public static void sendDefensePurchasedMessage(Player receiver, String defenseName, String messageName) {
+        receiver.sendMessage(ZombieArena.color(messageData.get(messageName).replace("%defense%", defenseName)));
+    }
 }

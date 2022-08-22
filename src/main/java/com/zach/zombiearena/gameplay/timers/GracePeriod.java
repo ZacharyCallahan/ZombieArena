@@ -26,11 +26,11 @@ public abstract class GracePeriod {
             public void run() {
                 count(time);
                 if (time-- <= 0) {
-                    this.cancel();
+                    cancel();
                 }
 
             }
-        }).runTaskTimer(this.zombieArena, 0L, 20L);
+        }).runTaskTimer(zombieArena, 0L, 20L);
 
     }
 }

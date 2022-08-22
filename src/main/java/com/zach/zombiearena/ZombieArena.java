@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package com.zach.zombiearena;
 
 import com.zach.zombiearena.arenas.BentoBoxSupport;
@@ -36,9 +31,13 @@ import java.util.logging.Logger;
 
 public final class ZombieArena extends JavaPlugin {
     private static final Logger log = Logger.getLogger("Minecraft");
+
     private static ZombieArena instance;
+
     private static Economy economy = null;
+
     private static MenuHandler menuHandler;
+    private final VoidChunkGenerator voidChunkGenerator;
     public WorldManager worldManager;
     public RegionHandler regionHandler;
     public TrophiesHandler trophiesHandler;
@@ -52,14 +51,15 @@ public final class ZombieArena extends JavaPlugin {
     public HealerQueen healerQueen;
     public BarbarianKing barbarianKing;
     public ArcherQueen archerQueen;
+    public ArcherQueenGUI archerQueenGUI;
     public WavesHandler wavesHandler;
     public DataManager dataManager;
     public Messages messages;
-    public List<Player> toggle = new ArrayList();
-    public HashMap<Player, Long> cooldown = new HashMap();
+    public List<Player> toggle = new ArrayList<>();
+    public HashMap<Player, Long> cooldown = new HashMap<>();
     public BarrierHandler barrier;
     public ItemManager itemManager;
-    private final VoidChunkGenerator voidChunkGenerator;
+
     public ZombieArena() {
         instance = this;
         menuHandler = new MenuHandler();
@@ -76,6 +76,7 @@ public final class ZombieArena extends JavaPlugin {
         this.healerQueen = new HealerQueen();
         this.barbarianKing = new BarbarianKing();
         this.archerQueen = new ArcherQueen();
+        this.archerQueenGUI = new ArcherQueenGUI();
         this.barrier = new BarrierHandler();
         this.npcsHandler = new NpcHandler();
         this.matchMaking = new MatchMaking();
@@ -85,7 +86,9 @@ public final class ZombieArena extends JavaPlugin {
     }
 
     public static String color(String string) {
-        return ChatColor.translateAlternateColorCodes('&', string);
+        if (string.contains("&"))
+            return ChatColor.translateAlternateColorCodes('&', string);
+        return string;
     }
 
     public static ZombieArena getInstance() {
@@ -101,7 +104,7 @@ public final class ZombieArena extends JavaPlugin {
     }
 
     public void onDisable() {
-        this.kickAllPlayers();
+        kickAllPlayers();
         menuHandler.closeAll();
     }
 
@@ -110,24 +113,20 @@ public final class ZombieArena extends JavaPlugin {
     }
 
     public void kickAllPlayers() {
-
-        for (Player player : Bukkit.getOnlinePlayers()) {
+        for (Player player : Bukkit.getOnlinePlayers())
             player.kickPlayer(color("&f[&6Prison&bEvolved&f] &7The server is being reloaded. To prevent &nData Corruption&7, you have been kicked!"));
-        }
-
     }
 
     public boolean isBentoBoxPresent() {
-        return getServer().getPluginManager().getPlugin("BentoBox") != null;
+        return (getServer().getPluginManager().getPlugin("BentoBox") != null);
     }
 
     public void onEnable() {
-
         this.voidChunkGenerator.createVoidWorld();
         this.worldManager.setGameRules();
         this.dataManager.createData();
         this.dataManager.loadLastCreatedArenaData();
-        this.dataManager.saveFile(this.getDataFolder(), "README.txt");
+        this.dataManager.saveFile(getDataFolder(), "README.txt");
         this.dataManager.saveSchematics();
         Bukkit.getPluginCommand("arena").setExecutor(new ArenaCommand());
         Bukkit.getPluginCommand("arena").setTabCompleter(new ArenaTabCompleter());
@@ -146,30 +145,25 @@ public final class ZombieArena extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new TurretListener(), this);
         Bukkit.getPluginManager().registerEvents(new CannonListener(), this);
         Bukkit.getPluginManager().registerEvents(new BarrackListener(), this);
-        new BukkitRunnable() {
-            @Override
+        (new BukkitRunnable() {
             public void run() {
-                npcsHandler.destroyRemainingNPCs("Zombie");
+                ZombieArena.this.npcsHandler.destroyRemainingNPCs("Zombie");
             }
-        }.runTaskLater(this, 60L);
-        dataManager.loadOfflinePlayerData();
+        }).runTaskLater(this, 60L);
+        this.dataManager.loadOfflinePlayerData();
         if (!setupEconomy()) {
             log.severe(String.format("[%s] - Disabled due to no Vault dependency found!", getDescription().getName()));
             getServer().getPluginManager().disablePlugin(this);
-            return;
         }
     }
 
     private boolean setupEconomy() {
-        if (getServer().getPluginManager().getPlugin("Vault") == null) {
+        if (getServer().getPluginManager().getPlugin("Vault") == null)
             return false;
-        }
         RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
-        if (rsp == null) {
+        if (rsp == null)
             return false;
-        }
         economy = rsp.getProvider();
-        return economy != null;
+        return true;
     }
-
 }

@@ -20,6 +20,7 @@ public class Waves {
     public HashMap<UUID, Integer> waveSpawningRunnables = new HashMap<>();
     public HashMap<UUID, Integer> regularMobUpgradeLevel = new HashMap<>();
     public HashMap<UUID, Integer> archerQueenHealthUpgradeLevel = new HashMap<>();
+    public HashMap<UUID, Boolean> purchasedArcherQueen = new HashMap<>();
     int sectionNumber = 0;
     ConfigurationSection section;
     HashMap<UUID, Integer> waveTimer = new HashMap<>();
@@ -134,9 +135,12 @@ public class Waves {
 
         //TODO: spawn the correct archer queen based on what level the player is
 
-        if (getWaveNumber(attacker.getUniqueId()) == null) return;
-        if (getWaveNumber(attacker.getUniqueId()) == 5) {
-            ZombieArena.getInstance().archerQueen.spawnArcherQueen(attacker);
+        //if the player has purchased the archer queen, spawn the archer queen
+        if (ZombieArena.getInstance().waves.purchasedArcherQueen.get(attacker.getUniqueId())) {
+            if (getWaveNumber(attacker.getUniqueId()) == null) return;
+            if (getWaveNumber(attacker.getUniqueId()) == 5) {
+                ZombieArena.getInstance().archerQueen.spawnArcherQueen(attacker);
+            }
         }
     }
 

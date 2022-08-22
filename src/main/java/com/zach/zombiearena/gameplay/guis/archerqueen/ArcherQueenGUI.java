@@ -16,65 +16,63 @@ import java.util.List;
 
 public class ArcherQueenGUI implements Listener {
     private final ArcherQueenHealthUpgradeGUI archerQueenHealthUpgradeGUI = new ArcherQueenHealthUpgradeGUI();
+
     Config config = new Config();
+
     private ConfigurationSection section;
 
-    public Menu ArcherQueenGUI() {
+    public Menu ArcherQueenGUI(Player player) {
         Menu menu = new Menu(Bukkit.createInventory(null, 27, "Archer Queen GUI"));
-
-        //placeholders
         section = ZombieArena.getInstance().getConfig().getConfigurationSection("defensegui.upgrades.archer-queen-gui.placeholders");
         for (String keys : section.getKeys(false)) {
-            if (keys != null) {
-                ZombieArena.getMenuHandler().createPlaceholders(
-                        menu,
-                        section,
-                        ZombieArena.getInstance().getConfig().getIntegerList("defensegui.upgrades.archer-queen-gui.placeholders." + keys + ".slots"),
-                        ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.placeholders." + keys + ".material"));
-            }
+            if (keys != null)
+                ZombieArena.getMenuHandler().createPlaceholders(menu, section, config
+
+                        .getArcherQueenPlaceHolderSlots(keys), config
+                        .getArcherQueenPlaceHolderMaterialSection(keys));
         }
+        menu.setButton(config.getArcherQueenPlaceHolderStatsSlots(), new Button(
+                ItemBuilder.createItem(config
+                                .getArcherQueenGuiMaterial(), config
+                                .getArcherQueenPlaceHolderStatsDisplayName(),
+                        getArcherQueenStatsLore(player), null, null, config
 
-
-        //possible upgrades, health, improved radius, improve speed
+                                .getArcherQueenPlaceHolderStatsEnchanted())) {
+            public void onClick(Menu menu, InventoryClickEvent event) {
+                event.setCancelled(true);
+            }
+        });
         section = ZombieArena.getInstance().getConfig().getConfigurationSection("defensegui.upgrades.archer-queen-gui.health-upgrade-gui");
-        if (section != null) {
-            //upgrade health level one
+        if (section != null)
             menu.setButton(config.getArcherQueenHealthUpgradeGuiSlot(), new Button(
-                    ItemBuilder.createItem(config.getArcherQueenHealthUpgradeGuiMaterial(),
-                            config.getArcherQueenHealthUpgradeGuiDisplayName(),
-                            config.getArcherQueenHealthUpgradeGuiLore(),
-                            null,
-                            null,
-                            config.getArcherQueenHealthUpgradeGuiEnchanted())
-            ) {
-                @Override
+                    ItemBuilder.createItem(config.getArcherQueenHealthUpgradeGuiMaterial(), config
+                            .getArcherQueenHealthUpgradeGuiDisplayName(), config
+                            .getArcherQueenHealthUpgradeGuiLore(), null, null, config
+
+                            .getArcherQueenHealthUpgradeGuiEnchanted())) {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
                     ZombieArena.getMenuHandler().closeMenu(player);
-                    ZombieArena.getMenuHandler().openMenu(player, archerQueenHealthUpgradeGUI.ArcherQueenHealthUpgradeGUI(player));
+                    ZombieArena.getMenuHandler().openMenu(player, ArcherQueenGUI.this.archerQueenHealthUpgradeGUI.ArcherQueenHealthUpgradeGUI(player));
                     event.setCancelled(true);
-
                 }
             });
-
-        }
-
-        //TODO add other upgrades
-        //TODO add a Archer Queen PlaceHolder Item Showing current Health and other Stats
         return menu;
     }
 
     public List<String> getArcherQueenHealthStatsLore(Player player) {
         List<String> itemStatsPlaceHolderLore = new ArrayList<>();
-
-        itemStatsPlaceHolderLore.add(" ");
-        itemStatsPlaceHolderLore.add("&7Health: &c" + archerQueenHealthUpgradeGUI.getPlayersArcherQueenHealth(player));
-        if (archerQueenHealthUpgradeGUI.getPlayersArcherQueenHealthUpgradeLevel(player) > 0) {
-            itemStatsPlaceHolderLore.add("&7Level: &a" + archerQueenHealthUpgradeGUI.getPlayersArcherQueenHealthUpgradeLevel(player));
-        }
-
-        //TODO add items stats lore
-
+        itemStatsPlaceHolderLore.add(ZombieArena.color(" "));
+        itemStatsPlaceHolderLore.add(ZombieArena.color("&7Health: &c" + archerQueenHealthUpgradeGUI.getPlayersArcherQueenHealth(player)));
+        if (archerQueenHealthUpgradeGUI.getPlayersArcherQueenHealthUpgradeLevel(player) > 0)
+            itemStatsPlaceHolderLore.add(ZombieArena.color("&7Level: &a" + archerQueenHealthUpgradeGUI.getPlayersArcherQueenHealthUpgradeLevel(player)));
         return itemStatsPlaceHolderLore;
+    }
+
+    public List<String> getArcherQueenStatsLore(Player player) {
+        List<String> lore = new ArrayList<>();
+        lore.add(" ");
+        lore.add("&7&lHealth: &c" + archerQueenHealthUpgradeGUI.getPlayersArcherQueenHealth(player));
+        return lore;
     }
 }

@@ -22,6 +22,7 @@ public class ArenaCommand implements CommandExecutor {
     private final HashMap<Player, Long> cooldown;
     public List<Player> toggle = new ArrayList();
     HashMap<UUID, Region> playersArena;
+    DefenseGUI defenseGUI = new DefenseGUI();
 
     public ArenaCommand() {
         this.playersArena = ZombieArena.getInstance().regionHandler.playersArena;
@@ -60,13 +61,15 @@ public class ArenaCommand implements CommandExecutor {
         if (player.hasPermission("zombiearena.commands.arena.join")) {
             player.sendMessage(color("&6/arena join <player> &7- Allows you to join your friends arena!"));
         }
+        if (player.hasPermission("zombiearena.commands.arena.defense")) {
+            player.sendMessage(color("&6/arena defense &7- Allows you to upgrade the defenses of your arena!"));
+        }
 
         player.sendMessage(color("&d" + ChatColor.STRIKETHROUGH + "                                                                               "));
     }
 
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
+        if (sender instanceof Player player) {
             if (args.length == 0) {
                 commandList(player);
                 return false;
@@ -76,8 +79,7 @@ public class ArenaCommand implements CommandExecutor {
 
             switch (args[0]) {
                 case "test":
-                    DefenseGUI defenseGUI = new DefenseGUI();
-                    ZombieArena.getMenuHandler().openMenu(player, defenseGUI.DefenseGUI());
+                    ZombieArena.getMenuHandler().openMenu(player, defenseGUI.DefenseGUI(player));
                     break;
                 case "reload":
                     ZombieArena.getInstance().reloadConfig();
@@ -87,6 +89,13 @@ public class ArenaCommand implements CommandExecutor {
                     break;
                 case "start":
                     ZombieArena.getInstance().matchMaking.startSearch(player);
+                    break;
+                case "defense":
+                    if (ZombieArena.getInstance().regionHandler.playersArena.containsKey(player.getUniqueId())) {
+                        ZombieArena.getMenuHandler().openMenu(player, defenseGUI.DefenseGUI(player));
+                    } else {
+                        Messages.sendMessage(player, "arenaNoArena");
+                    }
                     break;
                 case "create":
                     ZombieArena.getInstance().regionHandler.regionCreate(player);

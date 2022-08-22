@@ -37,28 +37,28 @@ public class MatchMaking {
     public HashMap<UUID, ItemStack[]> playersInventoryContents = new HashMap<>();
 
     public void startSearch(Player player) {
-        if (this.bronzeLeague.containsKey(player.getUniqueId())) {
+        if (bronzeLeague.containsKey(player.getUniqueId())) {
             getBronzeLeague(player);
-        } else if (this.silverLeague.containsKey(player.getUniqueId())) {
+        } else if (silverLeague.containsKey(player.getUniqueId())) {
             getSilverLeague(player);
-        } else if (this.goldLeague.containsKey(player.getUniqueId())) {
+        } else if (goldLeague.containsKey(player.getUniqueId())) {
             getGoldLeague(player);
-        } else if (this.crystalLeague.containsKey(player.getUniqueId())) {
+        } else if (crystalLeague.containsKey(player.getUniqueId())) {
             getCrystalLeague(player);
-        } else if (this.masterLeague.containsKey(player.getUniqueId())) {
+        } else if (masterLeague.containsKey(player.getUniqueId())) {
             getMasterLeague(player);
-        } else if (this.championLeague.containsKey(player.getUniqueId())) {
+        } else if (championLeague.containsKey(player.getUniqueId())) {
             getChampionLeague(player);
         }
     }
 
     public void getBronzeLeague(Player player) {
-        if (this.bronzeLeague.size() == 1) {
+        if (bronzeLeague.size() == 1) {
             Messages.sendMessage(player, "matchmakingLeagueEmpty");
         } else {
-            UUID defender = (UUID) this.bronzeLeague.keySet().toArray()[(new Random()).nextInt((this.bronzeLeague.keySet().toArray()).length)];
+            UUID defender = (UUID) bronzeLeague.keySet().toArray()[(new Random()).nextInt((bronzeLeague.keySet().toArray()).length)];
             while (Objects.equals(defender.toString(), player.getUniqueId().toString()))
-                defender = (UUID) this.bronzeLeague.keySet().toArray()[(new Random()).nextInt((this.bronzeLeague.keySet().toArray()).length)];
+                defender = (UUID) bronzeLeague.keySet().toArray()[(new Random()).nextInt((bronzeLeague.keySet().toArray()).length)];
 
             startGame(player, defender);
 
@@ -66,52 +66,52 @@ public class MatchMaking {
     }
 
     public void getSilverLeague(Player player) {
-        if (this.silverLeague.size() <= 1) {
-            UUID defender = (UUID) this.silverLeague.keySet().toArray()[(new Random()).nextInt((this.silverLeague.keySet().toArray()).length)];
+        if (silverLeague.size() <= 1) {
+            UUID defender = (UUID) silverLeague.keySet().toArray()[(new Random()).nextInt((silverLeague.keySet().toArray()).length)];
             while (Objects.equals(defender.toString(), player.getUniqueId().toString()))
-                defender = (UUID) this.silverLeague.keySet().toArray()[(new Random()).nextInt((this.silverLeague.keySet().toArray()).length)];
+                defender = (UUID) silverLeague.keySet().toArray()[(new Random()).nextInt((silverLeague.keySet().toArray()).length)];
             startGame(player, defender);
         }
     }
 
     public void getGoldLeague(Player player) {
-        if (this.goldLeague.size() <= 1) {
-            UUID defender = (UUID) this.goldLeague.keySet().toArray()[(new Random()).nextInt((this.goldLeague.keySet().toArray()).length)];
+        if (goldLeague.size() <= 1) {
+            UUID defender = (UUID) goldLeague.keySet().toArray()[(new Random()).nextInt((goldLeague.keySet().toArray()).length)];
             while (Objects.equals(defender.toString(), player.getUniqueId().toString()))
-                defender = (UUID) this.goldLeague.keySet().toArray()[(new Random()).nextInt((this.goldLeague.keySet().toArray()).length)];
+                defender = (UUID) goldLeague.keySet().toArray()[(new Random()).nextInt((goldLeague.keySet().toArray()).length)];
             startGame(player, defender);
         }
     }
 
     public void getCrystalLeague(Player player) {
-        if (this.crystalLeague.size() <= 1) {
-            UUID defender = (UUID) this.crystalLeague.keySet().toArray()[(new Random()).nextInt((this.crystalLeague.keySet().toArray()).length)];
+        if (crystalLeague.size() <= 1) {
+            UUID defender = (UUID) crystalLeague.keySet().toArray()[(new Random()).nextInt((crystalLeague.keySet().toArray()).length)];
             while (Objects.equals(defender.toString(), player.getUniqueId().toString()))
-                defender = (UUID) this.crystalLeague.keySet().toArray()[(new Random()).nextInt((this.crystalLeague.keySet().toArray()).length)];
+                defender = (UUID) crystalLeague.keySet().toArray()[(new Random()).nextInt((crystalLeague.keySet().toArray()).length)];
             startGame(player, defender);
         }
     }
 
     public void getMasterLeague(Player player) {
-        if (this.masterLeague.size() <= 1) {
+        if (masterLeague.size() <= 1) {
             getCrystalLeague(player);
         } else {
-            UUID defender = (UUID) this.masterLeague.keySet().toArray()[(new Random()).nextInt((this.masterLeague.keySet().toArray()).length)];
+            UUID defender = (UUID) masterLeague.keySet().toArray()[(new Random()).nextInt((masterLeague.keySet().toArray()).length)];
             while (Objects.equals(defender.toString(), player.getUniqueId().toString()))
-                defender = (UUID) this.masterLeague.keySet().toArray()[(new Random()).nextInt((this.masterLeague.keySet().toArray()).length)];
+                defender = (UUID) masterLeague.keySet().toArray()[(new Random()).nextInt((masterLeague.keySet().toArray()).length)];
             startGame(player, defender);
-            if (this.masterLeague.size() == 1)
+            if (masterLeague.size() == 1)
                 getCrystalLeague(player);
         }
     }
 
     public void getChampionLeague(Player player) {
-        if (this.championLeague.size() == 1) {
+        if (championLeague.size() == 1) {
             getMasterLeague(player);
         } else {
-            UUID defender = (UUID) this.championLeague.keySet().toArray()[(new Random()).nextInt((this.championLeague.keySet().toArray()).length)];
+            UUID defender = (UUID) championLeague.keySet().toArray()[(new Random()).nextInt((championLeague.keySet().toArray()).length)];
             while (Objects.equals(defender.toString(), player.getUniqueId().toString()))
-                defender = (UUID) this.championLeague.keySet().toArray()[(new Random()).nextInt((this.championLeague.keySet().toArray()).length)];
+                defender = (UUID) championLeague.keySet().toArray()[(new Random()).nextInt((championLeague.keySet().toArray()).length)];
             startGame(player, defender);
         }
     }

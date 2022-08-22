@@ -18,10 +18,10 @@ public class WavesHandler {
     HashMap<UUID, Region> playersArena;
 
     public WavesHandler() {
-        this.playersArena = ZombieArena.getInstance().regionHandler.playersArena;
-        this.ranSpawn = new HashMap<>();
-        this.random = new Random();
-        this.maxNum = 5;
+        playersArena = ZombieArena.getInstance().regionHandler.playersArena;
+        ranSpawn = new HashMap<>();
+        random = new Random();
+        maxNum = 5;
     }
 
 

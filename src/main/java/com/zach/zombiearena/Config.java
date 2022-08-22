@@ -1,11 +1,4 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package com.zach.zombiearena;
-
-import org.bukkit.Material;
 
 import java.util.List;
 
@@ -39,7 +32,6 @@ public class Config {
     }
 
     public Integer getCrystalMin() {
-
         return ZombieArena.getInstance().getConfig().getInt("leagues.crystal.min-trophies");
     }
 
@@ -75,8 +67,8 @@ public class Config {
         return ZombieArena.getInstance().getConfig().getInt("distance-away");
     }
 
-    public Material getPurchasedUpgradeItemMaterial() {
-        return Material.valueOf(ZombieArena.getInstance().getConfig().getString("purchase-upgrade-item.material"));
+    public String getPurchasedUpgradeItemMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("purchase-upgrade-item.material");
     }
 
     public String getPurchasedUpgradeItemDisplayName() {
@@ -91,8 +83,8 @@ public class Config {
         return ZombieArena.getInstance().getConfig().getBoolean("purchase-upgrade-item.enchanted");
     }
 
-    public Material getUpgradeUnavailableItemMaterial() {
-        return Material.valueOf(ZombieArena.getInstance().getConfig().getString("upgrade-unavailable-item.material"));
+    public String getUpgradeUnavailableItemMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("upgrade-unavailable-item.material");
     }
 
     public String getUpgradeUnavailableItemDisplayName() {
@@ -107,32 +99,88 @@ public class Config {
         return ZombieArena.getInstance().getConfig().getBoolean("upgrade-unavailable-item.enchanted");
     }
 
+    public String getArcherQueenGuiMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.material");
+    }
+
     public Integer getArcherQueenDefaultHealth() {
         return ZombieArena.getInstance().getConfig().getInt("archer-queen.health");
+    }
+
+    public List<Integer> getArcherQueenUpgradeHealthGui(String keys) {
+        return ZombieArena.getInstance().getConfig().getIntegerList("defensegui.upgrades.archer-queen-gui.health-upgrade-gui.placeholders." + keys + ".slots");
+    }
+
+    public String getArcherQueenUpgradeHealthGuiMaterialSection(String keys) {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.health-upgrade-gui.placeholders." + keys + ".material");
     }
 
     public List<Integer> getArcherQueenPlaceHolderSlots(String keys) {
         return ZombieArena.getInstance().getConfig().getIntegerList("defensegui.upgrades.archer-queen-gui.placeholders." + keys + ".slots");
     }
 
+    public String getArcherQueenPlaceHolderStatsDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.archer-queen-stats-placeholder.display-name");
+    }
+
+    public Integer getArcherQueenPlaceHolderStatsSlots() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.archer-queen-gui.archer-queen-stats-placeholder.slot");
+    }
+
+    public Boolean getArcherQueenPlaceHolderStatsEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.archer-queen-gui.archer-queen-stats-placeholder.enchanted");
+    }
+
     public Integer getArcherQueenHealthLevelOne() {
-        return ZombieArena.getInstance().getConfig().getInt("archer-queen.health-upgrade-level-one");
+        return ZombieArena.getInstance().getConfig().getInt("archer-queen.health-upgrade-level-one.health");
     }
 
     public Integer getArcherQueenHealthLevelTwo() {
-        return ZombieArena.getInstance().getConfig().getInt("archer-queen.health-upgrade-level-two");
+        return ZombieArena.getInstance().getConfig().getInt("archer-queen.health-upgrade-level-two.health");
     }
 
     public Integer getArcherQueenHealthLevelThree() {
-        return ZombieArena.getInstance().getConfig().getInt("archer-queen.health-upgrade-level-three");
+        return ZombieArena.getInstance().getConfig().getInt("archer-queen.health-upgrade-level-three.health");
     }
 
     public Integer getArcherQueenHealthLevelFour() {
-        return ZombieArena.getInstance().getConfig().getInt("archer-queen.health-upgrade-level-four");
+        return ZombieArena.getInstance().getConfig().getInt("archer-queen.health-upgrade-level-four.health");
     }
 
-    public Material getArcherQueenHealthUpgradeGuiMaterial() {
-        return Material.valueOf(ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.health-upgrade-gui.material"));
+    public Integer getArcherQueenImproveRadiusLevelOne() {
+        return ZombieArena.getInstance().getConfig().getInt("archer-queen.improve-radius-upgrade-level-one.radius");
+    }
+
+    public Integer getArcherQueenImproveRadiusLevelTwo() {
+        return ZombieArena.getInstance().getConfig().getInt("archer-queen.improve-radius-upgrade-level-two.radius");
+    }
+
+    public Integer getArcherQueenImproveRadiusLevelThree() {
+        return ZombieArena.getInstance().getConfig().getInt("archer-queen.improve-radius-upgrade-level-three.radius");
+    }
+
+    public Integer getArcherQueenImproveRadiusLevelFour() {
+        return ZombieArena.getInstance().getConfig().getInt("archer-queen.improve-radius-upgrade-level-four.radius");
+    }
+
+    public Integer getArcherQueenImproveSpeedAmountLevelOne() {
+        return ZombieArena.getInstance().getConfig().getInt("archer-queen.improve-speed-amount-upgrade-level-one.amount");
+    }
+
+    public Integer getArcherQueenImproveSpeedAmountLevelTwo() {
+        return ZombieArena.getInstance().getConfig().getInt("archer-queen.improve-speed-amount-upgrade-level-two.amount");
+    }
+
+    public Integer getArcherQueenImproveSpeedAmountLevelThree() {
+        return ZombieArena.getInstance().getConfig().getInt("archer-queen.improve-speed-amount-upgrade-level-three.amount");
+    }
+
+    public Integer getArcherQueenImproveSpeedAmountLevelFour() {
+        return ZombieArena.getInstance().getConfig().getInt("archer-queen.improve-speed-amount-upgrade-level-four.amount");
+    }
+
+    public String getArcherQueenHealthUpgradeGuiMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.health-upgrade-gui.material");
     }
 
     public String getArcherQueenHealthUpgradeGuiDisplayName() {
@@ -167,8 +215,28 @@ public class Config {
         return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.archer-queen-gui.health-upgrade-gui.health-upgrade-level-one.cost");
     }
 
-    public Material getArcherQueenHealthUpgradeItemStatsPlaceHolder() {
-        return Material.valueOf(ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.health-upgrade-gui.health-upgrade-item-stats-placeholder.material"));
+    public List<String> getArcherQueenPurchaseLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.archer-queen-gui.archer-queen-purchase.lore");
+    }
+
+    public Boolean getArcherQueenPurchaseEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.archer-queen-gui.archer-queen-purchase.enchanted");
+    }
+
+    public Double getArcherQueenPurchaseCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.archer-queen-gui.archer-queen-purchase.cost");
+    }
+
+    public String getArcherQueenPurchaseMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.archer-queen-purchase.material");
+    }
+
+    public String getArcherQueenHealthUpgradeItemStatsPlaceHolderDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.health-upgrade-gui.health-upgrade-item-stats-placeholder.display-name");
+    }
+
+    public String getArcherQueenHealthUpgradeItemStatsPlaceHolder() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.health-upgrade-gui.health-upgrade-item-stats-placeholder.material");
     }
 
     public Integer getArcherQueenHealthUpgradeItemStatsPlaceHolderSlot() {
@@ -290,5 +358,4 @@ public class Config {
     public Double getTankMobSpeed() {
         return ZombieArena.getInstance().getConfig().getDouble("tank-mob-level-one.default-speed");
     }
-
 }

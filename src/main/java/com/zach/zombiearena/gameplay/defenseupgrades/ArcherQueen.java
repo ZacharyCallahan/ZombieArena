@@ -21,30 +21,33 @@ public class ArcherQueen {
     private ItemMeta itemMeta;
 
     public void spawnArcherQueen(Player attacker) {
-        ZombieArena.getInstance().mobHandler.mobCreator(
-                attacker,
-                EntityType.valueOf(ZombieArena.getInstance().config.getArcherQueenType()),
-                ZombieArena.getInstance().config.getArcherQueenHealth(),
-                ZombieArena.getInstance().config.getArcherQueenSpeed(),
-                archerQueenHelmet(),
-                archerQueenChestplate(),
-                archerQueenLeggings(),
-                archerQueenBoots()
-        );
-        int taskID = Bukkit.getScheduler().runTaskTimer(ZombieArena.getInstance(), () -> {
-            for (Entity entity : ZombieArena.getInstance().mobHandler.getNearbyEntities(attacker,
-                    ZombieArena.getInstance().getConfig().getInt("archer-queen.improve-radius"),
-                    EntityType.valueOf(ZombieArena.getInstance().config.getArcherQueenType()))) {
-                if (entity instanceof LivingEntity) {
-                    NPC npc = CitizensAPI.getNPCRegistry().getNPC(entity);
-                    if (npc != null) {
-                        npc.getNavigator().getLocalParameters().speed((float) (npc.getNavigator().getLocalParameters().speed()
-                                + ZombieArena.getInstance().getConfig().getDouble("archer-queen.improve-speed-amount")));
+        //if the player purchased the archer queen, spawn the archer queen
+        if (ZombieArena.getInstance().waves.purchasedArcherQueen.get(attacker.getUniqueId())) {
+            ZombieArena.getInstance().mobHandler.mobCreator(
+                    attacker,
+                    EntityType.valueOf(ZombieArena.getInstance().config.getArcherQueenType()),
+                    ZombieArena.getInstance().config.getArcherQueenHealth(),
+                    ZombieArena.getInstance().config.getArcherQueenSpeed(),
+                    archerQueenHelmet(),
+                    archerQueenChestplate(),
+                    archerQueenLeggings(),
+                    archerQueenBoots()
+            );
+            int taskID = Bukkit.getScheduler().runTaskTimer(ZombieArena.getInstance(), () -> {
+                for (Entity entity : ZombieArena.getInstance().mobHandler.getNearbyEntities(attacker,
+                        ZombieArena.getInstance().getConfig().getInt("archer-queen.improve-radius"),
+                        EntityType.valueOf(ZombieArena.getInstance().config.getArcherQueenType()))) {
+                    if (entity instanceof LivingEntity) {
+                        NPC npc = CitizensAPI.getNPCRegistry().getNPC(entity);
+                        if (npc != null) {
+                            npc.getNavigator().getLocalParameters().speed((float) (npc.getNavigator().getLocalParameters().speed()
+                                    + ZombieArena.getInstance().getConfig().getDouble("archer-queen.improve-speed-amount")));
+                        }
                     }
                 }
-            }
-        }, 0, 20).getTaskId();
-        tasks.put(attacker, taskID);
+            }, 0, 20).getTaskId();
+            tasks.put(attacker, taskID);
+        }
     }
 
 
