@@ -17,7 +17,6 @@ public class ArcherQueenRadiusUpgradeGUI {
     UpgradeGUIHandler upgradeGUIHandler = new UpgradeGUIHandler();
     Config config = new Config();
     ConfigurationSection section;
-
     public Menu ArcherQueenRadiusUpgradeGUI(Player player) {
         Menu menu = new Menu(Bukkit.createInventory(null, 27,
                 ZombieArena.color(ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.display-name") + ": "
@@ -39,16 +38,13 @@ public class ArcherQueenRadiusUpgradeGUI {
             public void onClick(Menu menu, InventoryClickEvent event) {
                 event.setCancelled(true);
             }
-
         });
         createUpgrades(player, menu);
         return menu;
     }
-
     public Integer getPlayersArcherQueenRadiusUpgradeLevel(Player player) {
-        return ZombieArena.getInstance().waves.archerQueenRadiusUpgradeLevel.get(player.getUniqueId());
+        return ZombieArena.getInstance().archerQueen.archerQueenRadiusUpgradeLevel.get(player.getUniqueId());
     }
-
     public Integer getPlayersArcherQueenRadius(Player player) {
         if (getPlayersArcherQueenRadiusUpgradeLevel(player) == 1) {
             return config.getArcherQueenRadiusUpgradeLevelOneRadius();
@@ -64,12 +60,10 @@ public class ArcherQueenRadiusUpgradeGUI {
         }
         return config.getArcherQueenRadius();
     }
-
     public void refreshMenu(Player player) {
         ZombieArena.getMenuHandler().closeMenu(player);
         ZombieArena.getMenuHandler().openMenu(player, ArcherQueenRadiusUpgradeGUI(player));
     }
-
     public void createUpgrades(Player player, Menu menu) {
         if (getPlayersArcherQueenRadiusUpgradeLevel(player) == 0) {
             menu.setButton(config.getArcherQueenRadiusUpgradeLevelOneSlot(), new Button(
@@ -83,7 +77,7 @@ public class ArcherQueenRadiusUpgradeGUI {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
                     if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenRadiusUpgradeLevelOneCost())) {
-                        upgradeGUIHandler.upgradeSuccess(player, null, 1);
+                        upgradeGUIHandler.upgradeSuccess(player, null, 1, null);
                         refreshMenu(player);
                     } else {
                         upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenRadiusUpgradeLevelOneCost());
@@ -99,18 +93,18 @@ public class ArcherQueenRadiusUpgradeGUI {
             menu.setButton(config.getArcherQueenRadiusUpgradeLevelTwoSlot(), new Button(
                     ItemBuilder.createItem(
                             String.valueOf(Material.LIME_STAINED_GLASS_PANE),
-                            config.getArcherQueenRadiusUpgradeLevelOneDisplayName(),
-                            config.getArcherQueenRadiusUpgradeLevelOneLore(),
+                            config.getArcherQueenRadiusUpgradeLevelTwoDisplayName(),
+                            config.getArcherQueenRadiusUpgradeLevelTwoLore(),
                             null,
                             null,
                             false)) {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
-                    if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenRadiusUpgradeLevelOneCost())) {
-                        upgradeGUIHandler.upgradeSuccess(player, null, 2);
+                    if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenRadiusUpgradeLevelTwoCost())) {
+                        upgradeGUIHandler.upgradeSuccess(player, null, 2, null);
                         refreshMenu(player);
                     } else {
-                        upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenRadiusUpgradeLevelOneCost());
+                        upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenRadiusUpgradeLevelTwoCost());
                     }
                     event.setCancelled(true);
                 }
@@ -123,18 +117,18 @@ public class ArcherQueenRadiusUpgradeGUI {
             menu.setButton(config.getArcherQueenRadiusUpgradeLevelThreeSlot(), new Button(
                     ItemBuilder.createItem(
                             String.valueOf(Material.LIME_STAINED_GLASS_PANE),
-                            config.getArcherQueenRadiusUpgradeLevelOneDisplayName(),
-                            config.getArcherQueenRadiusUpgradeLevelOneLore(),
+                            config.getArcherQueenRadiusUpgradeLevelThreeDisplayName(),
+                            config.getArcherQueenRadiusUpgradeLevelThreeLore(),
                             null,
                             null,
                             false)) {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
-                    if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenRadiusUpgradeLevelOneCost())) {
-                        upgradeGUIHandler.upgradeSuccess(player, null, 3);
+                    if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenRadiusUpgradeLevelThreeCost())) {
+                        upgradeGUIHandler.upgradeSuccess(player, null, 3, null);
                         refreshMenu(player);
                     } else {
-                        upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenRadiusUpgradeLevelOneCost());
+                        upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenRadiusUpgradeLevelThreeCost());
                     }
                     event.setCancelled(true);
                 }
@@ -147,18 +141,18 @@ public class ArcherQueenRadiusUpgradeGUI {
             menu.setButton(config.getArcherQueenRadiusUpgradeLevelFourSlot(), new Button(
                     ItemBuilder.createItem(
                             String.valueOf(Material.LIME_STAINED_GLASS_PANE),
-                            config.getArcherQueenRadiusUpgradeLevelOneDisplayName(),
-                            config.getArcherQueenRadiusUpgradeLevelOneLore(),
+                            config.getArcherQueenRadiusUpgradeLevelFourDisplayName(),
+                            config.getArcherQueenRadiusUpgradeLevelFourLore(),
                             null,
                             null,
                             false)) {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
-                    if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenRadiusUpgradeLevelOneCost())) {
-                        upgradeGUIHandler.upgradeSuccess(player, null, 4);
+                    if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenRadiusUpgradeLevelFourCost())) {
+                        upgradeGUIHandler.upgradeSuccess(player, null, 4, null);
                         refreshMenu(player);
                     } else {
-                        upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenRadiusUpgradeLevelOneCost());
+                        upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenRadiusUpgradeLevelFourCost());
                     }
                     event.setCancelled(true);
                 }
@@ -174,5 +168,4 @@ public class ArcherQueenRadiusUpgradeGUI {
             upgradeGUIHandler.setUpgradePurchased(menu, config.getArcherQueenRadiusUpgradeLevelFourSlot());
         }
     }
-
 }

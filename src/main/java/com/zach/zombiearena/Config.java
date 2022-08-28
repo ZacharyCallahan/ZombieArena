@@ -306,10 +306,6 @@ public class Config {
         return ZombieArena.getInstance().getConfig().getInt("archer-queen.health");
     }
 
-    public Integer getArcherQueenSpeed() {
-        return ZombieArena.getInstance().getConfig().getInt("archer-queen.speed");
-    }
-
     public String getBarbarianKingType() {
         return ZombieArena.getInstance().getConfig().getString("barbarian-king.entity-type");
     }
@@ -450,4 +446,167 @@ public class Config {
         return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.archer-queen-gui.radius-upgrade-gui.radius-upgrade-item-stats-placeholder.enchanted");
     }
 
+    public Double getArcherQueenSpeedUpgradeLevelOneCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-level-one.cost");
+    }
+
+    public String getArcherQueenSpeedUpgradeLevelOneDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-level-one.display-name");
+    }
+
+    public int getArcherQueenSpeedUpgradeLevelOneSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-level-one.slot");
+    }
+
+    public List<String> getArcherQueenSpeedUpgradeLevelOneLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-level-one.lore");
+    }
+
+    public int getArcherQueenSpeedUpgradeLevelTwoSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-level-two.slot");
+    }
+
+    public int getArcherQueenSpeedUpgradeLevelThreeSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-level-three.slot");
+    }
+
+    public int getArcherQueenSpeedUpgradeLevelFourSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-level-four.slot");
+    }
+
+    public Double getArcherQueenSpeedUpgradeLevelOneSpeed() {
+        return ZombieArena.getInstance().getConfig().getDouble("archer-queen.speed-amount-upgrade-level-one.speed");
+    }
+
+    public Double getArcherQueenSpeedUpgradeLevelTwoSpeed() {
+        return ZombieArena.getInstance().getConfig().getDouble("archer-queen.speed-amount-upgrade-level-two.speed");
+    }
+
+    public Double getArcherQueenSpeedUpgradeLevelThreeSpeed() {
+        return ZombieArena.getInstance().getConfig().getDouble("archer-queen.speed-amount-upgrade-level-three.speed");
+    }
+
+    public Double getArcherQueenSpeedUpgradeLevelFourSpeed() {
+        return ZombieArena.getInstance().getConfig().getDouble("archer-queen.speed-amount-upgrade-level-four.speed");
+    }
+
+    public Integer getArcherQueenSpeed() {
+        return ZombieArena.getInstance().getConfig().getInt("archer-queen.speed");
+    }
+
+    public String getArcherQueenSpeedUpgradeGuiMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.material");
+    }
+
+    public String getArcherQueenSpeedUpgradeGuiDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.display-name");
+    }
+
+    public List<String> getArcherQueenSpeedUpgradeGuiLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.lore");
+    }
+
+    public boolean getArcherQueenSpeedUpgradeGuiEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.enchanted");
+    }
+
+    public int getArcherQueenSpeedUpgradeGuiSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.slot");
+    }
+
+    public String getArcherQueenUpgradeSpeedGuiMaterialSection(String keys) {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.placeholders." + keys + ".material");
+    }
+
+    public List<Integer> getArcherQueenUpgradeSpeedGui(String keys) {
+        return ZombieArena.getInstance().getConfig().getIntegerList("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.placeholders." + keys + ".slots");
+    }
+
+    public Integer getArcherQueenSpeedUpgradeItemStatsPlaceHolderSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-item-stats-placeholder.slot");
+    }
+
+    public String getArcherQueenSpeedUpgradeItemStatsPlaceHolderDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-item-stats-placeholder.display-name");
+    }
+
+    public String getArcherQueenSpeedUpgradeItemStatsPlaceHolder() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-item-stats-placeholder.material");
+    }
+
+    public Boolean getArcherQueenSpeedUpgradeItemStatsPlaceHolderEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-item-stats-placeholder.enchanted");
+    }
+
+    public String getArcherQueenRadiusUpgradeLevelTwoDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.radius-upgrade-gui.radius-upgrade-level-two.display-name");
+    }
+
+    public List<String> getArcherQueenRadiusUpgradeLevelTwoLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.archer-queen-gui.radius-upgrade-gui.radius-upgrade-level-two.lore");
+    }
+
+    public Double getArcherQueenRadiusUpgradeLevelTwoCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.archer-queen-gui.radius-upgrade-gui.radius-upgrade-level-two.cost");
+    }
+
+    public String getArcherQueenRadiusUpgradeLevelThreeDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.radius-upgrade-gui.radius-upgrade-level-three.display-name");
+    }
+
+    public List<String> getArcherQueenRadiusUpgradeLevelThreeLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.archer-queen-gui.radius-upgrade-gui.radius-upgrade-level-three.lore");
+    }
+
+    public Double getArcherQueenRadiusUpgradeLevelThreeCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.archer-queen-gui.radius-upgrade-gui.radius-upgrade-level-three.cost");
+    }
+
+    public String getArcherQueenRadiusUpgradeLevelFourDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.radius-upgrade-gui.radius-upgrade-level-four.display-name");
+    }
+
+    public List<String> getArcherQueenRadiusUpgradeLevelFourLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.archer-queen-gui.radius-upgrade-gui.radius-upgrade-level-four.lore");
+    }
+
+    public Double getArcherQueenRadiusUpgradeLevelFourCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.archer-queen-gui.radius-upgrade-gui.radius-upgrade-level-four.cost");
+    }
+
+    public String getArcherQueenSpeedUpgradeLevelTwoDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-level-two.display-name");
+    }
+
+    public List<String> getArcherQueenSpeedUpgradeLevelTwoLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-level-two.lore");
+    }
+
+    public Double getArcherQueenSpeedUpgradeLevelTwoCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-level-two.cost");
+    }
+
+    public String getArcherQueenSpeedUpgradeLevelThreeDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-level-three.display-name");
+    }
+
+    public List<String> getArcherQueenSpeedUpgradeLevelThreeLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-level-three.lore");
+    }
+
+    public Double getArcherQueenSpeedUpgradeLevelThreeCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-level-three.cost");
+    }
+
+    public String getArcherQueenSpeedUpgradeLevelFourDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-level-four.display-name");
+    }
+
+    public List<String> getArcherQueenSpeedUpgradeLevelFourLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-level-four.lore");
+    }
+
+    public Double getArcherQueenSpeedUpgradeLevelFourCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.archer-queen-gui.speed-upgrade-gui.speed-upgrade-level-four.cost");
+    }
 }

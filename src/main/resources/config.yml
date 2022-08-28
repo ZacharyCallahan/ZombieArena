@@ -93,13 +93,13 @@ archer-queen:
   radius-upgrade-level-four:
     radius: 6
   speed-amount-upgrade-level-one:
-    speed-amount: 0.5
+    speed: 0.5
   speed-amount-upgrade-level-two:
-    speed-amount: 0.75
+    speed: 0.75
   speed-amount-upgrade-level-three:
-    speed-amount: 1.0
+    speed: 1.0
   speed-amount-upgrade-level-four:
-    speed-amount: 1.25
+    speed: 1.25
 defensegui:
   placeholders:
     '0':
@@ -131,7 +131,7 @@ defensegui:
       display-name: "&8&lArcher Queen"
       lore:
         - " "
-        - "&7Looking to upgrade you're ArcherQueen?"
+        - "&7Looking to upgrade your Archer Queen?"
         - "&7You've come to the right place!"
         - " "
         - "&dClick me to get started.."
@@ -339,6 +339,89 @@ defensegui:
           cost: 9000
         radius-upgrade-level-four:
           display-name: "&fRadius Upgrade: &bLevel 4"
+          lore:
+            - " "
+            - "&7Uhm.. how is this allowed!"
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f12,000"
+          slot: 15
+          cost: 12000
+      speed-upgrade-gui:
+        material: SUGAR
+        display-name: "&d&lSpeed Upgrade"
+        lore:
+          - " "
+          - "&7Looking to upgrade your Archer Queen's speed?"
+          - "&7You've come to the right place!"
+          - " "
+          - "&dClick me to get started.."
+        enchanted: true
+        slot: 15
+        speed-upgrade-item-stats-placeholder:
+          display-name: "&d&lArcher Queen Speed Stats"
+          material: SUGAR
+          slot: 11
+          enchanted: true
+        placeholders:
+          '0':
+            material: BLACK_STAINED_GLASS_PANE
+            display-name: " "
+            slots:
+              - 0
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
+              - 10
+              - 16
+              - 17
+              - 18
+              - 19
+              - 20
+              - 21
+              - 22
+              - 23
+              - 24
+              - 25
+              - 26
+        speed-upgrade-level-one:
+          display-name: "&fSpeed Upgrade: &dLevel 1"
+          lore:
+            - " "
+            - "&7Ooo, this is much needed!"
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f3,000"
+          slot: 12
+          cost: 3000
+        speed-upgrade-level-two:
+          display-name: "&fSpeed Upgrade: &dLevel 2"
+          lore:
+            - " "
+            - "&7Woah, this is starting to get a bit too big..."
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f6,000"
+          slot: 13
+          cost: 6000
+        speed-upgrade-level-three:
+          display-name: "&fSpeed Upgrade: &dLevel 3"
+          lore:
+            - " "
+            - "&7Really.. this is getting out of hand..."
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f9,000"
+          slot: 14
+          cost: 9000
+        speed-upgrade-level-four:
+          display-name: "&fSpeed Upgrade: &dLevel 4"
           lore:
             - " "
             - "&7Uhm.. how is this allowed!"

@@ -14,15 +14,20 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 public class ArcherQueen {
+    public HashMap<UUID, Integer> archerQueenHealthUpgradeLevel = new HashMap<>();
+    public HashMap<UUID, Integer> archerQueenRadiusUpgradeLevel = new HashMap<>();
+    public HashMap<UUID, Integer> archerQueenSpeedUpgradeLevel = new HashMap<>();
+    public HashMap<UUID, Boolean> purchasedArcherQueen = new HashMap<>();
     public HashMap<Player, Integer> tasks = new HashMap<>();
     private ItemStack itemStack;
     private ItemMeta itemMeta;
 
     public void spawnArcherQueen(Player attacker) {
         //if the player purchased the archer queen, spawn the archer queen
-        if (ZombieArena.getInstance().waves.purchasedArcherQueen.get(attacker.getUniqueId())) {
+        if (purchasedArcherQueen.get(attacker.getUniqueId())) {
             ZombieArena.getInstance().mobHandler.mobCreator(
                     attacker,
                     EntityType.valueOf(ZombieArena.getInstance().config.getArcherQueenType()),

@@ -90,61 +90,79 @@ public class DataManager implements Listener {
         saveArenaData(player.getUniqueId());
         saveTrophies(player.getUniqueId());
         saveLives(player.getUniqueId());
-        saveArcherQueenHealthUpgradeLevel(player.getUniqueId());
         savePurchasedArcherQueen(player.getUniqueId());
+        saveArcherQueenHealthUpgradeLevel(player.getUniqueId());
         saveArcherQueenRadiusUpgradeLevel(player.getUniqueId());
+        saveArcherQueenSpeedUpgradeLevel(player.getUniqueId());
     }
 
 
     public void savePurchasedArcherQueen(UUID uuid) {
         getConfig().set("archer-queen.purchased", false);
-        ZombieArena.getInstance().waves.purchasedArcherQueen.put(uuid, false);
+        ZombieArena.getInstance().archerQueen.purchasedArcherQueen.put(uuid, false);
         save();
     }
 
     public void updatePurchasedArcherQueen(Player player, boolean purchased) {
         loadConfig(player);
         getConfig().set("archer-queen.purchased", purchased);
-        ZombieArena.getInstance().waves.purchasedArcherQueen.put(player.getUniqueId(), purchased);
+        ZombieArena.getInstance().archerQueen.purchasedArcherQueen.put(player.getUniqueId(), purchased);
         save();
     }
 
     public void loadPurchasedArcherQueen(UUID uuid) {
-        ZombieArena.getInstance().waves.purchasedArcherQueen.put(uuid, getConfig().getBoolean("archer-queen.purchased"));
+        ZombieArena.getInstance().archerQueen.purchasedArcherQueen.put(uuid, getConfig().getBoolean("archer-queen.purchased"));
     }
 
     public void saveArcherQueenHealthUpgradeLevel(UUID uuid) {
         getConfig().set("archer-queen.health-upgrade-level", 0);
-        ZombieArena.getInstance().waves.archerQueenHealthUpgradeLevel.put(uuid, 0);
+        ZombieArena.getInstance().archerQueen.archerQueenHealthUpgradeLevel.put(uuid, 0);
         save();
     }
 
     public void updateArcherQueenHealthUpgradeLevel(Player player, int level) {
         loadConfig(player);
         getConfig().set("archer-queen.health-upgrade-level", level);
-        ZombieArena.getInstance().waves.archerQueenHealthUpgradeLevel.put(player.getUniqueId(), level);
+        ZombieArena.getInstance().archerQueen.archerQueenHealthUpgradeLevel.put(player.getUniqueId(), level);
         save();
     }
 
     public void loadPlayersArcherQueenHealthLevel(UUID uuid) {
-        ZombieArena.getInstance().waves.archerQueenHealthUpgradeLevel.put(uuid, getConfig().getInt("archer-queen.health-upgrade-level"));
+        ZombieArena.getInstance().archerQueen.archerQueenHealthUpgradeLevel.put(uuid, getConfig().getInt("archer-queen.health-upgrade-level"));
     }
 
     public void saveArcherQueenRadiusUpgradeLevel(UUID uuid) {
         getConfig().set("archer-queen.radius-upgrade-level", 0);
-        ZombieArena.getInstance().waves.archerQueenRadiusUpgradeLevel.put(uuid, 0);
+        ZombieArena.getInstance().archerQueen.archerQueenRadiusUpgradeLevel.put(uuid, 0);
         save();
     }
 
     public void updateArcherQueenRadiusUpgradeLevel(Player player, int level) {
         loadConfig(player);
         getConfig().set("archer-queen.radius-upgrade-level", level);
-        ZombieArena.getInstance().waves.archerQueenRadiusUpgradeLevel.put(player.getUniqueId(), level);
+        ZombieArena.getInstance().archerQueen.archerQueenRadiusUpgradeLevel.put(player.getUniqueId(), level);
         save();
     }
 
     public void loadPlayersArcherQueenRadiusLevel(UUID uuid) {
-        ZombieArena.getInstance().waves.archerQueenRadiusUpgradeLevel.put(uuid, getConfig().getInt("archer-queen.radius-upgrade-level"));
+        ZombieArena.getInstance().archerQueen.archerQueenRadiusUpgradeLevel.put(uuid, getConfig().getInt("archer-queen.radius-upgrade-level"));
+    }
+
+    public void saveArcherQueenSpeedUpgradeLevel(UUID uuid) {
+        getConfig().set("archer-queen.speed-upgrade-level", 0);
+        ZombieArena.getInstance().archerQueen.archerQueenSpeedUpgradeLevel.put(uuid, 0);
+        save();
+    }
+
+    public void updateArcherQueenSpeedUpgradeLevel(Player player, int level) {
+        loadConfig(player);
+        getConfig().set("archer-queen.speed-upgrade-level", level);
+        ZombieArena.getInstance().archerQueen.archerQueenSpeedUpgradeLevel.put(player.getUniqueId(), level);
+        save();
+    }
+
+    public void loadPlayersArcherQueenSpeedLevel(UUID uuid) {
+        ZombieArena.getInstance().archerQueen.archerQueenSpeedUpgradeLevel.put(uuid, getConfig().getInt("archer-queen.speed-upgrade-level"));
     }
 
     public File getDataFolder() {
@@ -379,6 +397,7 @@ public class DataManager implements Listener {
         loadPlayersArcherQueenHealthLevel(player);
         loadPurchasedArcherQueen(player);
         loadPlayersArcherQueenRadiusLevel(player);
+        loadPlayersArcherQueenSpeedLevel(player);
     }
     /*@EventHandler
     public void loadPlayerData(PlayerJoinEvent e) {

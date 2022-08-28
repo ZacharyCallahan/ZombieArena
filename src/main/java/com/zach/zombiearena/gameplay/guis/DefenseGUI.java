@@ -33,8 +33,8 @@ public class DefenseGUI implements Listener {
         }
 
         //if they have purchased the Archer Queen
-        if (ZombieArena.getInstance().waves.purchasedArcherQueen.get(player.getUniqueId()) != null) {
-            if (ZombieArena.getInstance().waves.purchasedArcherQueen.get(player.getUniqueId())) {
+        if (ZombieArena.getInstance().archerQueen.purchasedArcherQueen.get(player.getUniqueId()) != null) {
+            if (ZombieArena.getInstance().archerQueen.purchasedArcherQueen.get(player.getUniqueId())) {
                 menu.setButton(ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.archer-queen-gui.slot"), new Button(
                         ItemBuilder.createItem(ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.material"),
                                 ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.display-name"),
@@ -65,7 +65,7 @@ public class DefenseGUI implements Listener {
                         Player player = (Player) event.getWhoClicked();
                         if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenPurchaseCost())) {
                             upgradeGUIHandler.defensePurchased(player,
-                                    ZombieArena.getInstance().waves.purchasedArcherQueen,
+                                    ZombieArena.getInstance().archerQueen.purchasedArcherQueen,
                                     config.getArcherQueenPurchaseCost(),
                                     ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.display-name"));
                             refreshMenu(player);

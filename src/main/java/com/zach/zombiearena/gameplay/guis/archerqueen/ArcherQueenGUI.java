@@ -17,6 +17,7 @@ import java.util.List;
 public class ArcherQueenGUI implements Listener {
     private final ArcherQueenHealthUpgradeGUI archerQueenHealthUpgradeGUI = new ArcherQueenHealthUpgradeGUI();
     private final ArcherQueenRadiusUpgradeGUI archerQueenRadiusUpgradeGUI = new ArcherQueenRadiusUpgradeGUI();
+    private final ArcherQueenSpeedUpgradeGUI archerQueenSpeedUpgradeGUI = new ArcherQueenSpeedUpgradeGUI();
 
     Config config = new Config();
 
@@ -73,6 +74,21 @@ public class ArcherQueenGUI implements Listener {
                 event.setCancelled(true);
             }
         });
+        menu.setButton(config.getArcherQueenSpeedUpgradeGuiSlot(), new Button(
+                ItemBuilder.createItem(config.getArcherQueenSpeedUpgradeGuiMaterial(),
+                        config.getArcherQueenSpeedUpgradeGuiDisplayName(),
+                        config.getArcherQueenSpeedUpgradeGuiLore(),
+                        null,
+                        null,
+                        config.getArcherQueenSpeedUpgradeGuiEnchanted())) {
+            @Override
+            public void onClick(Menu menu, InventoryClickEvent event) {
+                Player player = (Player) event.getWhoClicked();
+                ZombieArena.getMenuHandler().closeMenu(player);
+                ZombieArena.getMenuHandler().openMenu(player, archerQueenSpeedUpgradeGUI.ArcherQueenSpeedUpgradeGUI(player));
+                event.setCancelled(true);
+            }
+        });
         return menu;
     }
 
@@ -91,6 +107,7 @@ public class ArcherQueenGUI implements Listener {
         lore.add(" ");
         lore.add("&7&lHealth: &f&l" + archerQueenHealthUpgradeGUI.getPlayersArcherQueenHealth(player));
         lore.add("&7&lRadius: &f&l" + archerQueenRadiusUpgradeGUI.getPlayersArcherQueenRadius(player));
+        lore.add("&7&lSpeed: &f&l" + archerQueenSpeedUpgradeGUI.getPlayersArcherQueenSpeed(player));
         return lore;
     }
 
@@ -99,6 +116,14 @@ public class ArcherQueenGUI implements Listener {
         lore.add(" ");
         lore.add("&7&lRadius: &f&l" + archerQueenRadiusUpgradeGUI.getPlayersArcherQueenRadius(player));
         lore.add("&7&lLevel: &f&l" + archerQueenRadiusUpgradeGUI.getPlayersArcherQueenRadiusUpgradeLevel(player));
+        return lore;
+    }
+
+    public List<String> getArcherQueenSpeedStatsLore(Player player) {
+        List<String> lore = new ArrayList<>();
+        lore.add(" ");
+        lore.add("&7&lSpeed: &f&l" + archerQueenSpeedUpgradeGUI.getPlayersArcherQueenSpeed(player));
+        lore.add("&7&lLevel: &f&l" + archerQueenSpeedUpgradeGUI.getPlayersArcherQueenSpeedUpgradeLevel(player));
         return lore;
     }
 }
