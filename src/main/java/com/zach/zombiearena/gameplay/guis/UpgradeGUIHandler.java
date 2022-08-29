@@ -44,6 +44,8 @@ public class UpgradeGUIHandler {
             ZombieArena.getInstance().dataManager.updateBarbarianKingHealthUpgradeLevel(player, healthLevel);
         if (radiusLevel != null)
             ZombieArena.getInstance().dataManager.updateBarbarianKingRadiusUpgradeLevel(player, radiusLevel);
+        if (armorlevel != null)
+            ZombieArena.getInstance().dataManager.updateBarbarianKingArmorUpgradeLevel(player, armorlevel);
         //TODO withdraw correct amount of money from player
         EconomyHandler.withDrawMoney(player, (ZombieArena.getInstance()).config.getBarbarianKinghealthUpgradeLevelOneCost());
 
@@ -55,6 +57,8 @@ public class UpgradeGUIHandler {
             ZombieArena.getInstance().dataManager.updateHealerQueenHealthUpgradeLevel(player, healthLevel);
         if (radiusLevel != null)
             ZombieArena.getInstance().dataManager.updateHealerQueenRadiusUpgradeLevel(player, radiusLevel);
+        if (healLevel != null)
+            ZombieArena.getInstance().dataManager.updateHealerQueenHealUpgradeLevel(player, healLevel);
         //TODO withdraw correct amount of money from player
         EconomyHandler.withDrawMoney(player, (ZombieArena.getInstance()).config.getHealerQueenhealthUpgradeLevelOneCost());
 

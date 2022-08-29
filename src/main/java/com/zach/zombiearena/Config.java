@@ -907,6 +907,134 @@ public class Config {
         return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.barbarian-king-gui.radius-upgrade-gui.radius-upgrade-level-four.cost");
     }
 
+    public Double getBarbarianKingArmorUpgradeLevelOneCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-level-one.cost");
+    }
+
+    public String getBarbarianKingArmorUpgradeLevelOneDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-level-one.display-name");
+    }
+
+    public int getBarbarianKingArmorUpgradeLevelOneSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-level-one.slot");
+    }
+
+    public List<String> getBarbarianKingArmorUpgradeLevelOneLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-level-one.lore");
+    }
+
+    public int getBarbarianKingArmorUpgradeLevelTwoSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-level-two.slot");
+    }
+
+    public int getBarbarianKingArmorUpgradeLevelThreeSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-level-three.slot");
+    }
+
+    public int getBarbarianKingArmorUpgradeLevelFourSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-level-four.slot");
+    }
+
+    public String getBarbarianKingArmorLevelOne() {
+        return ZombieArena.getInstance().getConfig().getString("barbarian-king.armor-upgrade-level-one.armor");
+    }
+
+    public String getBarbarianKingArmorLevelTwo() {
+        return ZombieArena.getInstance().getConfig().getString("barbarian-king.armor-upgrade-level-two.armor");
+    }
+
+    public String getBarbarianKingArmorLevelThree() {
+        return ZombieArena.getInstance().getConfig().getString("barbarian-king.armor-upgrade-level-three.armor");
+    }
+
+    public String getBarbarianKingArmorLevelFour() {
+        return ZombieArena.getInstance().getConfig().getString("barbarian-king.armor-upgrade-level-four.armor");
+    }
+
+    public String getBarbarianKingArmor() {
+        return ZombieArena.getInstance().getConfig().getString("barbarian-king.armor");
+    }
+
+    public String getBarbarianKingArmorUpgradeGuiMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.material");
+    }
+
+    public String getBarbarianKingArmorUpgradeGuiDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.display-name");
+    }
+
+    public List<String> getBarbarianKingArmorUpgradeGuiLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.lore");
+    }
+
+    public boolean getBarbarianKingArmorUpgradeGuiEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.enchanted");
+    }
+
+    public int getBarbarianKingArmorUpgradeGuiSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.slot");
+    }
+
+    public String getBarbarianKingUpgradeArmorGuiMaterialSection(String keys) {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.placeholders." + keys + ".material");
+    }
+
+    public List<Integer> getBarbarianKingUpgradeArmorGui(String keys) {
+        return ZombieArena.getInstance().getConfig().getIntegerList("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.placeholders." + keys + ".slots");
+    }
+
+    public Integer getBarbarianKingArmorUpgradeItemStatsPlaceHolderSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-item-stats-placeholder.slot");
+    }
+
+    public String getBarbarianKingArmorUpgradeItemStatsPlaceHolderDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-item-stats-placeholder.display-name");
+    }
+
+    public String getBarbarianKingArmorUpgradeItemStatsPlaceHolder() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-item-stats-placeholder.material");
+    }
+
+    public Boolean getBarbarianKingArmorUpgradeItemStatsPlaceHolderEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-item-stats-placeholder.enchanted");
+    }
+
+    public String getBarbarianKingArmorUpgradeLevelTwoDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-level-two.display-name");
+    }
+
+    public List<String> getBarbarianKingArmorUpgradeLevelTwoLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-level-two.lore");
+    }
+
+    public Double getBarbarianKingArmorUpgradeLevelTwoCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-level-two.cost");
+    }
+
+    public String getBarbarianKingArmorUpgradeLevelThreeDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-level-three.display-name");
+    }
+
+    public List<String> getBarbarianKingArmorUpgradeLevelThreeLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-level-three.lore");
+    }
+
+    public Double getBarbarianKingArmorUpgradeLevelThreeCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-level-three.cost");
+    }
+
+    public String getBarbarianKingArmorUpgradeLevelFourDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-level-four.display-name");
+    }
+
+    public List<String> getBarbarianKingArmorUpgradeLevelFourLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-level-four.lore");
+    }
+
+    public Double getBarbarianKingArmorUpgradeLevelFourCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.barbarian-king-gui.armor-upgrade-gui.armor-upgrade-level-four.cost");
+    }
+
     public String getHealerQueenGuiMaterial() {
         return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.material");
     }
@@ -1201,5 +1329,133 @@ public class Config {
 
     public Double getHealerQueenRadiusUpgradeLevelFourCost() {
         return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-four.cost");
+    }
+
+    public Double getHealerQueenHealUpgradeLevelOneCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-one.cost");
+    }
+
+    public String getHealerQueenHealUpgradeLevelOneDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-one.display-name");
+    }
+
+    public int getHealerQueenHealUpgradeLevelOneSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-one.slot");
+    }
+
+    public List<String> getHealerQueenHealUpgradeLevelOneLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-one.lore");
+    }
+
+    public int getHealerQueenHealUpgradeLevelTwoSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-two.slot");
+    }
+
+    public int getHealerQueenHealUpgradeLevelThreeSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-three.slot");
+    }
+
+    public int getHealerQueenHealUpgradeLevelFourSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-four.slot");
+    }
+
+    public Double getHealerQueenHealUpgradeLevelOneHeal() {
+        return ZombieArena.getInstance().getConfig().getDouble("healer-queen.heal-upgrade-level-one.heal");
+    }
+
+    public Double getHealerQueenHealUpgradeLevelTwoHeal() {
+        return ZombieArena.getInstance().getConfig().getDouble("healer-queen.heal-upgrade-level-two.heal");
+    }
+
+    public Double getHealerQueenHealUpgradeLevelThreeHeal() {
+        return ZombieArena.getInstance().getConfig().getDouble("healer-queen.heal-upgrade-level-three.heal");
+    }
+
+    public Double getHealerQueenHealUpgradeLevelFourHeal() {
+        return ZombieArena.getInstance().getConfig().getDouble("healer-queen.heal-upgrade-level-four.heal");
+    }
+
+    public Double getHealerQueenHeal() {
+        return ZombieArena.getInstance().getConfig().getDouble("healer-queen.heal");
+    }
+
+    public String getHealerQueenHealUpgradeGuiMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.material");
+    }
+
+    public String getHealerQueenHealUpgradeGuiDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.display-name");
+    }
+
+    public List<String> getHealerQueenHealUpgradeGuiLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.lore");
+    }
+
+    public boolean getHealerQueenHealUpgradeGuiEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.enchanted");
+    }
+
+    public int getHealerQueenHealUpgradeGuiSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.slot");
+    }
+
+    public String getHealerQueenUpgradeHealGuiMaterialSection(String keys) {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.placeholders." + keys + ".material");
+    }
+
+    public List<Integer> getHealerQueenUpgradeHealGui(String keys) {
+        return ZombieArena.getInstance().getConfig().getIntegerList("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.placeholders." + keys + ".slots");
+    }
+
+    public Integer getHealerQueenHealUpgradeItemStatsPlaceHolderSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-item-stats-placeholder.slot");
+    }
+
+    public String getHealerQueenHealUpgradeItemStatsPlaceHolderDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-item-stats-placeholder.display-name");
+    }
+
+    public String getHealerQueenHealUpgradeItemStatsPlaceHolder() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-item-stats-placeholder.material");
+    }
+
+    public Boolean getHealerQueenHealUpgradeItemStatsPlaceHolderEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-item-stats-placeholder.enchanted");
+    }
+
+    public String getHealerQueenHealUpgradeLevelTwoDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-two.display-name");
+    }
+
+    public List<String> getHealerQueenHealUpgradeLevelTwoLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-two.lore");
+    }
+
+    public Double getHealerQueenHealUpgradeLevelTwoCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-two.cost");
+    }
+
+    public String getHealerQueenHealUpgradeLevelThreeDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-three.display-name");
+    }
+
+    public List<String> getHealerQueenHealUpgradeLevelThreeLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-three.lore");
+    }
+
+    public Double getHealerQueenHealUpgradeLevelThreeCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-three.cost");
+    }
+
+    public String getHealerQueenHealUpgradeLevelFourDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-four.display-name");
+    }
+
+    public List<String> getHealerQueenHealUpgradeLevelFourLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-four.lore");
+    }
+
+    public Double getHealerQueenHealUpgradeLevelFourCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-four.cost");
     }
 }

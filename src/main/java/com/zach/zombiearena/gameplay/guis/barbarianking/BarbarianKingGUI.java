@@ -16,6 +16,7 @@ import java.util.List;
 public class BarbarianKingGUI {
     private final BarbarianKingHealthUpgradeGUI barbarianKingHealthUpgradeGUI = new BarbarianKingHealthUpgradeGUI();
     private final BarbarianKingRadiusUpgradeGUI barbarianKingRadiusUpgradeGUI = new BarbarianKingRadiusUpgradeGUI();
+    private final BarbarianKingArmorUpgradeGUI barbarianKingArmorUpgradeGUI = new BarbarianKingArmorUpgradeGUI();
 
     Config config = new Config();
 
@@ -74,6 +75,22 @@ public class BarbarianKingGUI {
             }
         });
 
+        menu.setButton(config.getBarbarianKingArmorUpgradeGuiSlot(), new Button(
+                ItemBuilder.createItem(config.getBarbarianKingArmorUpgradeGuiMaterial(),
+                        config.getBarbarianKingArmorUpgradeGuiDisplayName(),
+                        config.getBarbarianKingArmorUpgradeGuiLore(),
+                        null,
+                        null,
+                        config.getBarbarianKingArmorUpgradeGuiEnchanted())) {
+            @Override
+            public void onClick(Menu menu, InventoryClickEvent event) {
+                Player player = (Player) event.getWhoClicked();
+                ZombieArena.getMenuHandler().closeMenu(player);
+                ZombieArena.getMenuHandler().openMenu(player, barbarianKingArmorUpgradeGUI.BarbarianKingArmorUpgradeGUI(player));
+                event.setCancelled(true);
+            }
+        });
+
         return menu;
     }
 
@@ -92,7 +109,7 @@ public class BarbarianKingGUI {
         lore.add(" ");
         lore.add("&7&lHealth: &f&l" + barbarianKingHealthUpgradeGUI.getPlayersBarbarianKingHealth(player));
         lore.add("&7&lRadius: &f&l" + barbarianKingRadiusUpgradeGUI.getPlayersBarbarianKingRadius(player));
-
+        lore.add("&7&lArmor: &f&l" + barbarianKingArmorUpgradeGUI.getPlayersBarbarianKingArmor(player));
         return lore;
     }
 
@@ -104,4 +121,11 @@ public class BarbarianKingGUI {
         return lore;
     }
 
+    public List<String> getBarbarianKingArmorStatsLore(Player player) {
+        List<String> lore = new ArrayList<>();
+        lore.add(" ");
+        lore.add("&7&lArmor: &f&l" + barbarianKingArmorUpgradeGUI.getPlayersBarbarianKingArmor(player));
+        lore.add("&7&lLevel: &f&l" + barbarianKingArmorUpgradeGUI.getPlayersBarbarianKingArmorUpgradeLevel(player));
+        return lore;
+    }
 }
