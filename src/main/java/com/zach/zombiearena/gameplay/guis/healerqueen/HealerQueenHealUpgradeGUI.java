@@ -61,8 +61,11 @@ public class HealerQueenHealUpgradeGUI {
         if (getPlayersHealerQueenHealUpgradeLevel(player) == 4) {
             return config.getHealerQueenHealUpgradeLevelFourHeal();
         }
+        player.hasPermission("zombiearena.healer-queen.heal-upgrade.1");
         return config.getHealerQueenHeal();
+
     }
+
 
     public void refreshMenu(Player player) {
         ZombieArena.getMenuHandler().closeMenu(player);
