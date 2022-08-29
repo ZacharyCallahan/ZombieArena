@@ -12,6 +12,7 @@ import com.zach.zombiearena.gameplay.guis.DefenseGUI;
 import com.zach.zombiearena.gameplay.guis.TraderGUI;
 import com.zach.zombiearena.gameplay.guis.archerqueen.ArcherQueenGUI;
 import com.zach.zombiearena.gameplay.guis.barbarianking.BarbarianKingGUI;
+import com.zach.zombiearena.gameplay.guis.healerqueen.HealerQueenGUI;
 import com.zach.zombiearena.utils.ItemManager;
 import com.zach.zombiearena.utils.MenuHandler;
 import com.zach.zombiearena.utils.ProbabilityUntilities;
@@ -50,6 +51,7 @@ public final class ZombieArena extends JavaPlugin {
     public ProbabilityUntilities probabilityUntilities;
     public RegularMob regularMob;
     public HealerQueen healerQueen;
+    public HealerQueenGUI healerQueenGUI;
     public BarbarianKing barbarianKing;
     public ArcherQueen archerQueen;
     public ArcherQueenGUI archerQueenGUI;
@@ -76,6 +78,7 @@ public final class ZombieArena extends JavaPlugin {
         this.mobHandler = new MobHandler();
         this.regularMob = new RegularMob();
         this.healerQueen = new HealerQueen();
+        this.healerQueenGUI = new HealerQueenGUI();
         this.barbarianKing = new BarbarianKing();
         this.barbarianKingGUI = new BarbarianKingGUI();
         this.archerQueen = new ArcherQueen();

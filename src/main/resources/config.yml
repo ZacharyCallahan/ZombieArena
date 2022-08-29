@@ -147,6 +147,53 @@ barbarian-king:
     radius: 5
   radius-upgrade-level-four:
     radius: 6
+healer-queen:
+  entity-type: SKELETON
+  health: 20
+  speed: 1.0
+  radius: 2
+  speed-amount: 0.25
+  armor:
+    helmet:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_HELMET
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+    chestplate:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_CHESTPLATE
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+    leggings:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_LEGGINGS
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+    boots:
+      equip: false
+      enable-enchants: true
+      item: DIAMOND_BOOTS
+      enchants:
+        - PROTECTION_ENVIRONMENTAL:3
+  health-upgrade-level-one:
+    health: 30
+  health-upgrade-level-two:
+    health: 50
+  health-upgrade-level-three:
+    health: 70
+  health-upgrade-level-four:
+    health: 90
+  radius-upgrade-level-one:
+    radius: 3
+  radius-upgrade-level-two:
+    radius: 4
+  radius-upgrade-level-three:
+    radius: 5
+  radius-upgrade-level-four:
+    radius: 6
 defensegui:
   placeholders:
     '0':
@@ -478,7 +525,7 @@ defensegui:
           slot: 15
           cost: 12000
     barbarian-king-gui:
-      material: STONE
+      material: ZOMBIE_SKULL
       display-name: "&8&lBarbarian King"
       lore:
         - " "
@@ -698,6 +745,227 @@ defensegui:
             - "&2Cost&f: &a$&f12,000"
           slot: 15
           cost: 12000
+    healer-queen-gui:
+      material: SKELETON_SKULL
+      display-name: "&8&lHealer Queen"
+      lore:
+        - " "
+        - "&7Looking to upgrade your Healer Queen?"
+        - "&7You've come to the right place!"
+        - " "
+        - "&dClick me to get started.."
+      enchanted: true
+      slot: 11
+      healer-queen-purchase:
+        material: RED_STAINED_GLASS_PANE
+        lore:
+          - " "
+          - "&7Ooo.. Are you in need of a wave upgrade?"
+          - "&7Well then, I think I can help you out!"
+          - " "
+          - "&eClick to purchase!"
+          - "&2Cost&f: &a$&f10,000"
+        enchanted: false
+        cost: 10000
+      healer-queen-stats-placeholder:
+        display-name: "&8&lHealer Queen Stats"
+        enchanted: false
+        slot: 11
+      placeholders:
+        '0':
+          material: ORANGE_STAINED_GLASS_PANE
+          display-name: " "
+          slots:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 12
+            - 16
+            - 16
+            - 17
+            - 18
+            - 19
+            - 20
+            - 21
+            - 22
+            - 23
+            - 24
+            - 25
+            - 26
+      health-upgrade-gui:
+        material: POTION
+        display-name: "&c&lHealth Upgrade"
+        lore:
+          - " "
+          - "&7Looking to upgrade your Healer Queen's health?"
+          - "&7You've come to the right place!"
+          - " "
+          - "&dClick me to get started.."
+        enchanted: true
+        slot: 13
+        health-upgrade-item-stats-placeholder:
+          display-name: "&c&lHealer Queen Health Stats"
+          material: POTION
+          slot: 11
+          enchanted: true
+        placeholders:
+          '0':
+            material: BLACK_STAINED_GLASS_PANE
+            display-name: " "
+            slots:
+              - 0
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
+              - 10
+              - 16
+              - 17
+              - 18
+              - 19
+              - 20
+              - 21
+              - 22
+              - 23
+              - 24
+              - 25
+              - 26
+        health-upgrade-level-one:
+          display-name: "&fHealth Upgrade: &cLevel 1"
+          lore:
+            - " "
+            - "&7Ooo, this will help your Healer Queen!"
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f3,000"
+          slot: 12
+          cost: 3000
+        health-upgrade-level-two:
+          display-name: "&fHealth Upgrade: &cLevel 2"
+          lore:
+            - " "
+            - "&7Man this is starting to do something, huh..."
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f6,000"
+          slot: 13
+          cost: 6000
+        health-upgrade-level-three:
+          display-name: "&fHealth Upgrade: &cLevel 3"
+          lore:
+            - " "
+            - "&7You're Healer Queen is about to be a beast!"
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f9,000"
+          slot: 14
+          cost: 9000
+        health-upgrade-level-four:
+          display-name: "&fHealth Upgrade: &cLevel 4"
+          lore:
+            - " "
+            - "&7Okay okay, this is ridiculous..."
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f12,000"
+          slot: 15
+          cost: 12000
+      radius-upgrade-gui:
+        material: PISTON
+        display-name: "&b&lRadius Upgrade"
+        lore:
+          - " "
+          - "&7Looking to upgrade your Healer Queen's radius?"
+          - "&7You've come to the right place!"
+          - " "
+          - "&dClick me to get started.."
+        enchanted: true
+        slot: 14
+        radius-upgrade-item-stats-placeholder:
+          display-name: "&b&lHealer Queen Radius Stats"
+          material: PISTON
+          slot: 11
+          enchanted: true
+        placeholders:
+          '0':
+            material: BLACK_STAINED_GLASS_PANE
+            display-name: " "
+            slots:
+              - 0
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
+              - 10
+              - 16
+              - 17
+              - 18
+              - 19
+              - 20
+              - 21
+              - 22
+              - 23
+              - 24
+              - 25
+              - 26
+        radius-upgrade-level-one:
+          display-name: "&fRadius Upgrade: &bLevel 1"
+          lore:
+            - " "
+            - "&7Ooo, this is much needed!"
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f3,000"
+          slot: 12
+          cost: 3000
+        radius-upgrade-level-two:
+          display-name: "&fRadius Upgrade: &bLevel 2"
+          lore:
+            - " "
+            - "&7Woah, this is starting to get a bit too big..."
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f6,000"
+          slot: 13
+          cost: 6000
+        radius-upgrade-level-three:
+          display-name: "&fRadius Upgrade: &bLevel 3"
+          lore:
+            - " "
+            - "&7Really.. this is getting out of hand..."
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f9,000"
+          slot: 14
+          cost: 9000
+        radius-upgrade-level-four:
+          display-name: "&fRadius Upgrade: &bLevel 4"
+          lore:
+            - " "
+            - "&7Uhm.. how is this allowed!"
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f12,000"
+          slot: 15
+          cost: 12000
 # TraderGUI customization
 # To get the correct Enchantment name you can check this website out https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
 # Cost is how much "money-item"'s it will take to purchase these functions
@@ -824,9 +1092,4 @@ waves:
   '6':
     wave-spawn-rate: 4
     wave-length: 180
-# Speed is going to be a percentage (Ex. 0.5 = 50% and 2.0 = 200%)
-# To get the correct Enchantment name you can check this website out https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
-# If the speed is below 1 than there is a chance the zombie may get stuck and not come to the end of the arena. Recommended not to go below 0.8.
-# Recommended that the speed does not go about 4 as it will cause the Zombies to teleport.
-# Also recommended that all spawn chances are changed to your liking!
 

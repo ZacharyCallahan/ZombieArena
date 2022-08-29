@@ -6,6 +6,7 @@ import com.zach.zombiearena.Messages;
 import com.zach.zombiearena.ZombieArena;
 import com.zach.zombiearena.gameplay.guis.archerqueen.ArcherQueenGUI;
 import com.zach.zombiearena.gameplay.guis.barbarianking.BarbarianKingGUI;
+import com.zach.zombiearena.gameplay.guis.healerqueen.HealerQueenGUI;
 import com.zach.zombiearena.utils.Button;
 import com.zach.zombiearena.utils.ItemBuilder;
 import com.zach.zombiearena.utils.Menu;
@@ -18,6 +19,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 public class DefenseGUI implements Listener {
     private final ArcherQueenGUI archerQueenGUI = new ArcherQueenGUI();
     private final BarbarianKingGUI barbarianKingGUI = new BarbarianKingGUI();
+    private final HealerQueenGUI healerQueenGUI = new HealerQueenGUI();
     Config config = new Config();
     UpgradeGUIHandler upgradeGUIHandler = new UpgradeGUIHandler();
     ConfigurationSection section;
@@ -128,7 +130,53 @@ public class DefenseGUI implements Listener {
         } else {
             Messages.sendMessage(player, "arenaNoArena");
         }
+        //if they have purchased the Healer Queen
+        if (ZombieArena.getInstance().healerQueen.purchasedHealerQueen.get(player.getUniqueId()) != null) {
+            if (ZombieArena.getInstance().healerQueen.purchasedHealerQueen.get(player.getUniqueId())) {
+                menu.setButton(ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.slot"), new Button(
+                        ItemBuilder.createItem(ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.material"),
+                                ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.display-name"),
+                                ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.lore"),
+                                null,
+                                null,
+                                ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.healer-queen-gui.enchanted"))) {
+                    public void onClick(Menu menu, InventoryClickEvent event) {
+                        Player player = (Player) event.getWhoClicked();
+                        ZombieArena.getMenuHandler().closeMenu(player);
+                        ZombieArena.getMenuHandler().openMenu(player, healerQueenGUI.HealerQueenGUI(player));
+                        event.setCancelled(true);
+                    }
+                });
 
+                //if they havent purchased the Healer Queen
+            } else {
+                menu.setButton(ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.slot"), new Button(
+
+                        ItemBuilder.createItem(config.getHealerQueenPurchaseMaterial(),
+                                ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.display-name"),
+                                null,
+                                config.getHealerQueenPurchaseLore(),
+                                null,
+                                config.getHealerQueenPurchaseEnchanted())) {
+                    @Override
+                    public void onClick(Menu menu, InventoryClickEvent event) {
+                        Player player = (Player) event.getWhoClicked();
+                        if (EconomyHandler.hasEnoughMoney(player, config.getHealerQueenPurchaseCost())) {
+                            upgradeGUIHandler.defensePurchased(player,
+                                    "healerQueen",
+                                    config.getHealerQueenPurchaseCost(),
+                                    ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.display-name"));
+                            refreshMenu(player);
+                        } else {
+                            upgradeGUIHandler.upgradeFailed(player, config.getHealerQueenPurchaseCost());
+                        }
+                        event.setCancelled(true);
+                    }
+                });
+            }
+        } else {
+            Messages.sendMessage(player, "arenaNoArena");
+        }
         return menu;
     }
 

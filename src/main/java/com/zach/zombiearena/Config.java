@@ -907,4 +907,299 @@ public class Config {
         return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.barbarian-king-gui.radius-upgrade-gui.radius-upgrade-level-four.cost");
     }
 
+    public String getHealerQueenGuiMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.material");
+    }
+
+    public Integer getHealerQueenDefaultHealth() {
+        return ZombieArena.getInstance().getConfig().getInt("healer-queen.health");
+    }
+
+    public List<Integer> getHealerQueenUpgradeHealthGui(String keys) {
+        return ZombieArena.getInstance().getConfig().getIntegerList("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.placeholders." + keys + ".slots");
+    }
+
+    public String getHealerQueenUpgradeHealthGuiMaterialSection(String keys) {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.placeholders." + keys + ".material");
+    }
+
+    public List<Integer> getHealerQueenPlaceHolderSlots(String keys) {
+        return ZombieArena.getInstance().getConfig().getIntegerList("defensegui.upgrades.healer-queen-gui.placeholders." + keys + ".slots");
+    }
+
+    public String getHealerQueenPlaceHolderStatsDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.healer-queen-stats-placeholder.display-name");
+    }
+
+    public Integer getHealerQueenPlaceHolderStatsSlots() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.healer-queen-stats-placeholder.slot");
+    }
+
+    public Boolean getHealerQueenPlaceHolderStatsEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.healer-queen-gui.healer-queen-stats-placeholder.enchanted");
+    }
+
+    public Integer getHealerQueenHealthLevelOne() {
+        return ZombieArena.getInstance().getConfig().getInt("healer-queen.health-upgrade-level-one.health");
+    }
+
+    public Integer getHealerQueenHealthLevelTwo() {
+        return ZombieArena.getInstance().getConfig().getInt("healer-queen.health-upgrade-level-two.health");
+    }
+
+    public Integer getHealerQueenHealthLevelThree() {
+        return ZombieArena.getInstance().getConfig().getInt("healer-queen.health-upgrade-level-three.health");
+    }
+
+    public Integer getHealerQueenHealthLevelFour() {
+        return ZombieArena.getInstance().getConfig().getInt("healer-queen.health-upgrade-level-four.health");
+    }
+
+    public String getHealerQueenHealthUpgradeGuiMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.material");
+    }
+
+    public String getHealerQueenHealthUpgradeGuiDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.display-name");
+    }
+
+    public List<String> getHealerQueenHealthUpgradeGuiLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.lore");
+    }
+
+    public Boolean getHealerQueenHealthUpgradeGuiEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.enchanted");
+    }
+
+    public Integer getHealerQueenHealthUpgradeGuiSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.slot");
+    }
+
+    public String getHealerQueenHealthUpgradeLevelOneDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-level-one.display-name");
+    }
+
+    public List<String> getHealerQueenHealthUpgradeLevelOneLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-level-one.lore");
+    }
+
+    public Integer getHealerQueenHealthUpgradeLevelOneSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-level-one.slot");
+    }
+
+    public Double getHealerQueenhealthUpgradeLevelOneCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-level-one.cost");
+    }
+
+    public List<String> getHealerQueenPurchaseLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.healer-queen-purchase.lore");
+    }
+
+    public Boolean getHealerQueenPurchaseEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.healer-queen-gui.healer-queen-purchase.enchanted");
+    }
+
+    public Double getHealerQueenPurchaseCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.healer-queen-gui.healer-queen-purchase.cost");
+    }
+
+    public String getHealerQueenPurchaseMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.healer-queen-purchase.material");
+    }
+
+    public String getHealerQueenHealthUpgradeItemStatsPlaceHolderDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-item-stats-placeholder.display-name");
+    }
+
+    public String getHealerQueenHealthUpgradeItemStatsPlaceHolder() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-item-stats-placeholder.material");
+    }
+
+    public Integer getHealerQueenHealthUpgradeItemStatsPlaceHolderSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-item-stats-placeholder.slot");
+    }
+
+    public Boolean getHealerQueenHealthUpgradeItemStatsPlaceHolderEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-item-stats-placeholder.enchanted");
+    }
+
+    public String getHealerQueenPlaceHolderMaterialSection(String keys) {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.placeholders." + keys + ".material");
+    }
+
+    public String getHealerQueenHealthUpgradeLevelTwoDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-level-two.display-name");
+    }
+
+    public List<String> getHealerQueenHealthUpgradeLevelTwoLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-level-two.lore");
+    }
+
+    public Integer getHealerQueenHealthUpgradeLevelTwoSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-level-two.slot");
+    }
+
+    public Double getHealerQueenhealthUpgradeLevelTwoCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-level-two.cost");
+    }
+
+    public String getHealerQueenHealthUpgradeLevelThreeDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-level-three.display-name");
+    }
+
+    public List<String> getHealerQueenHealthUpgradeLevelThreeLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-level-three.lore");
+    }
+
+    public Integer getHealerQueenHealthUpgradeLevelThreeSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-level-three.slot");
+    }
+
+    public Double getHealerQueenhealthUpgradeLevelThreeCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-level-three.cost");
+    }
+
+    public String getHealerQueenHealthUpgradeLevelFourDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-level-four.display-name");
+    }
+
+    public List<String> getHealerQueenHealthUpgradeLevelFourLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-level-four.lore");
+    }
+
+    public Integer getHealerQueenHealthUpgradeLevelFourSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-level-four.slot");
+    }
+
+    public Double getHealerQueenhealthUpgradeLevelFourCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.healer-queen-gui.health-upgrade-gui.health-upgrade-level-four.cost");
+    }
+
+    public Double getHealerQueenRadiusUpgradeLevelOneCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-one.cost");
+    }
+
+    public String getHealerQueenRadiusUpgradeLevelOneDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-one.display-name");
+    }
+
+    public int getHealerQueenRadiusUpgradeLevelOneSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-one.slot");
+    }
+
+    public List<String> getHealerQueenRadiusUpgradeLevelOneLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-one.lore");
+    }
+
+    public int getHealerQueenRadiusUpgradeLevelTwoSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-two.slot");
+    }
+
+    public int getHealerQueenRadiusUpgradeLevelThreeSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-three.slot");
+    }
+
+    public int getHealerQueenRadiusUpgradeLevelFourSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-four.slot");
+    }
+
+    public Integer getHealerQueenRadiusUpgradeLevelOneRadius() {
+        return ZombieArena.getInstance().getConfig().getInt("healer-queen.radius-upgrade-level-one.radius");
+    }
+
+    public Integer getHealerQueenRadiusUpgradeLevelTwoRadius() {
+        return ZombieArena.getInstance().getConfig().getInt("healer-queen.radius-upgrade-level-two.radius");
+    }
+
+    public Integer getHealerQueenRadiusUpgradeLevelThreeRadius() {
+        return ZombieArena.getInstance().getConfig().getInt("healer-queen.radius-upgrade-level-three.radius");
+    }
+
+    public Integer getHealerQueenRadiusUpgradeLevelFourRadius() {
+        return ZombieArena.getInstance().getConfig().getInt("healer-queen.radius-upgrade-level-four.radius");
+    }
+
+    public Integer getHealerQueenRadius() {
+        return ZombieArena.getInstance().getConfig().getInt("healer-queen.radius");
+    }
+
+    public String getHealerQueenRadiusUpgradeGuiMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.material");
+    }
+
+    public String getHealerQueenRadiusUpgradeGuiDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.display-name");
+    }
+
+    public List<String> getHealerQueenRadiusUpgradeGuiLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.lore");
+    }
+
+    public boolean getHealerQueenRadiusUpgradeGuiEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.enchanted");
+    }
+
+    public int getHealerQueenRadiusUpgradeGuiSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.slot");
+    }
+
+    public String getHealerQueenUpgradeRadiusGuiMaterialSection(String keys) {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.placeholders." + keys + ".material");
+    }
+
+    public List<Integer> getHealerQueenUpgradeRadiusGui(String keys) {
+        return ZombieArena.getInstance().getConfig().getIntegerList("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.placeholders." + keys + ".slots");
+    }
+
+    public Integer getHealerQueenRadiusUpgradeItemStatsPlaceHolderSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-item-stats-placeholder.slot");
+    }
+
+    public String getHealerQueenRadiusUpgradeItemStatsPlaceHolderDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-item-stats-placeholder.display-name");
+    }
+
+    public String getHealerQueenRadiusUpgradeItemStatsPlaceHolder() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-item-stats-placeholder.material");
+    }
+
+    public Boolean getHealerQueenRadiusUpgradeItemStatsPlaceHolderEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-item-stats-placeholder.enchanted");
+    }
+
+    public String getHealerQueenRadiusUpgradeLevelTwoDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-two.display-name");
+    }
+
+    public List<String> getHealerQueenRadiusUpgradeLevelTwoLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-two.lore");
+    }
+
+    public Double getHealerQueenRadiusUpgradeLevelTwoCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-two.cost");
+    }
+
+    public String getHealerQueenRadiusUpgradeLevelThreeDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-three.display-name");
+    }
+
+    public List<String> getHealerQueenRadiusUpgradeLevelThreeLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-three.lore");
+    }
+
+    public Double getHealerQueenRadiusUpgradeLevelThreeCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-three.cost");
+    }
+
+    public String getHealerQueenRadiusUpgradeLevelFourDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-four.display-name");
+    }
+
+    public List<String> getHealerQueenRadiusUpgradeLevelFourLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-four.lore");
+    }
+
+    public Double getHealerQueenRadiusUpgradeLevelFourCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.healer-queen-gui.radius-upgrade-gui.radius-upgrade-level-four.cost");
+    }
 }

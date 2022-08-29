@@ -50,6 +50,17 @@ public class UpgradeGUIHandler {
         Messages.sendMessage(player, "defenseUpgradeSuccess");
     }
 
+    public void upgradeSuccessHealerQueen(Player player, Integer healthLevel, Integer radiusLevel, Integer healLevel) {
+        if (healthLevel != null)
+            ZombieArena.getInstance().dataManager.updateHealerQueenHealthUpgradeLevel(player, healthLevel);
+        if (radiusLevel != null)
+            ZombieArena.getInstance().dataManager.updateHealerQueenRadiusUpgradeLevel(player, radiusLevel);
+        //TODO withdraw correct amount of money from player
+        EconomyHandler.withDrawMoney(player, (ZombieArena.getInstance()).config.getHealerQueenhealthUpgradeLevelOneCost());
+
+        Messages.sendMessage(player, "defenseUpgradeSuccess");
+    }
+
     public void upgradeFailed(Player player, Double cost) {
         Messages.sendNotEnoughMoneyMessage(player, cost, "defenseUpgradeFail");
     }
@@ -60,6 +71,9 @@ public class UpgradeGUIHandler {
         }
         if (defense.equals("barbarianKing")) {
             ZombieArena.getInstance().dataManager.updatePurchasedBarbarianKing(player, true);
+        }
+        if (defense.equals("healerQueen")) {
+            ZombieArena.getInstance().dataManager.updatePurchasedHealerQueen(player, true);
         }
         //TODO add other if statements for the other defenses
 

@@ -12,8 +12,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 public class HealerQueen {
+    public HashMap<UUID, Integer> healerQueenHealthUpgradeLevel = new HashMap<>();
+    public HashMap<UUID, Integer> healerQueenRadiusUpgradeLevel = new HashMap<>();
+    public HashMap<UUID, Boolean> purchasedHealerQueen = new HashMap<>();
     public HashMap<Player, Integer> tasks = new HashMap<>();
     private ItemStack itemStack;
     private ItemMeta itemMeta;
