@@ -45,21 +45,21 @@ public class ArcherQueenGUI implements Listener {
                 event.setCancelled(true);
             }
         });
-            menu.setButton(config.getArcherQueenHealthUpgradeGuiSlot(), new Button(
-                    ItemBuilder.createItem(config.getArcherQueenHealthUpgradeGuiMaterial(),
-                            config.getArcherQueenHealthUpgradeGuiDisplayName(),
-                            config.getArcherQueenHealthUpgradeGuiLore(),
-                            null,
-                            null,
-                            config.getArcherQueenHealthUpgradeGuiEnchanted())) {
-                @Override
-                public void onClick(Menu menu, InventoryClickEvent event) {
-                    Player player = (Player) event.getWhoClicked();
-                    ZombieArena.getMenuHandler().closeMenu(player);
-                    ZombieArena.getMenuHandler().openMenu(player, archerQueenHealthUpgradeGUI.ArcherQueenHealthUpgradeGUI(player));
-                    event.setCancelled(true);
-                }
-            });
+        menu.setButton(config.getArcherQueenHealthUpgradeGuiSlot(), new Button(
+                ItemBuilder.createItem(config.getArcherQueenHealthUpgradeGuiMaterial(),
+                        config.getArcherQueenHealthUpgradeGuiDisplayName(),
+                        config.getArcherQueenHealthUpgradeGuiLore(),
+                        null,
+                        null,
+                        config.getArcherQueenHealthUpgradeGuiEnchanted())) {
+            @Override
+            public void onClick(Menu menu, InventoryClickEvent event) {
+                Player player = (Player) event.getWhoClicked();
+                ZombieArena.getMenuHandler().closeMenu(player);
+                ZombieArena.getMenuHandler().openMenu(player, archerQueenHealthUpgradeGUI.ArcherQueenHealthUpgradeGUI(player));
+                event.setCancelled(true);
+            }
+        });
         menu.setButton(config.getArcherQueenRadiusUpgradeGuiSlot(), new Button(
                 ItemBuilder.createItem(config.getArcherQueenRadiusUpgradeGuiMaterial(),
                         config.getArcherQueenRadiusUpgradeGuiDisplayName(),

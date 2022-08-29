@@ -298,6 +298,7 @@ public class Config {
     public Double getArcherQueenhealthUpgradeLevelFourCost() {
         return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.archer-queen-gui.health-upgrade-gui.health-upgrade-level-four.cost");
     }
+
     public String getArcherQueenType() {
         return ZombieArena.getInstance().getConfig().getString("archer-queen.entity-type");
     }

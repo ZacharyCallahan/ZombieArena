@@ -17,6 +17,7 @@ public class ArcherQueenRadiusUpgradeGUI {
     UpgradeGUIHandler upgradeGUIHandler = new UpgradeGUIHandler();
     Config config = new Config();
     ConfigurationSection section;
+
     public Menu ArcherQueenRadiusUpgradeGUI(Player player) {
         Menu menu = new Menu(Bukkit.createInventory(null, 27,
                 ZombieArena.color(ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.display-name") + ": "
@@ -42,9 +43,11 @@ public class ArcherQueenRadiusUpgradeGUI {
         createUpgrades(player, menu);
         return menu;
     }
+
     public Integer getPlayersArcherQueenRadiusUpgradeLevel(Player player) {
         return ZombieArena.getInstance().archerQueen.archerQueenRadiusUpgradeLevel.get(player.getUniqueId());
     }
+
     public Integer getPlayersArcherQueenRadius(Player player) {
         if (getPlayersArcherQueenRadiusUpgradeLevel(player) == 1) {
             return config.getArcherQueenRadiusUpgradeLevelOneRadius();
@@ -60,10 +63,12 @@ public class ArcherQueenRadiusUpgradeGUI {
         }
         return config.getArcherQueenRadius();
     }
+
     public void refreshMenu(Player player) {
         ZombieArena.getMenuHandler().closeMenu(player);
         ZombieArena.getMenuHandler().openMenu(player, ArcherQueenRadiusUpgradeGUI(player));
     }
+
     public void createUpgrades(Player player, Menu menu) {
         if (getPlayersArcherQueenRadiusUpgradeLevel(player) == 0) {
             menu.setButton(config.getArcherQueenRadiusUpgradeLevelOneSlot(), new Button(
