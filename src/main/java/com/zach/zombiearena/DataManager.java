@@ -94,6 +94,9 @@ public class DataManager implements Listener {
         saveArcherQueenHealthUpgradeLevel(player.getUniqueId());
         saveArcherQueenRadiusUpgradeLevel(player.getUniqueId());
         saveArcherQueenSpeedUpgradeLevel(player.getUniqueId());
+        savePurchasedBarbarianKing(player.getUniqueId());
+        saveBarbarianKingHealthUpgradeLevel(player.getUniqueId());
+        saveBarbarianKingRadiusUpgradeLevel(player.getUniqueId());
     }
 
 
@@ -163,6 +166,57 @@ public class DataManager implements Listener {
 
     public void loadPlayersArcherQueenSpeedLevel(UUID uuid) {
         ZombieArena.getInstance().archerQueen.archerQueenSpeedUpgradeLevel.put(uuid, getConfig().getInt("archer-queen.speed-upgrade-level"));
+    }
+
+    public void savePurchasedBarbarianKing(UUID uuid) {
+        getConfig().set("barbarian-king.purchased", false);
+        ZombieArena.getInstance().barbarianKing.purchasedBarbarianKing.put(uuid, false);
+        save();
+    }
+
+    public void updatePurchasedBarbarianKing(Player player, boolean purchased) {
+        loadConfig(player);
+        getConfig().set("barbarian-king.purchased", purchased);
+        ZombieArena.getInstance().barbarianKing.purchasedBarbarianKing.put(player.getUniqueId(), purchased);
+        save();
+    }
+
+    public void loadPurchasedBarbarianKing(UUID uuid) {
+        ZombieArena.getInstance().barbarianKing.purchasedBarbarianKing.put(uuid, getConfig().getBoolean("barbarian-king.purchased"));
+    }
+
+    public void saveBarbarianKingHealthUpgradeLevel(UUID uuid) {
+        getConfig().set("barbarian-king.health-upgrade-level", 0);
+        ZombieArena.getInstance().barbarianKing.barbarianKingHealthUpgradeLevel.put(uuid, 0);
+        save();
+    }
+
+    public void updateBarbarianKingHealthUpgradeLevel(Player player, int level) {
+        loadConfig(player);
+        getConfig().set("barbarian-king.health-upgrade-level", level);
+        ZombieArena.getInstance().barbarianKing.barbarianKingHealthUpgradeLevel.put(player.getUniqueId(), level);
+        save();
+    }
+
+    public void loadPlayersBarbarianKingHealthLevel(UUID uuid) {
+        ZombieArena.getInstance().barbarianKing.barbarianKingHealthUpgradeLevel.put(uuid, getConfig().getInt("barbarian-king.health-upgrade-level"));
+    }
+
+    public void saveBarbarianKingRadiusUpgradeLevel(UUID uuid) {
+        getConfig().set("barbarian-king.radius-upgrade-level", 0);
+        ZombieArena.getInstance().barbarianKing.barbarianKingRadiusUpgradeLevel.put(uuid, 0);
+        save();
+    }
+
+    public void updateBarbarianKingRadiusUpgradeLevel(Player player, int level) {
+        loadConfig(player);
+        getConfig().set("barbarian-king.radius-upgrade-level", level);
+        ZombieArena.getInstance().barbarianKing.barbarianKingRadiusUpgradeLevel.put(player.getUniqueId(), level);
+        save();
+    }
+
+    public void loadPlayersBarbarianKingRadiusLevel(UUID uuid) {
+        ZombieArena.getInstance().barbarianKing.barbarianKingRadiusUpgradeLevel.put(uuid, getConfig().getInt("barbarian-king.radius-upgrade-level"));
     }
 
     public File getDataFolder() {
@@ -394,10 +448,13 @@ public class DataManager implements Listener {
         playersLeague(player);
         loadLives(player);
         loadTrophies(player);
-        loadPlayersArcherQueenHealthLevel(player);
         loadPurchasedArcherQueen(player);
+        loadPlayersArcherQueenHealthLevel(player);
         loadPlayersArcherQueenRadiusLevel(player);
         loadPlayersArcherQueenSpeedLevel(player);
+        loadPurchasedBarbarianKing(player);
+        loadPlayersBarbarianKingHealthLevel(player);
+        loadPlayersBarbarianKingRadiusLevel(player);
     }
     /*@EventHandler
     public void loadPlayerData(PlayerJoinEvent e) {

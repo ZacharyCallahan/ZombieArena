@@ -29,10 +29,9 @@ public class ArcherQueenGUI implements Listener {
         section = ZombieArena.getInstance().getConfig().getConfigurationSection("defensegui.upgrades.archer-queen-gui.placeholders");
         for (String keys : section.getKeys(false)) {
             if (keys != null)
-                ZombieArena.getMenuHandler().createPlaceholders(menu, section, config
-
-                        .getArcherQueenPlaceHolderSlots(keys), config
-                        .getArcherQueenPlaceHolderMaterialSection(keys));
+                ZombieArena.getMenuHandler().createPlaceholders(menu, section,
+                        config.getArcherQueenPlaceHolderSlots(keys),
+                        config.getArcherQueenPlaceHolderMaterialSection(keys));
         }
         menu.setButton(config.getArcherQueenPlaceHolderStatsSlots(), new Button(
                 ItemBuilder.createItem(config.getArcherQueenGuiMaterial(),
@@ -41,6 +40,7 @@ public class ArcherQueenGUI implements Listener {
                         null,
                         null,
                         config.getArcherQueenPlaceHolderStatsEnchanted())) {
+            @Override
             public void onClick(Menu menu, InventoryClickEvent event) {
                 event.setCancelled(true);
             }
@@ -52,6 +52,7 @@ public class ArcherQueenGUI implements Listener {
                             null,
                             null,
                             config.getArcherQueenHealthUpgradeGuiEnchanted())) {
+                @Override
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
                     ZombieArena.getMenuHandler().closeMenu(player);

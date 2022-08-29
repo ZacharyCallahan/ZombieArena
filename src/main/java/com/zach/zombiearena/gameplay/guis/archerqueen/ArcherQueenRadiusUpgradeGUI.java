@@ -77,7 +77,7 @@ public class ArcherQueenRadiusUpgradeGUI {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
                     if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenRadiusUpgradeLevelOneCost())) {
-                        upgradeGUIHandler.upgradeSuccess(player, null, 1, null);
+                        upgradeGUIHandler.upgradeSuccessArcherQueen(player, null, 1, null);
                         refreshMenu(player);
                     } else {
                         upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenRadiusUpgradeLevelOneCost());
@@ -101,7 +101,7 @@ public class ArcherQueenRadiusUpgradeGUI {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
                     if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenRadiusUpgradeLevelTwoCost())) {
-                        upgradeGUIHandler.upgradeSuccess(player, null, 2, null);
+                        upgradeGUIHandler.upgradeSuccessArcherQueen(player, null, 2, null);
                         refreshMenu(player);
                     } else {
                         upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenRadiusUpgradeLevelTwoCost());
@@ -125,7 +125,7 @@ public class ArcherQueenRadiusUpgradeGUI {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
                     if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenRadiusUpgradeLevelThreeCost())) {
-                        upgradeGUIHandler.upgradeSuccess(player, null, 3, null);
+                        upgradeGUIHandler.upgradeSuccessArcherQueen(player, null, 3, null);
                         refreshMenu(player);
                     } else {
                         upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenRadiusUpgradeLevelThreeCost());
@@ -149,7 +149,7 @@ public class ArcherQueenRadiusUpgradeGUI {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
                     if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenRadiusUpgradeLevelFourCost())) {
-                        upgradeGUIHandler.upgradeSuccess(player, null, 4, null);
+                        upgradeGUIHandler.upgradeSuccessArcherQueen(player, null, 4, null);
                         refreshMenu(player);
                     } else {
                         upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenRadiusUpgradeLevelFourCost());

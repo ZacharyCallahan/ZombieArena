@@ -5,6 +5,7 @@ import com.zach.zombiearena.EconomyHandler;
 import com.zach.zombiearena.Messages;
 import com.zach.zombiearena.ZombieArena;
 import com.zach.zombiearena.gameplay.guis.archerqueen.ArcherQueenGUI;
+import com.zach.zombiearena.gameplay.guis.barbarianking.BarbarianKingGUI;
 import com.zach.zombiearena.utils.Button;
 import com.zach.zombiearena.utils.ItemBuilder;
 import com.zach.zombiearena.utils.Menu;
@@ -16,7 +17,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 
 public class DefenseGUI implements Listener {
     private final ArcherQueenGUI archerQueenGUI = new ArcherQueenGUI();
-
+    private final BarbarianKingGUI barbarianKingGUI = new BarbarianKingGUI();
     Config config = new Config();
     UpgradeGUIHandler upgradeGUIHandler = new UpgradeGUIHandler();
     ConfigurationSection section;
@@ -65,12 +66,60 @@ public class DefenseGUI implements Listener {
                         Player player = (Player) event.getWhoClicked();
                         if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenPurchaseCost())) {
                             upgradeGUIHandler.defensePurchased(player,
-                                    ZombieArena.getInstance().archerQueen.purchasedArcherQueen,
+                                    "archerQueen",
                                     config.getArcherQueenPurchaseCost(),
                                     ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.display-name"));
                             refreshMenu(player);
                         } else {
                             upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenPurchaseCost());
+                        }
+                        event.setCancelled(true);
+                    }
+                });
+            }
+        } else {
+            Messages.sendMessage(player, "arenaNoArena");
+        }
+
+        //if they have purchased the Barbarian King
+        if (ZombieArena.getInstance().barbarianKing.purchasedBarbarianKing.get(player.getUniqueId()) != null) {
+            if (ZombieArena.getInstance().barbarianKing.purchasedBarbarianKing.get(player.getUniqueId())) {
+                menu.setButton(ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.barbarian-king-gui.slot"), new Button(
+                        ItemBuilder.createItem(ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.barbarian-king-gui.material"),
+                                ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.barbarian-king-gui.display-name"),
+                                ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.barbarian-king-gui.lore"),
+                                null,
+                                null,
+                                ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.barbarian-king-gui.enchanted"))) {
+                    public void onClick(Menu menu, InventoryClickEvent event) {
+                        Player player = (Player) event.getWhoClicked();
+                        ZombieArena.getMenuHandler().closeMenu(player);
+                        ZombieArena.getMenuHandler().openMenu(player, barbarianKingGUI.BarbarianKingGUI(player));
+                        event.setCancelled(true);
+                    }
+                });
+
+                //if they havent purchased the Barbarian King
+            } else {
+                menu.setButton(ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.barbarian-king-gui.slot"), new Button(
+
+                        ItemBuilder.createItem(config.getBarbarianKingPurchaseMaterial(),
+                                ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.barbarian-king-gui.display-name"),
+                                null,
+                                config.getBarbarianKingPurchaseLore(),
+                                null,
+                                config.getBarbarianKingPurchaseEnchanted())) {
+                    @Override
+                    public void onClick(Menu menu, InventoryClickEvent event) {
+                        Player player = (Player) event.getWhoClicked();
+                        if (EconomyHandler.hasEnoughMoney(player, config.getBarbarianKingPurchaseCost())) {
+                            upgradeGUIHandler.defensePurchased(player,
+                                    "barbarianKing",
+                                    config.getBarbarianKingPurchaseCost(),
+                                    ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.barbarian-king-gui.display-name"));
+                            refreshMenu(player);
+                        } else {
+                            upgradeGUIHandler.upgradeFailed(player, config.getBarbarianKingPurchaseCost());
                         }
                         event.setCancelled(true);
                     }

@@ -83,7 +83,7 @@ public class ArcherQueenSpeedUpgradeGUI {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
                     if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenSpeedUpgradeLevelOneCost())) {
-                        upgradeGUIHandler.upgradeSuccess(player.getPlayer(), null, null, 1);
+                        upgradeGUIHandler.upgradeSuccessArcherQueen(player.getPlayer(), null, null, 1);
                         refreshMenu(player);
                     } else {
                         upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenSpeedUpgradeLevelOneCost());
@@ -108,7 +108,7 @@ public class ArcherQueenSpeedUpgradeGUI {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
                     if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenSpeedUpgradeLevelTwoCost())) {
-                        upgradeGUIHandler.upgradeSuccess(player.getPlayer(), null, null, 2);
+                        upgradeGUIHandler.upgradeSuccessArcherQueen(player.getPlayer(), null, null, 2);
                         refreshMenu(player);
                     } else {
                         upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenSpeedUpgradeLevelTwoCost());
@@ -133,7 +133,7 @@ public class ArcherQueenSpeedUpgradeGUI {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
                     if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenSpeedUpgradeLevelThreeCost())) {
-                        upgradeGUIHandler.upgradeSuccess(player.getPlayer(), null, null, 3);
+                        upgradeGUIHandler.upgradeSuccessArcherQueen(player.getPlayer(), null, null, 3);
                         refreshMenu(player);
                     } else {
                         upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenSpeedUpgradeLevelThreeCost());
@@ -158,7 +158,7 @@ public class ArcherQueenSpeedUpgradeGUI {
                 public void onClick(Menu menu, InventoryClickEvent event) {
                     Player player = (Player) event.getWhoClicked();
                     if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenSpeedUpgradeLevelFourCost())) {
-                        upgradeGUIHandler.upgradeSuccess(player.getPlayer(), null, null, 4);
+                        upgradeGUIHandler.upgradeSuccessArcherQueen(player.getPlayer(), null, null, 4);
                         refreshMenu(player);
                     } else {
                         upgradeGUIHandler.upgradeFailed(player, config.getArcherQueenSpeedUpgradeLevelFourCost());

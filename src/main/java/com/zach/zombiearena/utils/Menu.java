@@ -14,7 +14,7 @@ public class Menu {
 
     public Menu(Inventory inv) {
         this.inv = inv;
-        buttons = new HashMap<Integer, Button>();
+        buttons = new HashMap<>();
     }
 
     public void setButton(int slot, Button button) {

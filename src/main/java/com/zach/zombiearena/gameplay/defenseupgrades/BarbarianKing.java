@@ -12,9 +12,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 public class BarbarianKing {
     public HashMap<Player, Integer> tasks = new HashMap<>();
+    public HashMap<UUID, Integer> barbarianKingRadiusUpgradeLevel = new HashMap<>();
+    public HashMap<UUID, Integer> barbarianKingHealthUpgradeLevel = new HashMap<>();
+    public HashMap<UUID, Boolean> purchasedBarbarianKing = new HashMap<>();
     private ItemStack itemStack;
     private ItemMeta itemMeta;
 

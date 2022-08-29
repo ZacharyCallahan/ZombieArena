@@ -46,62 +46,62 @@ public class RegionHandler {
     private Region noMoveRegion;
 
     public RegionHandler() {
-        this.worldName = ZombieArena.getInstance().config.getWorldName();
-        this.arenaSize = ZombieArena.getInstance().config.getArenaSize();
-        this.distanceAway = ZombieArena.getInstance().config.getDistanceAway();
-        this.playersArena = new HashMap();
-        this.cancelRegion = new HashMap();
-        this.arenaSpawns = new HashMap();
-        this.partOfTeam = new HashMap();
+        worldName = ZombieArena.getInstance().config.getWorldName();
+        arenaSize = ZombieArena.getInstance().config.getArenaSize();
+        distanceAway = ZombieArena.getInstance().config.getDistanceAway();
+        playersArena = new HashMap();
+        cancelRegion = new HashMap();
+        arenaSpawns = new HashMap();
+        partOfTeam = new HashMap();
     }
 
     public void regionCreate(Player player) {
         UUID uuid = player.getUniqueId();
         if (player.hasPermission("zombiearena.commands.arena.create")) {
-            if (!this.playersArena.containsKey(player.getUniqueId())) {
+            if (!playersArena.containsKey(player.getUniqueId())) {
                 if (ZombieArena.getInstance().config.getArenaSize() > ZombieArena.getInstance().config.getDistanceAway()) {
-                    throw new IllegalStateException("It looks like '" + this.distanceAway + "' (distance-away) is smaller than '"
-                            + this.arenaSize + "'(arena-size). Check 'arena-size:' within the config.yml");
+                    throw new IllegalStateException("It looks like '" + distanceAway + "' (distance-away) is smaller than '"
+                            + arenaSize + "'(arena-size). Check 'arena-size:' within the config.yml");
                 }
                 ZombieArena.getInstance().trophiesHandler.trophies.put(player.getUniqueId(), 0);
                 ZombieArena.getInstance().matchMaking.playersLifes.put(player.getUniqueId(), ZombieArena.getInstance().getConfig().getInt("number-of-lives.default"));
-                this.minX.add(1 + this.arenaSize / 2);
-                this.minY.add(70);
-                this.minZ.add(1 + this.arenaSize / 2);
-                this.maxX.add(50 + this.arenaSize);
-                this.maxY.add(120);
-                this.maxZ.add(50 + this.arenaSize);
-                int newMinX = this.minX.get(0);
-                int newMinY = this.minY.get(0);
-                int newMinZ = this.minZ.get(0) + this.distanceAway;
-                int newMaxX = this.maxX.get(0);
-                int newMaxY = this.maxY.get(0);
-                int newMaxZ = this.maxZ.get(0) + this.distanceAway;
-                this.region = new Region(new Location(Bukkit.getWorld(this.worldName), newMinX, newMinY, newMinZ),
-                        new Location(Bukkit.getWorld(this.worldName), newMaxX, newMaxY, newMaxZ));
-                Location lowerCorner = this.region.getCenter().add(23.0D, -1.0D, 10.0D);
-                Location uppperCorner = this.region.getCenter().add(23.0D, 12.0D, -9.0D);
-                this.addArenaSpawns(uuid, this.region.getCenter().add(27.0D, 4.0D, 0.0D).setDirection(new Vector(-90, 0, 0)));
-                this.loadSchematics(player);
-                player.teleport(this.arenaSpawns.get(player.getUniqueId()));
-                this.addPlayersArena(uuid, this.region);
-                this.noMoveRegion = new Region(new Location(Bukkit.getWorld(this.worldName),
+                minX.add(1 + arenaSize / 2);
+                minY.add(70);
+                minZ.add(1 + arenaSize / 2);
+                maxX.add(50 + arenaSize);
+                maxY.add(120);
+                maxZ.add(50 + arenaSize);
+                int newMinX = minX.get(0);
+                int newMinY = minY.get(0);
+                int newMinZ = minZ.get(0) + distanceAway;
+                int newMaxX = maxX.get(0);
+                int newMaxY = maxY.get(0);
+                int newMaxZ = maxZ.get(0) + distanceAway;
+                region = new Region(new Location(Bukkit.getWorld(worldName), newMinX, newMinY, newMinZ),
+                        new Location(Bukkit.getWorld(worldName), newMaxX, newMaxY, newMaxZ));
+                Location lowerCorner = region.getCenter().add(23.0D, -1.0D, 10.0D);
+                Location uppperCorner = region.getCenter().add(23.0D, 12.0D, -9.0D);
+                addArenaSpawns(uuid, region.getCenter().add(27.0D, 4.0D, 0.0D).setDirection(new Vector(-90, 0, 0)));
+                loadSchematics(player);
+                player.teleport(arenaSpawns.get(player.getUniqueId()));
+                addPlayersArena(uuid, region);
+                noMoveRegion = new Region(new Location(Bukkit.getWorld(worldName),
                         lowerCorner.getBlockX(), lowerCorner.getBlockY(), lowerCorner.getBlockZ()),
-                        new Location(Bukkit.getWorld(this.worldName),
+                        new Location(Bukkit.getWorld(worldName),
                                 uppperCorner.getBlockX(), uppperCorner.getBlockY(), uppperCorner.getBlockZ()));
-                this.addCancelRegion(uuid, this.noMoveRegion);
-                this.minX.clear();
-                this.minY.clear();
-                this.minZ.clear();
-                this.maxX.clear();
-                this.maxZ.clear();
-                this.maxY.clear();
-                this.minX.add(newMinX);
-                this.minY.add(newMinY);
-                this.minZ.add(newMinZ);
-                this.maxX.add(newMaxX);
-                this.maxY.add(newMaxY);
-                this.maxZ.add(newMaxZ);
+                addCancelRegion(uuid, noMoveRegion);
+                minX.clear();
+                minY.clear();
+                minZ.clear();
+                maxX.clear();
+                maxZ.clear();
+                maxY.clear();
+                minX.add(newMinX);
+                minY.add(newMinY);
+                minZ.add(newMinZ);
+                maxX.add(newMaxX);
+                maxY.add(newMaxY);
+                maxZ.add(newMaxZ);
                 ZombieArena.getInstance().dataManager.saveLastCreatedArenaData();
                 ZombieArena.getInstance().dataManager.create(player);
             } else {
@@ -116,31 +116,29 @@ public class RegionHandler {
     public void regionDeleteConfirm(Player player) {
         if (player.hasPermission("zombiearena.commands.arena.delete")) {
             Region playerRegion = null;
-            if (!this.partOfTeam.containsKey(player.getUniqueId())) {
+            if (!partOfTeam.containsKey(player.getUniqueId())) {
                 if (ZombieArena.getInstance().toggle.contains(player)
                         && ZombieArena.getInstance().cooldown.containsKey(player)
                         && ZombieArena.getInstance().cooldown.get(player) > System.currentTimeMillis()) {
-                    if (this.playersArena.containsKey(player.getUniqueId())) {
-                        playerRegion = this.playersArena.get(player.getUniqueId());
+                    if (playersArena.containsKey(player.getUniqueId())) {
+                        playerRegion = playersArena.get(player.getUniqueId());
                     }
 
                     if (playerRegion != null) {
-                        Iterator playersInRegion = playerRegion.getBlocks().iterator();
 
-                        while (playersInRegion.hasNext()) {
-                            Block block = (Block) playersInRegion.next();
+                        for (Block block : playerRegion.getBlocks()) {
                             block.setType(Material.AIR);
                         }
 
                         Messages.sendMessage(player, "arenaDeletion");
-                        this.playersArena.remove(player.getUniqueId());
-                        this.cancelRegion.remove(player.getUniqueId());
-                        this.arenaSpawns.remove(player.getUniqueId());
+                        playersArena.remove(player.getUniqueId());
+                        cancelRegion.remove(player.getUniqueId());
+                        arenaSpawns.remove(player.getUniqueId());
                         ZombieArena.getInstance().dataManager.deletePlayerDataFile(player);
                     }
 
                     ZombieArena.getInstance().toggle.remove(player);
-                } else if (!this.playersArena.containsKey(player.getUniqueId())) {
+                } else if (!playersArena.containsKey(player.getUniqueId())) {
                     Messages.sendMessage(player, "arenaNoArenaError");
                 } else {
                     ZombieArena.getInstance().toggle.add(player);
@@ -157,27 +155,27 @@ public class RegionHandler {
     }
 
     public void resetArena(Player player) {
-        this.partOfTeam.remove(player.getUniqueId());
+        partOfTeam.remove(player.getUniqueId());
         ZombieArena.getInstance().dataManager.deletePlayerDataFile(player);
-        this.arenaSpawns.remove(player.getUniqueId());
-        this.playersArena.remove(player.getUniqueId());
-        this.cancelRegion.remove(player.getUniqueId());
+        arenaSpawns.remove(player.getUniqueId());
+        playersArena.remove(player.getUniqueId());
+        cancelRegion.remove(player.getUniqueId());
     }
 
     public void restartArenaCommand(Player player) {
         Region playerRegion = null;
         if (player.hasPermission("zombiearena.commands.arena.restart")) {
             if (ZombieArena.getInstance().toggle.contains(player) && ZombieArena.getInstance().cooldown.containsKey(player) && ZombieArena.getInstance().cooldown.get(player) > System.currentTimeMillis()) {
-                if (this.playersArena.containsKey(player.getUniqueId())) {
-                    Region var10000 = this.playersArena.get(player.getUniqueId());
+                if (playersArena.containsKey(player.getUniqueId())) {
+                    Region var10000 = playersArena.get(player.getUniqueId());
                 }
                 Messages.sendMessage(player, "arenaCreation");
-                this.regionDelete(player);
+                regionDelete(player);
                 ZombieArena.getInstance().dataManager.deletePlayerDataFile(player);
-                this.arenaSpawns.remove(player.getUniqueId());
-                this.playersArena.remove(player.getUniqueId());
-                this.cancelRegion.remove(player.getUniqueId());
-                this.regionCreate(player);
+                arenaSpawns.remove(player.getUniqueId());
+                playersArena.remove(player.getUniqueId());
+                cancelRegion.remove(player.getUniqueId());
+                regionCreate(player);
             } else {
                 ZombieArena.getInstance().toggle.add(player);
                 ZombieArena.getInstance().cooldown.put(player, System.currentTimeMillis() + 10000L);
@@ -189,8 +187,8 @@ public class RegionHandler {
 
     public void regionDelete(Player player) {
         Region playerRegion = null;
-        if (this.playersArena.containsKey(player.getUniqueId())) {
-            playerRegion = this.playersArena.get(player.getUniqueId());
+        if (playersArena.containsKey(player.getUniqueId())) {
+            playerRegion = playersArena.get(player.getUniqueId());
         }
 
         if (playerRegion != null) {
@@ -201,9 +199,9 @@ public class RegionHandler {
                 block.setType(Material.AIR);
             }
 
-            this.playersArena.remove(player.getUniqueId());
-            this.cancelRegion.remove(player.getUniqueId());
-            this.arenaSpawns.remove(player.getUniqueId());
+            playersArena.remove(player.getUniqueId());
+            cancelRegion.remove(player.getUniqueId());
+            arenaSpawns.remove(player.getUniqueId());
             ZombieArena.getInstance().dataManager.create(player);
         }
 
@@ -222,8 +220,8 @@ public class RegionHandler {
                 EditSession editSession = WorldEdit.getInstance().getEditSessionFactory().getEditSession(adaptedWorld, -1);
 
                 try {
-                    Operation operation = (new ClipboardHolder(clipboard)).createPaste(editSession).to(BlockVector3.at(this.region.getCenter().getBlockX(),
-                            this.region.getCenter().getBlockY(), this.region.getCenter().getBlockZ())).ignoreAirBlocks(true).build();
+                    Operation operation = (new ClipboardHolder(clipboard)).createPaste(editSession).to(BlockVector3.at(region.getCenter().getBlockX(),
+                            region.getCenter().getBlockY(), region.getCenter().getBlockZ())).ignoreAirBlocks(true).build();
 
                     try {
                         Operations.complete(operation);
@@ -270,8 +268,8 @@ public class RegionHandler {
 
     public void tpArenaSpawnCommand(Player player) {
         if (player.hasPermission("zombiearena.commands.arena.tp")) {
-            if (this.arenaSpawns.containsKey(player.getUniqueId())) {
-                player.teleport(this.arenaSpawns.get(player.getUniqueId()));
+            if (arenaSpawns.containsKey(player.getUniqueId())) {
+                player.teleport(arenaSpawns.get(player.getUniqueId()));
                 Messages.sendMessage(player, "arenaTeleport");
             } else {
                 Messages.sendMessage(player, "arenaNoArenaToTeleportError");
@@ -283,22 +281,22 @@ public class RegionHandler {
     }
 
     public void tpArenaSpawn(Player player) {
-        if (this.arenaSpawns.containsKey(player.getUniqueId())) {
-            player.teleport(this.arenaSpawns.get(player.getUniqueId()));
+        if (arenaSpawns.containsKey(player.getUniqueId())) {
+            player.teleport(arenaSpawns.get(player.getUniqueId()));
             Messages.sendMessage(player, "arenaAccessDeny");
         }
 
     }
 
     public void addPlayersArena(UUID uuid, Region region) {
-        this.playersArena.putIfAbsent(uuid, region);
+        playersArena.putIfAbsent(uuid, region);
     }
 
     public void addArenaSpawns(UUID uuid, Location location) {
-        this.arenaSpawns.put(uuid, location);
+        arenaSpawns.put(uuid, location);
     }
 
     public void addCancelRegion(UUID uuid, Region region) {
-        this.cancelRegion.put(uuid, region);
+        cancelRegion.put(uuid, region);
     }
 }
