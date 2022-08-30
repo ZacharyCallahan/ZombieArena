@@ -101,11 +101,10 @@ archer-queen:
   speed-amount-upgrade-level-four:
     speed: 1.25
 barbarian-king:
-  entity-type: HOGLIN
+  entity-type: ZOMBIE
   health: 20
   speed: 1.0
   radius: 2
-  speed-amount: 0.25
   armor: LEATHER
   health-upgrade-level-one:
     health: 30
@@ -185,6 +184,31 @@ healer-queen:
     heal: 2.0
   heal-upgrade-level-four:
     heal: 2.75
+regular-mob:
+  entity-type: ZOMBIE
+  health: 20
+  speed: 1.0
+  armor:
+    equip: false
+    armor-type: NONE
+  armor-upgrade-level-one:
+    armor: LEATHER
+  armor-upgrade-level-two:
+    armor: GOLDEN
+  armor-upgrade-level-three:
+    armor: IRON
+  armor-upgrade-level-four:
+    armor: DIAMOND
+wave-attack:
+  amount: 0
+  upgrade-level-one:
+    amount: 1
+  upgrade-level-two:
+    amount: 2
+  upgrade-level-three:
+    amount: 3
+  upgrade-level-four:
+    amount: 4
 defensegui:
   placeholders:
     '0':
@@ -1115,6 +1139,282 @@ defensegui:
           cost: 9000
         heal-upgrade-level-four:
           display-name: "&fHeal Upgrade: &dLevel 4"
+          lore:
+            - " "
+            - "&7Uhm.. how is this allowed!"
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f12,000"
+          slot: 15
+          cost: 12000
+    regular-mob-gui:
+      material: ZOMBIE_HEAD
+      display-name: "&8&lRegular Mob"
+      lore:
+        - " "
+        - "&7Looking to upgrade your Regular Mob?"
+        - "&7You've come to the right place!"
+        - " "
+        - "&dClick me to get started.."
+      enchanted: true
+      slot: 13
+      regular-mob-purchase:
+        material: RED_STAINED_GLASS_PANE
+        lore:
+          - " "
+          - "&7Ooo.. Are you in need of a wave upgrade?"
+          - "&7Well then, I think I can help you out!"
+          - " "
+          - "&eClick to purchase!"
+          - "&2Cost&f: &a$&f10,000"
+        enchanted: false
+        cost: 10000
+      regular-mob-stats-placeholder:
+        display-name: "&8&lRegular Mob Stats"
+        enchanted: false
+        slot: 11
+      placeholders:
+        '0':
+          material: ORANGE_STAINED_GLASS_PANE
+          display-name: " "
+          slots:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 12
+            - 16
+            - 16
+            - 17
+            - 18
+            - 19
+            - 20
+            - 21
+            - 22
+            - 23
+            - 24
+            - 25
+            - 26
+      armor-upgrade-gui:
+        material: LEATHER_CHESTPLATE
+        display-name: "&d&lArmor Upgrade"
+        lore:
+          - " "
+          - "&7Looking to upgrade your Archer Queen's armor?"
+          - "&7You've come to the right place!"
+          - " "
+          - "&dClick me to get started.."
+        enchanted: true
+        slot: 15
+        armor-upgrade-item-stats-placeholder:
+          display-name: "&d&lArcher Queen Armor Stats"
+          material: SUGAR
+          slot: 11
+          enchanted: true
+        placeholders:
+          '0':
+            material: BLACK_STAINED_GLASS_PANE
+            display-name: " "
+            slots:
+              - 0
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
+              - 10
+              - 16
+              - 17
+              - 18
+              - 19
+              - 20
+              - 21
+              - 22
+              - 23
+              - 24
+              - 25
+              - 26
+        armor-upgrade-level-one:
+          display-name: "&fArmor Upgrade: &dLevel 1"
+          lore:
+            - " "
+            - "&7Ooo, this is much needed!"
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f3,000"
+          slot: 12
+          cost: 3000
+        armor-upgrade-level-two:
+          display-name: "&fArmor Upgrade: &dLevel 2"
+          lore:
+            - " "
+            - "&7Woah, this is starting to get a bit too big..."
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f6,000"
+          slot: 13
+          cost: 6000
+        armor-upgrade-level-three:
+          display-name: "&fArmor Upgrade: &dLevel 3"
+          lore:
+            - " "
+            - "&7Really.. this is getting out of hand..."
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f9,000"
+          slot: 14
+          cost: 9000
+        armor-upgrade-level-four:
+          display-name: "&fArmor Upgrade: &dLevel 4"
+          lore:
+            - " "
+            - "&7Uhm.. how is this allowed!"
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f12,000"
+          slot: 15
+          cost: 12000
+    wave-attack-gui:
+      material: ZOMBIE_HEAD
+      display-name: "&8&lWave Attack"
+      lore:
+        - " "
+        - "&7Looking to upgrade your Wave Attack?"
+        - "&7You've come to the right place!"
+        - " "
+        - "&dClick me to get started.."
+      enchanted: true
+      slot: 14
+      wave-attack-purchase:
+        material: RED_STAINED_GLASS_PANE
+        lore:
+          - " "
+          - "&7Ooo.. Are you in need of a wave upgrade?"
+          - "&7Well then, I think I can help you out!"
+          - " "
+          - "&eClick to purchase!"
+          - "&2Cost&f: &a$&f10,000"
+        enchanted: false
+        cost: 10000
+      wave-attack-stats-placeholder:
+        display-name: "&8&lWave Attack Stats"
+        enchanted: false
+        slot: 11
+      placeholders:
+        '0':
+          material: ORANGE_STAINED_GLASS_PANE
+          display-name: " "
+          slots:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 12
+            - 16
+            - 16
+            - 17
+            - 18
+            - 19
+            - 20
+            - 21
+            - 22
+            - 23
+            - 24
+            - 25
+            - 26
+      upgrade-gui:
+        material: LEATHER_CHESTPLATE
+        display-name: "&d&lArmor Upgrade"
+        lore:
+          - " "
+          - "&7Looking to upgrade your Archer Queen's armor?"
+          - "&7You've come to the right place!"
+          - " "
+          - "&dClick me to get started.."
+        enchanted: true
+        slot: 15
+        upgrade-item-stats-placeholder:
+          display-name: "&d&lArcher Queen Armor Stats"
+          material: SUGAR
+          slot: 11
+          enchanted: true
+        placeholders:
+          '0':
+            material: BLACK_STAINED_GLASS_PANE
+            display-name: " "
+            slots:
+              - 0
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
+              - 10
+              - 16
+              - 17
+              - 18
+              - 19
+              - 20
+              - 21
+              - 22
+              - 23
+              - 24
+              - 25
+              - 26
+        upgrade-level-one:
+          display-name: "&fArmor Upgrade: &dLevel 1"
+          lore:
+            - " "
+            - "&7Ooo, this is much needed!"
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f3,000"
+          slot: 12
+          cost: 3000
+        upgrade-level-two:
+          display-name: "&fArmor Upgrade: &dLevel 2"
+          lore:
+            - " "
+            - "&7Woah, this is starting to get a bit too big..."
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f6,000"
+          slot: 13
+          cost: 6000
+        upgrade-level-three:
+          display-name: "&fArmor Upgrade: &dLevel 3"
+          lore:
+            - " "
+            - "&7Really.. this is getting out of hand..."
+            - " "
+            - "&eClick to purchase!"
+            - "&2Cost&f: &a$&f9,000"
+          slot: 14
+          cost: 9000
+        upgrade-level-four:
+          display-name: "&fArmor Upgrade: &dLevel 4"
           lore:
             - " "
             - "&7Uhm.. how is this allowed!"

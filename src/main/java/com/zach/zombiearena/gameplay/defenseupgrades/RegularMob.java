@@ -8,10 +8,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 public class RegularMob {
+
+    public HashMap<UUID, Integer> regularMobArmorUpgradeLevel = new HashMap<>();
     private ItemStack itemStack;
+
     private ItemMeta itemMeta;
 
     public void spawnRegularMob(Player attacker) {

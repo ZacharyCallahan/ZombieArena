@@ -31,4 +31,4 @@ waveNoTrophiesToLoose: "&c&lOuchhh&f&l.. &7It looks like you lost and you have n
 waveLooseLife: "&c&lOuchhh&f&l! &7You let a zombie by!"
 defensePurchased: "&a&lYAYY&f&l! &7You have purchased the %defense%&7!"
 defenseUpgradeSuccess: "&a&lYAYY&f&l! &7You have successfully upgraded your defense!"
-defenseUpgradeFail: "&c&lERROR&f&l! &7You do must have &a$&f%money% &7to purchase that upgrade!"
+defenseUpgradeFail: "&c&lERROR&f&l! &7You must have &a$&f%money% &7to purchase that upgrade!"

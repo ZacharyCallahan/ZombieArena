@@ -65,6 +65,24 @@ public class UpgradeGUIHandler {
         Messages.sendMessage(player, "defenseUpgradeSuccess");
     }
 
+    public void upgradeSuccessRegularMob(Player player, Integer armorlevel) {
+        if (armorlevel != null)
+            ZombieArena.getInstance().dataManager.updateRegularMobArmorUpgradeLevel(player, armorlevel);
+        //TODO withdraw correct amount of money from player
+        EconomyHandler.withDrawMoney(player, (ZombieArena.getInstance()).config.getRegularMobArmorUpgradeLevelOneCost());
+
+        Messages.sendMessage(player, "defenseUpgradeSuccess");
+    }
+
+    public void upgradeSuccessWaveAttack(Player player, Integer amount) {
+        if (amount != null)
+            ZombieArena.getInstance().dataManager.updateWaveAttackUpgradeLevel(player, amount);
+        //TODO withdraw correct amount of money from player
+        EconomyHandler.withDrawMoney(player, (ZombieArena.getInstance()).config.getWaveAttackUpgradeLevelOneCost());
+
+        Messages.sendMessage(player, "defenseUpgradeSuccess");
+    }
+
     public void upgradeFailed(Player player, Double cost) {
         Messages.sendNotEnoughMoneyMessage(player, cost, "defenseUpgradeFail");
     }
@@ -78,6 +96,9 @@ public class UpgradeGUIHandler {
         }
         if (defense.equals("healerQueen")) {
             ZombieArena.getInstance().dataManager.updatePurchasedHealerQueen(player, true);
+        }
+        if (defense.equals("waveAttack")) {
+            ZombieArena.getInstance().dataManager.updatePurchasedWaveAttack(player, true);
         }
         //TODO add other if statements for the other defenses
 

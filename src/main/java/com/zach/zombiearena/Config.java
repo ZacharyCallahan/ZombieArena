@@ -1458,4 +1458,342 @@ public class Config {
     public Double getHealerQueenHealUpgradeLevelFourCost() {
         return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.healer-queen-gui.heal-upgrade-gui.heal-upgrade-level-four.cost");
     }
+
+    public String getRegularMobGuiMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.regular-mob-gui.material");
+    }
+
+    public List<Integer> getRegularMobPlaceHolderSlots(String keys) {
+        return ZombieArena.getInstance().getConfig().getIntegerList("defensegui.upgrades.regular-mob-gui.placeholders." + keys + ".slots");
+    }
+
+    public String getRegularMobPlaceHolderStatsDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.regular-mob-gui.regular-mob-stats-placeholder.display-name");
+    }
+
+    public Integer getRegularMobPlaceHolderStatsSlots() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.regular-mob-gui.regular-mob-stats-placeholder.slot");
+    }
+
+    public Boolean getRegularMobPlaceHolderStatsEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.regular-mob-gui.regular-mob-stats-placeholder.enchanted");
+    }
+
+
+    public List<String> getRegularMobPurchaseLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.regular-mob-gui.regular-mob-purchase.lore");
+    }
+
+    public Boolean getRegularMobPurchaseEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.regular-mob-gui.regular-mob-purchase.enchanted");
+    }
+
+    public Double getRegularMobPurchaseCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.regular-mob-gui.regular-mob-purchase.cost");
+    }
+
+    public String getRegularMobPurchaseMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.regular-mob-gui.regular-mob-purchase.material");
+    }
+
+    public String getRegularMobPlaceHolderMaterialSection(String keys) {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.regular-mob-gui.placeholders." + keys + ".material");
+    }
+
+    public Double getRegularMobArmorUpgradeLevelOneCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-level-one.cost");
+    }
+
+    public String getRegularMobArmorUpgradeLevelOneDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-level-one.display-name");
+    }
+
+    public int getRegularMobArmorUpgradeLevelOneSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-level-one.slot");
+    }
+
+    public List<String> getRegularMobArmorUpgradeLevelOneLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-level-one.lore");
+    }
+
+    public int getRegularMobArmorUpgradeLevelTwoSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-level-two.slot");
+    }
+
+    public int getRegularMobArmorUpgradeLevelThreeSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-level-three.slot");
+    }
+
+    public int getRegularMobArmorUpgradeLevelFourSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-level-four.slot");
+    }
+
+    public String getRegularMobArmorLevelOne() {
+        return ZombieArena.getInstance().getConfig().getString("regular-mob.armor-upgrade-level-one.armor");
+    }
+
+    public String getRegularMobArmorLevelTwo() {
+        return ZombieArena.getInstance().getConfig().getString("regular-mob.armor-upgrade-level-two.armor");
+    }
+
+    public String getRegularMobArmorLevelThree() {
+        return ZombieArena.getInstance().getConfig().getString("regular-mob.armor-upgrade-level-three.armor");
+    }
+
+    public String getRegularMobArmorLevelFour() {
+        return ZombieArena.getInstance().getConfig().getString("regular-mob.armor-upgrade-level-four.armor");
+    }
+
+    public String getRegularMobArmor() {
+        return ZombieArena.getInstance().getConfig().getString("regular-mob.armor");
+    }
+
+    public String getRegularMobArmorUpgradeGuiMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.material");
+    }
+
+    public String getRegularMobArmorUpgradeGuiDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.display-name");
+    }
+
+    public List<String> getRegularMobArmorUpgradeGuiLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.lore");
+    }
+
+    public boolean getRegularMobArmorUpgradeGuiEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.enchanted");
+    }
+
+    public int getRegularMobArmorUpgradeGuiSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.slot");
+    }
+
+    public String getRegularMobUpgradeArmorGuiMaterialSection(String keys) {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.placeholders." + keys + ".material");
+    }
+
+    public List<Integer> getRegularMobUpgradeArmorGui(String keys) {
+        return ZombieArena.getInstance().getConfig().getIntegerList("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.placeholders." + keys + ".slots");
+    }
+
+    public Integer getRegularMobArmorUpgradeItemStatsPlaceHolderSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-item-stats-placeholder.slot");
+    }
+
+    public String getRegularMobArmorUpgradeItemStatsPlaceHolderDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-item-stats-placeholder.display-name");
+    }
+
+    public String getRegularMobArmorUpgradeItemStatsPlaceHolder() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-item-stats-placeholder.material");
+    }
+
+    public Boolean getRegularMobArmorUpgradeItemStatsPlaceHolderEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-item-stats-placeholder.enchanted");
+    }
+
+    public String getRegularMobArmorUpgradeLevelTwoDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-level-two.display-name");
+    }
+
+    public List<String> getRegularMobArmorUpgradeLevelTwoLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-level-two.lore");
+    }
+
+    public Double getRegularMobArmorUpgradeLevelTwoCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-level-two.cost");
+    }
+
+    public String getRegularMobArmorUpgradeLevelThreeDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-level-three.display-name");
+    }
+
+    public List<String> getRegularMobArmorUpgradeLevelThreeLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-level-three.lore");
+    }
+
+    public Double getRegularMobArmorUpgradeLevelThreeCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-level-three.cost");
+    }
+
+    public String getRegularMobArmorUpgradeLevelFourDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-level-four.display-name");
+    }
+
+    public List<String> getRegularMobArmorUpgradeLevelFourLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-level-four.lore");
+    }
+
+    public Double getRegularMobArmorUpgradeLevelFourCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.regular-mob-gui.armor-upgrade-gui.armor-upgrade-level-four.cost");
+    }
+
+    public String getWaveAttackGuiMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.material");
+    }
+
+    public List<Integer> getWaveAttackPlaceHolderSlots(String keys) {
+        return ZombieArena.getInstance().getConfig().getIntegerList("defensegui.upgrades.wave-attack-gui.placeholders." + keys + ".slots");
+    }
+
+    public String getWaveAttackPlaceHolderStatsDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.wave-attack-stats-placeholder.display-name");
+    }
+
+    public Integer getWaveAttackPlaceHolderStatsSlots() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.wave-attack-gui.wave-attack-stats-placeholder.slot");
+    }
+
+    public Boolean getWaveAttackPlaceHolderStatsEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.wave-attack-gui.wave-attack-stats-placeholder.enchanted");
+    }
+
+
+    public List<String> getWaveAttackPurchaseLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.wave-attack-gui.wave-attack-purchase.lore");
+    }
+
+    public Boolean getWaveAttackPurchaseEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.wave-attack-gui.wave-attack-purchase.enchanted");
+    }
+
+    public Double getWaveAttackPurchaseCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.wave-attack-gui.wave-attack-purchase.cost");
+    }
+
+    public String getWaveAttackPurchaseMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.wave-attack-purchase.material");
+    }
+
+    public String getWaveAttackPlaceHolderMaterialSection(String keys) {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.placeholders." + keys + ".material");
+    }
+
+    public Double getWaveAttackUpgradeLevelOneCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-one.cost");
+    }
+
+    public String getWaveAttackUpgradeLevelOneDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-one.display-name");
+    }
+
+    public int getWaveAttackUpgradeLevelOneSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-one.slot");
+    }
+
+    public List<String> getWaveAttackUpgradeLevelOneLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-one.lore");
+    }
+
+    public int getWaveAttackUpgradeLevelTwoSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-two.slot");
+    }
+
+    public int getWaveAttackUpgradeLevelThreeSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-three.slot");
+    }
+
+    public int getWaveAttackUpgradeLevelFourSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-four.slot");
+    }
+
+    public String getWaveAttackLevelOne() {
+        return ZombieArena.getInstance().getConfig().getString("wave-attack.upgrade-level-one.amount");
+    }
+
+    public String getWaveAttackLevelTwo() {
+        return ZombieArena.getInstance().getConfig().getString("wave-attack.upgrade-level-two.amount");
+    }
+
+    public String getWaveAttackLevelThree() {
+        return ZombieArena.getInstance().getConfig().getString("wave-attack.upgrade-level-three.amount");
+    }
+
+    public String getWaveAttackLevelFour() {
+        return ZombieArena.getInstance().getConfig().getString("wave-attack.upgrade-level-four.amount");
+    }
+
+    public String getWaveAttack() {
+        return ZombieArena.getInstance().getConfig().getString("wave-attack.amount");
+    }
+
+    public String getWaveAttackUpgradeGuiMaterial() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.upgrade-gui.material");
+    }
+
+    public String getWaveAttackUpgradeGuiDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.upgrade-gui.display-name");
+    }
+
+    public List<String> getWaveAttackUpgradeGuiLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.wave-attack-gui.upgrade-gui.lore");
+    }
+
+    public boolean getWaveAttackUpgradeGuiEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.wave-attack-gui.upgrade-gui.enchanted");
+    }
+
+    public int getWaveAttackUpgradeGuiSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.wave-attack-gui.upgrade-gui.slot");
+    }
+
+    public String getWaveAttackUpgradeGuiMaterialSection(String keys) {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.upgrade-gui.placeholders." + keys + ".material");
+    }
+
+    public List<Integer> getWaveAttackUpgradeGui(String keys) {
+        return ZombieArena.getInstance().getConfig().getIntegerList("defensegui.upgrades.wave-attack-gui.upgrade-gui.placeholders." + keys + ".slots");
+    }
+
+    public Integer getWaveAttackUpgradeItemStatsPlaceHolderSlot() {
+        return ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-item-stats-placeholder.slot");
+    }
+
+    public String getWaveAttackUpgradeItemStatsPlaceHolderDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-item-stats-placeholder.display-name");
+    }
+
+    public String getWaveAttackUpgradeItemStatsPlaceHolder() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-item-stats-placeholder.material");
+    }
+
+    public Boolean getWaveAttackUpgradeItemStatsPlaceHolderEnchanted() {
+        return ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-item-stats-placeholder.enchanted");
+    }
+
+    public String getWaveAttackUpgradeLevelTwoDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-two.display-name");
+    }
+
+    public List<String> getWaveAttackUpgradeLevelTwoLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-two.lore");
+    }
+
+    public Double getWaveAttackUpgradeLevelTwoCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-two.cost");
+    }
+
+    public String getWaveAttackUpgradeLevelThreeDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-three.display-name");
+    }
+
+    public List<String> getWaveAttackUpgradeLevelThreeLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-three.lore");
+    }
+
+    public Double getWaveAttackUpgradeLevelThreeCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-three.cost");
+    }
+
+    public String getWaveAttackUpgradeLevelFourDisplayName() {
+        return ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-four.display-name");
+    }
+
+    public List<String> getWaveAttackUpgradeLevelFourLore() {
+        return ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-four.lore");
+    }
+
+    public Double getWaveAttackUpgradeLevelFourCost() {
+        return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-four.cost");
+    }
 }

@@ -7,6 +7,8 @@ import com.zach.zombiearena.ZombieArena;
 import com.zach.zombiearena.gameplay.guis.archerqueen.ArcherQueenGUI;
 import com.zach.zombiearena.gameplay.guis.barbarianking.BarbarianKingGUI;
 import com.zach.zombiearena.gameplay.guis.healerqueen.HealerQueenGUI;
+import com.zach.zombiearena.gameplay.guis.regularmob.RegularMobGUI;
+import com.zach.zombiearena.gameplay.guis.waveattack.WaveAttackGUI;
 import com.zach.zombiearena.utils.Button;
 import com.zach.zombiearena.utils.ItemBuilder;
 import com.zach.zombiearena.utils.Menu;
@@ -20,6 +22,8 @@ public class DefenseGUI implements Listener {
     private final ArcherQueenGUI archerQueenGUI = new ArcherQueenGUI();
     private final BarbarianKingGUI barbarianKingGUI = new BarbarianKingGUI();
     private final HealerQueenGUI healerQueenGUI = new HealerQueenGUI();
+    private final RegularMobGUI regularMobGUI = new RegularMobGUI();
+    private final WaveAttackGUI waveAttackGUI = new WaveAttackGUI();
     Config config = new Config();
     UpgradeGUIHandler upgradeGUIHandler = new UpgradeGUIHandler();
     ConfigurationSection section;
@@ -169,6 +173,67 @@ public class DefenseGUI implements Listener {
                             refreshMenu(player);
                         } else {
                             upgradeGUIHandler.upgradeFailed(player, config.getHealerQueenPurchaseCost());
+                        }
+                        event.setCancelled(true);
+                    }
+                });
+            }
+        } else {
+            Messages.sendMessage(player, "arenaNoArena");
+        }
+        menu.setButton(ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.regular-mob-gui.slot"), new Button(
+                ItemBuilder.createItem(ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.regular-mob-gui.material"),
+                        ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.regular-mob-gui.display-name"),
+                        ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.regular-mob-gui.lore"),
+                        null,
+                        null,
+                        ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.regular-mob-gui.enchanted"))) {
+            public void onClick(Menu menu, InventoryClickEvent event) {
+                Player player = (Player) event.getWhoClicked();
+                ZombieArena.getMenuHandler().closeMenu(player);
+                ZombieArena.getMenuHandler().openMenu(player, regularMobGUI.RegularMobGUI(player));
+                event.setCancelled(true);
+            }
+        });
+        //if they have purchased the Wave Attack
+        if (ZombieArena.getInstance().waveAttack.purchasedWaveAttack.get(player.getUniqueId()) != null) {
+            if (ZombieArena.getInstance().waveAttack.purchasedWaveAttack.get(player.getUniqueId())) {
+                menu.setButton(ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.wave-attack-gui.slot"), new Button(
+                        ItemBuilder.createItem(ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.material"),
+                                ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.display-name"),
+                                ZombieArena.getInstance().getConfig().getStringList("defensegui.upgrades.wave-attack-gui.lore"),
+                                null,
+                                null,
+                                ZombieArena.getInstance().getConfig().getBoolean("defensegui.upgrades.wave-attack-gui.enchanted"))) {
+                    public void onClick(Menu menu, InventoryClickEvent event) {
+                        Player player = (Player) event.getWhoClicked();
+                        ZombieArena.getMenuHandler().closeMenu(player);
+                        ZombieArena.getMenuHandler().openMenu(player, waveAttackGUI.WaveAttackGUI(player));
+                        event.setCancelled(true);
+                    }
+                });
+
+                //if they havent purchased the Wave Attack
+            } else {
+                menu.setButton(ZombieArena.getInstance().getConfig().getInt("defensegui.upgrades.wave-attack-gui.slot"), new Button(
+
+                        ItemBuilder.createItem(config.getWaveAttackPurchaseMaterial(),
+                                ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.display-name"),
+                                null,
+                                config.getWaveAttackPurchaseLore(),
+                                null,
+                                config.getWaveAttackPurchaseEnchanted())) {
+                    @Override
+                    public void onClick(Menu menu, InventoryClickEvent event) {
+                        Player player = (Player) event.getWhoClicked();
+                        if (EconomyHandler.hasEnoughMoney(player, config.getWaveAttackPurchaseCost())) {
+                            upgradeGUIHandler.defensePurchased(player,
+                                    "waveAttack",
+                                    config.getWaveAttackPurchaseCost(),
+                                    ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.display-name"));
+                            refreshMenu(player);
+                        } else {
+                            upgradeGUIHandler.upgradeFailed(player, config.getWaveAttackPurchaseCost());
                         }
                         event.setCancelled(true);
                     }

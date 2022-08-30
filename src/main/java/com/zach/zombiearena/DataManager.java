@@ -102,6 +102,9 @@ public class DataManager implements Listener {
         saveHealerQueenHealthUpgradeLevel(player.getUniqueId());
         saveHealerQueenRadiusUpgradeLevel(player.getUniqueId());
         saveHealerQueenHealUpgradeLevel(player.getUniqueId());
+        saveRegularMobArmorUpgradeLevel(player.getUniqueId());
+        savePurchasedWaveAttack(player.getUniqueId());
+        saveWaveAttackUpgradeLevel(player.getUniqueId());
     }
 
 
@@ -307,6 +310,57 @@ public class DataManager implements Listener {
 
     public void loadPlayersHealerQueenHealLevel(UUID uuid) {
         ZombieArena.getInstance().healerQueen.healerQueenHealUpgradeLevel.put(uuid, getConfig().getInt("healer-queen.heal-upgrade-level"));
+    }
+
+    public void saveRegularMobArmorUpgradeLevel(UUID uuid) {
+        getConfig().set("regular-mob.armor-upgrade-level", 0);
+        ZombieArena.getInstance().regularMob.regularMobArmorUpgradeLevel.put(uuid, 0);
+        save();
+    }
+
+    public void updateRegularMobArmorUpgradeLevel(Player player, int level) {
+        loadConfig(player);
+        getConfig().set("regular-mob.armor-upgrade-level", level);
+        ZombieArena.getInstance().regularMob.regularMobArmorUpgradeLevel.put(player.getUniqueId(), level);
+        save();
+    }
+
+    public void loadPlayersRegularMobArmorLevel(UUID uuid) {
+        ZombieArena.getInstance().regularMob.regularMobArmorUpgradeLevel.put(uuid, getConfig().getInt("regular-mob.armor-upgrade-level"));
+    }
+
+    public void savePurchasedWaveAttack(UUID uuid) {
+        getConfig().set("wave-attack.purchased", false);
+        ZombieArena.getInstance().waveAttack.purchasedWaveAttack.put(uuid, false);
+        save();
+    }
+
+    public void updatePurchasedWaveAttack(Player player, boolean purchased) {
+        loadConfig(player);
+        getConfig().set("wave-attack.purchased", purchased);
+        ZombieArena.getInstance().waveAttack.purchasedWaveAttack.put(player.getUniqueId(), purchased);
+        save();
+    }
+
+    public void loadPurchasedWaveAttack(UUID uuid) {
+        ZombieArena.getInstance().waveAttack.purchasedWaveAttack.put(uuid, getConfig().getBoolean("wave-attack.purchased"));
+    }
+
+    public void saveWaveAttackUpgradeLevel(UUID uuid) {
+        getConfig().set("wave-attack.upgrade-level", 0);
+        ZombieArena.getInstance().waveAttack.waveAttackUpgradeLevel.put(uuid, 0);
+        save();
+    }
+
+    public void updateWaveAttackUpgradeLevel(Player player, int level) {
+        loadConfig(player);
+        getConfig().set("wave-attack.upgrade-level", level);
+        ZombieArena.getInstance().waveAttack.waveAttackUpgradeLevel.put(player.getUniqueId(), level);
+        save();
+    }
+
+    public void loadPlayersWaveAttackLevel(UUID uuid) {
+        ZombieArena.getInstance().waveAttack.waveAttackUpgradeLevel.put(uuid, getConfig().getInt("regular-mob.armor-upgrade-level"));
     }
 
     public File getDataFolder() {
@@ -550,6 +604,9 @@ public class DataManager implements Listener {
         loadPlayersHealerQueenHealthLevel(player);
         loadPlayersHealerQueenRadiusLevel(player);
         loadPlayersHealerQueenHealLevel(player);
+        loadPlayersRegularMobArmorLevel(player);
+        loadPurchasedWaveAttack(player);
+        loadPlayersWaveAttackLevel(player);
     }
     /*@EventHandler
     public void loadPlayerData(PlayerJoinEvent e) {
