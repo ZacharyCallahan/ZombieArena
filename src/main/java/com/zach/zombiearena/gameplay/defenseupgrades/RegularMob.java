@@ -15,6 +15,7 @@ import java.util.UUID;
 public class RegularMob {
 
     public HashMap<UUID, Integer> regularMobArmorUpgradeLevel = new HashMap<>();
+    public HashMap<UUID, Integer> regularMobChanceUpgradeLevel = new HashMap<>();
     private ItemStack itemStack;
 
     private ItemMeta itemMeta;

@@ -188,16 +188,34 @@ regular-mob:
   entity-type: ZOMBIE
   health: 20
   speed: 1.0
+  spawn-chance: 100
   armor:
     equip: false
     armor-type: NONE
   armor-upgrade-level-one:
+    default-spawn-chance: 2
+    spawn-chance-level-one: 5
+    spawn-chance-level-two: 10
+    spawn-chance-level-three: 15
     armor: LEATHER
   armor-upgrade-level-two:
+    default-spawn-chance: 2
+    spawn-chance-level-one: 5
+    spawn-chance-level-two: 10
+    spawn-chance-level-three: 15
     armor: GOLDEN
   armor-upgrade-level-three:
+    default-spawn-chance: 2
+    spawn-chance-level-one: 5
+    spawn-chance-level-two: 10
+    spawn-chance-level-three: 15
     armor: IRON
   armor-upgrade-level-four:
+    default-spawn-chance: 2
+    spawn-chance-level-one: 5
+    spawn-chance-level-two: 10
+    spawn-chance-level-three: 15
+    spawn-chance-level-four: 20
     armor: DIAMOND
 wave-attack:
   amount: 0

@@ -1796,4 +1796,70 @@ public class Config {
     public Double getWaveAttackUpgradeLevelFourCost() {
         return ZombieArena.getInstance().getConfig().getDouble("defensegui.upgrades.wave-attack-gui.upgrade-gui.upgrade-level-four.cost");
     }
+
+    public Integer getRegularMobChanceLevelOne(Integer level) {
+        if (level == 1) {
+            return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-one.spawn-chance-level-one");
+        }
+        if (level == 2) {
+            return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-one.spawn-chance-level-two");
+        }
+        if (level == 3) {
+            return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-one.spawn-chance-level-three");
+        }
+        if (level == 4) {
+            return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-one.spawn-chance-level-four");
+        }
+        return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-one.default-spawn-chance");
+
+    }
+
+    public Integer getRegularMobChanceLevelTwo(Integer level) {
+        if (level == 1) {
+            return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-two.spawn-chance-level-one");
+        }
+        if (level == 2) {
+            return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-two.spawn-chance-level-two");
+        }
+        if (level == 3) {
+            return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-two.spawn-chance-level-three");
+        }
+        if (level == 4) {
+            return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-two.spawn-chance-level-four");
+        }
+        return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-two.default-spawn-chance");
+    }
+
+    public Integer getRegularMobChanceLevelThree(Integer level) {
+        if (level == 1) {
+            return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-three.spawn-chance-level-one");
+        }
+        if (level == 2) {
+            return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-three.spawn-chance-level-two");
+        }
+        if (level == 3) {
+            return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-three.spawn-chance-level-three");
+        }
+        if (level == 4) {
+            return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-three.spawn-chance-level-four");
+        }
+        return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-three.default-spawn-chance");
+    }
+
+    public Integer getRegularMobChanceLevelFour(Integer level) {
+        if (level == 1) {
+            return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-four.spawn-chance-level-one");
+        }
+        if (level == 2) {
+            return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-four.spawn-chance-level-two");
+        }
+        if (level == 3) {
+            return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-four.spawn-chance-level-three");
+        }
+        if (level == 4) {
+            return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-four.spawn-chance-level-four");
+        }
+        return ZombieArena.getInstance().getConfig().getInt("regular-mob.armor-upgrade-level-four.default-spawn-chance");
+    }
+
 }

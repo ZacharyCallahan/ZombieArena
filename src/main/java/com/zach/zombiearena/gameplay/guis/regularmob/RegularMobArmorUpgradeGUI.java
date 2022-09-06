@@ -1,14 +1,13 @@
 package com.zach.zombiearena.gameplay.guis.regularmob;
 
 import com.zach.zombiearena.Config;
-import com.zach.zombiearena.EconomyHandler;
 import com.zach.zombiearena.ZombieArena;
+import com.zach.zombiearena.gameplay.defenseupgrades.Upgrade;
 import com.zach.zombiearena.gameplay.guis.UpgradeGUIHandler;
 import com.zach.zombiearena.utils.Button;
 import com.zach.zombiearena.utils.ItemBuilder;
 import com.zach.zombiearena.utils.Menu;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -20,6 +19,7 @@ public class RegularMobArmorUpgradeGUI {
 
     private ConfigurationSection section;
 
+
     public Menu RegularMobArmorUpgradeGUI(Player player) {
         Menu menu = new Menu(Bukkit.createInventory(null, 27, ZombieArena.color(ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.regular-mob-gui.display-name") + ": "
                 + config.getRegularMobArmorUpgradeGuiDisplayName())));
@@ -29,6 +29,7 @@ public class RegularMobArmorUpgradeGUI {
                 ZombieArena.getMenuHandler().createPlaceholders(menu, section,
                         config.getRegularMobUpgradeArmorGui(keys),
                         config.getRegularMobUpgradeArmorGuiMaterialSection(keys));
+
         }
         menu.setButton(config.getRegularMobArmorUpgradeItemStatsPlaceHolderSlot(), new Button(
                 ItemBuilder.createItem(
@@ -42,101 +43,60 @@ public class RegularMobArmorUpgradeGUI {
                 event.setCancelled(true);
             }
         });
-        if (getPlayersRegularMobArmorUpgradeLevel(player) == 0) {
-            menu.setButton(config.getRegularMobArmorUpgradeLevelOneSlot(), new Button(
-                    ItemBuilder.createItem(
-                            String.valueOf(Material.LIME_STAINED_GLASS_PANE), config
-                                    .getRegularMobArmorUpgradeLevelOneDisplayName(), config
-                                    .getRegularMobArmorUpgradeLevelOneLore(), null, null, false)) {
-                public void onClick(Menu menu, InventoryClickEvent event) {
-                    Player player = (Player) event.getWhoClicked();
-                    if (EconomyHandler.hasEnoughMoney(player, config.getRegularMobArmorUpgradeLevelOneCost())) {
-                        upgradeGUIHandler.upgradeSuccessRegularMob(player, 1);
-                        refreshMenu(player);
-                    } else {
-                        upgradeGUIHandler.upgradeFailed(player, config.getRegularMobArmorUpgradeLevelOneCost());
-                    }
-                    event.setCancelled(true);
-                }
-            });
-            upgradeGUIHandler.setLevelToLow(menu, config.getRegularMobArmorUpgradeLevelTwoSlot());
-            upgradeGUIHandler.setLevelToLow(menu, config.getRegularMobArmorUpgradeLevelThreeSlot());
-            upgradeGUIHandler.setLevelToLow(menu, config.getRegularMobArmorUpgradeLevelFourSlot());
-        }
+
+        createChanceUpgrades(player, menu);
+        return menu;
+    }
+
+    public void createChanceUpgrades(Player player, Menu menu) {
         if (getPlayersRegularMobArmorUpgradeLevel(player) == 1) {
-            menu.setButton(config.getRegularMobArmorUpgradeLevelTwoSlot(), new Button(
-                    ItemBuilder.createItem(
-                            String.valueOf(Material.LIME_STAINED_GLASS_PANE), config
-                                    .getRegularMobArmorUpgradeLevelTwoDisplayName(), config
-                                    .getRegularMobArmorUpgradeLevelTwoLore(), null, null, false)) {
-                public void onClick(Menu menu, InventoryClickEvent event) {
-                    Player player = (Player) event.getWhoClicked();
-                    if (EconomyHandler.hasEnoughMoney(player, config.getRegularMobArmorUpgradeLevelTwoCost())) {
-                        upgradeGUIHandler.upgradeSuccessRegularMob(player, 2);
-                        refreshMenu(player);
-                    } else {
-                        upgradeGUIHandler.upgradeFailed(player, config.getRegularMobArmorUpgradeLevelTwoCost());
-                    }
-                    event.setCancelled(true);
-                }
-            });
-            upgradeGUIHandler.setUpgradePurchased(menu, config.getRegularMobArmorUpgradeLevelOneSlot());
-            upgradeGUIHandler.setLevelToLow(menu, config.getRegularMobArmorUpgradeLevelThreeSlot());
-            upgradeGUIHandler.setLevelToLow(menu, config.getRegularMobArmorUpgradeLevelFourSlot());
+            checkUpgradeChanceLevels(player, menu, 1);
         }
         if (getPlayersRegularMobArmorUpgradeLevel(player) == 2) {
-            menu.setButton(config.getRegularMobArmorUpgradeLevelThreeSlot(), new Button(
-                    ItemBuilder.createItem(
-                            String.valueOf(Material.LIME_STAINED_GLASS_PANE), config
-                                    .getRegularMobArmorUpgradeLevelThreeDisplayName(), config
-                                    .getRegularMobArmorUpgradeLevelThreeLore(), null, null, false)) {
-                public void onClick(Menu menu, InventoryClickEvent event) {
-                    Player player = (Player) event.getWhoClicked();
-                    if (EconomyHandler.hasEnoughMoney(player, config.getRegularMobArmorUpgradeLevelThreeCost())) {
-                        upgradeGUIHandler.upgradeSuccessRegularMob(player, 3);
-                        refreshMenu(player);
-                    } else {
-                        upgradeGUIHandler.upgradeFailed(player, config.getRegularMobArmorUpgradeLevelThreeCost());
-                    }
-                    event.setCancelled(true);
-                }
-            });
-            upgradeGUIHandler.setUpgradePurchased(menu, config.getRegularMobArmorUpgradeLevelOneSlot());
-            upgradeGUIHandler.setUpgradePurchased(menu, config.getRegularMobArmorUpgradeLevelTwoSlot());
-            upgradeGUIHandler.setLevelToLow(menu, config.getRegularMobArmorUpgradeLevelFourSlot());
+            checkUpgradeChanceLevels(player, menu, 2);
+
         }
         if (getPlayersRegularMobArmorUpgradeLevel(player) == 3) {
-            menu.setButton(config.getRegularMobArmorUpgradeLevelFourSlot(), new Button(
-                    ItemBuilder.createItem(
-                            String.valueOf(Material.LIME_STAINED_GLASS_PANE), config
-                                    .getRegularMobArmorUpgradeLevelFourDisplayName(), config
-                                    .getRegularMobArmorUpgradeLevelFourLore(), null, null, false)) {
-                public void onClick(Menu menu, InventoryClickEvent event) {
-                    Player player = (Player) event.getWhoClicked();
-                    if (EconomyHandler.hasEnoughMoney(player, config.getRegularMobArmorUpgradeLevelFourCost())) {
-                        upgradeGUIHandler.upgradeSuccessRegularMob(player, 4);
-                        refreshMenu(player);
-                    } else {
-                        upgradeGUIHandler.upgradeFailed(player, config.getRegularMobArmorUpgradeLevelFourCost());
-                    }
-                    event.setCancelled(true);
-                }
-            });
-            upgradeGUIHandler.setUpgradePurchased(menu, config.getRegularMobArmorUpgradeLevelOneSlot());
-            upgradeGUIHandler.setUpgradePurchased(menu, config.getRegularMobArmorUpgradeLevelTwoSlot());
-            upgradeGUIHandler.setUpgradePurchased(menu, config.getRegularMobArmorUpgradeLevelThreeSlot());
+            checkUpgradeChanceLevels(player, menu, 3);
         }
         if (getPlayersRegularMobArmorUpgradeLevel(player) == 4) {
-            upgradeGUIHandler.setUpgradePurchased(menu, config.getRegularMobArmorUpgradeLevelOneSlot());
-            upgradeGUIHandler.setUpgradePurchased(menu, config.getRegularMobArmorUpgradeLevelTwoSlot());
-            upgradeGUIHandler.setUpgradePurchased(menu, config.getRegularMobArmorUpgradeLevelThreeSlot());
-            upgradeGUIHandler.setUpgradePurchased(menu, config.getRegularMobArmorUpgradeLevelFourSlot());
+            checkUpgradeChanceLevels(player, menu, 4);
         }
-        return menu;
+    }
+
+    public void checkUpgradeChanceLevels(Player player, Menu menu, Integer armorLevel) {
+        upgradeGUIHandler.setUpgradedAndUpgradeable(menu, getPlayerChanceUpgradeLevel(player), config.getRegularMobArmorUpgradeLevelOneSlot(),
+                config.getRegularMobArmorUpgradeLevelTwoSlot(), config.getRegularMobArmorUpgradeLevelThreeSlot(), config.getRegularMobArmorUpgradeLevelFourSlot());
+        if (getPlayerChanceUpgradeLevel(player) == 0) {
+            createChanceUpgradeButton(player, menu, armorLevel, 1);
+        }
+        if (getPlayerChanceUpgradeLevel(player) == 1) {
+            createChanceUpgradeButton(player, menu, armorLevel, 2);
+        }
+        if (getPlayerChanceUpgradeLevel(player) == 2) {
+            createChanceUpgradeButton(player, menu, armorLevel, 3);
+        }
+        if (getPlayersRegularMobArmorUpgradeLevel(player) != 4) {
+            if (getPlayerChanceUpgradeLevel(player) == 3) {
+                upgradeArmorLevel(menu, player, armorLevel);
+            }
+        } else {
+            if (getPlayerChanceUpgradeLevel(player) == 3) {
+                createChanceUpgradeButton(player, menu, armorLevel, 4);
+            }
+        }
+    }
+
+    public void upgradeArmorLevel(Menu menu, Player player, Integer armorLevel) {
+        createChanceUpgradeButton(player, menu, armorLevel + 1, 0);
     }
 
     public Integer getPlayersRegularMobArmorUpgradeLevel(Player player) {
         return (ZombieArena.getInstance()).regularMob.regularMobArmorUpgradeLevel.get(player.getUniqueId());
+    }
+
+    public Integer getPlayerChanceUpgradeLevel(Player player) {
+        return (ZombieArena.getInstance()).regularMob.regularMobChanceUpgradeLevel.get(player.getUniqueId());
     }
 
     public String getPlayersRegularMobArmor(Player player) {
@@ -148,12 +108,42 @@ public class RegularMobArmorUpgradeGUI {
             return config.getRegularMobArmorLevelThree();
         if (getPlayersRegularMobArmorUpgradeLevel(player) == 4)
             return config.getRegularMobArmorLevelFour();
-        return config.getRegularMobArmor();
+        return null;
     }
 
-    public void refreshMenu(Player player) {
-        ZombieArena.getMenuHandler().closeMenu(player);
-        ZombieArena.getMenuHandler().openMenu(player, RegularMobArmorUpgradeGUI(player));
+    public Integer getPlayersSpawnChance(Player player) {
+        if (getPlayersRegularMobArmorUpgradeLevel(player) == 1)
+            return config.getRegularMobChanceLevelOne(getPlayerChanceUpgradeLevel(player));
+        if (getPlayersRegularMobArmorUpgradeLevel(player) == 2)
+            return config.getRegularMobChanceLevelTwo(getPlayerChanceUpgradeLevel(player));
+        if (getPlayersRegularMobArmorUpgradeLevel(player) == 3)
+            return config.getRegularMobChanceLevelThree(getPlayerChanceUpgradeLevel(player));
+        if (getPlayersRegularMobArmorUpgradeLevel(player) == 4)
+            return config.getRegularMobChanceLevelFour(getPlayerChanceUpgradeLevel(player));
+        return null;
+    }
+
+    public void createChanceUpgradeButton(Player player, Menu menu, Integer armorLevel, Integer chanceLevel) {
+        if (getPlayerChanceUpgradeLevel(player) == 0) {
+            upgradeGUIHandler.createUpgradeButtons(menu, config.getRegularMobArmorUpgradeLevelOneSlot(), config.getRegularMobArmorUpgradeLevelOneDisplayName(),
+                    config.getRegularMobArmorUpgradeLevelOneLore(), config.getRegularMobArmorUpgradeLevelOneCost(), Upgrade.REGULAR_MOB, armorLevel, chanceLevel,
+                    null, null, null, null, null);
+        }
+        if (getPlayerChanceUpgradeLevel(player) == 1) {
+            upgradeGUIHandler.createUpgradeButtons(menu, config.getRegularMobArmorUpgradeLevelTwoSlot(), config.getRegularMobArmorUpgradeLevelTwoDisplayName(),
+                    config.getRegularMobArmorUpgradeLevelTwoLore(), config.getRegularMobArmorUpgradeLevelTwoCost(), Upgrade.REGULAR_MOB, armorLevel, chanceLevel,
+                    null, null, null, null, null);
+        }
+        if (getPlayerChanceUpgradeLevel(player) == 2) {
+            upgradeGUIHandler.createUpgradeButtons(menu, config.getRegularMobArmorUpgradeLevelThreeSlot(), config.getRegularMobArmorUpgradeLevelThreeDisplayName(),
+                    config.getRegularMobArmorUpgradeLevelThreeLore(), config.getRegularMobArmorUpgradeLevelThreeCost(), Upgrade.REGULAR_MOB, armorLevel, chanceLevel,
+                    null, null, null, null, null);
+        }
+        if (getPlayerChanceUpgradeLevel(player) == 3) {
+            upgradeGUIHandler.createUpgradeButtons(menu, config.getRegularMobArmorUpgradeLevelFourSlot(), config.getRegularMobArmorUpgradeLevelFourDisplayName(),
+                    config.getRegularMobArmorUpgradeLevelFourLore(), config.getRegularMobArmorUpgradeLevelFourCost(), Upgrade.REGULAR_MOB, armorLevel, chanceLevel,
+                    null, null, null, null, null);
+        }
     }
 
 }

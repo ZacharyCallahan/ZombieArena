@@ -13,7 +13,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegularMobGUI {
+public class RegularMobGUI extends RegularMobArmorUpgradeGUI {
     private final RegularMobArmorUpgradeGUI regularMobArmorUpgradeGUI = new RegularMobArmorUpgradeGUI();
 
     Config config = new Config();
@@ -67,6 +67,7 @@ public class RegularMobGUI {
         List<String> lore = new ArrayList<>();
         lore.add(" ");
         lore.add("&7&lArmor: &f&l" + regularMobArmorUpgradeGUI.getPlayersRegularMobArmor(player));
+        lore.add("&7&lSpawn&8&l-&7&lChance: &f&l" + regularMobArmorUpgradeGUI.getPlayersSpawnChance(player));
         return lore;
     }
 
@@ -75,6 +76,7 @@ public class RegularMobGUI {
         lore.add(" ");
         lore.add("&7&lArmor: &f&l" + regularMobArmorUpgradeGUI.getPlayersRegularMobArmor(player));
         lore.add("&7&lLevel: &f&l" + regularMobArmorUpgradeGUI.getPlayersRegularMobArmorUpgradeLevel(player));
+        lore.add("&7&lSpawn&8&l-&7&lChance: &f&l" + regularMobArmorUpgradeGUI.getPlayersSpawnChance(player));
         return lore;
     }
 }

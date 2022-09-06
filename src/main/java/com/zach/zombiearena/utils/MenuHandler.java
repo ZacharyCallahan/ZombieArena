@@ -18,8 +18,10 @@ public class MenuHandler {
     private final ConcurrentHashMap<UUID, Menu> openMenus = new ConcurrentHashMap<>();
 
     public void refreshMenu(Player player, Menu menu) {
+
         closeMenu(player);
         openMenu(player, menu);
+
     }
 
     public void openMenu(Player player, Menu menu) {

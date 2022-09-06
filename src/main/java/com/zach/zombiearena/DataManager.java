@@ -103,6 +103,7 @@ public class DataManager implements Listener {
         saveHealerQueenRadiusUpgradeLevel(player.getUniqueId());
         saveHealerQueenHealUpgradeLevel(player.getUniqueId());
         saveRegularMobArmorUpgradeLevel(player.getUniqueId());
+        saveRegularMobChanceUpgradeLevel(player.getUniqueId());
         savePurchasedWaveAttack(player.getUniqueId());
         saveWaveAttackUpgradeLevel(player.getUniqueId());
     }
@@ -313,8 +314,8 @@ public class DataManager implements Listener {
     }
 
     public void saveRegularMobArmorUpgradeLevel(UUID uuid) {
-        getConfig().set("regular-mob.armor-upgrade-level", 0);
-        ZombieArena.getInstance().regularMob.regularMobArmorUpgradeLevel.put(uuid, 0);
+        getConfig().set("regular-mob.armor-upgrade-level", 1);
+        ZombieArena.getInstance().regularMob.regularMobArmorUpgradeLevel.put(uuid, 1);
         save();
     }
 
@@ -327,6 +328,23 @@ public class DataManager implements Listener {
 
     public void loadPlayersRegularMobArmorLevel(UUID uuid) {
         ZombieArena.getInstance().regularMob.regularMobArmorUpgradeLevel.put(uuid, getConfig().getInt("regular-mob.armor-upgrade-level"));
+    }
+
+    public void saveRegularMobChanceUpgradeLevel(UUID uuid) {
+        getConfig().set("regular-mob.chance-upgrade-level", 0);
+        ZombieArena.getInstance().regularMob.regularMobChanceUpgradeLevel.put(uuid, 0);
+        save();
+    }
+
+    public void updateRegularMobChanceUpgradeLevel(Player player, int level) {
+        loadConfig(player);
+        getConfig().set("regular-mob.chance-upgrade-level", level);
+        ZombieArena.getInstance().regularMob.regularMobChanceUpgradeLevel.put(player.getUniqueId(), level);
+        save();
+    }
+
+    public void loadPlayersRegularMobChanceUpgradeLevel(UUID uuid) {
+        ZombieArena.getInstance().regularMob.regularMobChanceUpgradeLevel.put(uuid, getConfig().getInt("regular-mob.chance-upgrade-level"));
     }
 
     public void savePurchasedWaveAttack(UUID uuid) {
@@ -605,6 +623,7 @@ public class DataManager implements Listener {
         loadPlayersHealerQueenRadiusLevel(player);
         loadPlayersHealerQueenHealLevel(player);
         loadPlayersRegularMobArmorLevel(player);
+        loadPlayersRegularMobChanceUpgradeLevel(player);
         loadPurchasedWaveAttack(player);
         loadPlayersWaveAttackLevel(player);
     }

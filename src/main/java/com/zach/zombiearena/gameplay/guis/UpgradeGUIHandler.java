@@ -3,11 +3,16 @@ package com.zach.zombiearena.gameplay.guis;
 import com.zach.zombiearena.EconomyHandler;
 import com.zach.zombiearena.Messages;
 import com.zach.zombiearena.ZombieArena;
+import com.zach.zombiearena.gameplay.defenseupgrades.Upgrade;
 import com.zach.zombiearena.utils.Button;
+import com.zach.zombiearena.utils.ItemBuilder;
 import com.zach.zombiearena.utils.ItemManager;
 import com.zach.zombiearena.utils.Menu;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+
+import java.util.List;
 
 public class UpgradeGUIHandler {
     public void setLevelToLow(Menu menu, int slot) {
@@ -26,6 +31,78 @@ public class UpgradeGUIHandler {
         });
     }
 
+    public void refreshMenu(Player player, Menu menu) {
+        ZombieArena.getMenuHandler().closeMenu(player);
+        ZombieArena.getMenuHandler().openMenu(player, menu);
+    }
+
+    public void createUpgradeButtons(Menu menu, Integer slot,
+                                     String displayName, List<String> lore, Double cost, Upgrade upgrade,
+                                     Integer armorLevel, Integer chanceLevel,
+                                     Integer healthLevel, Integer radiusLevel, Integer speedLevel, Integer healLevel, Integer amount) {
+        menu.setButton(slot, new Button(
+                ItemBuilder.createItem(
+                        String.valueOf(Material.LIME_STAINED_GLASS_PANE),
+                        displayName,
+                        lore,
+                        null, null, false)) {
+            public void onClick(Menu menu, InventoryClickEvent event) {
+
+                Player player = (Player) event.getWhoClicked();
+                if (EconomyHandler.hasEnoughMoney(player, cost)) {
+                    upgradeSuccess(player, upgrade, armorLevel, chanceLevel, healthLevel, radiusLevel, speedLevel, healLevel, amount);
+                } else {
+                    upgradeFailed(player, cost);
+                }
+                event.setCancelled(true);
+
+            }
+        });
+
+
+    }
+
+    public void upgradeSuccess(Player player, Upgrade upgrade, Integer armorLevel, Integer chanceLevel,
+                               Integer healthLevel, Integer radiusLevel, Integer speedLevel, Integer healLevel, Integer amount) {
+        switch (upgrade) {
+            case ARCHER_QUEEN -> upgradeSuccessArcherQueen(player, healthLevel, radiusLevel, speedLevel);
+            case BARBARIAN_KING -> upgradeSuccessBarbarianKing(player, healthLevel, radiusLevel, armorLevel);
+            case HEALER_QUEEN -> upgradeSuccessHealerQueen(player, healthLevel, radiusLevel, healLevel);
+            case REGULAR_MOB -> upgradeSuccessRegularMob(player, armorLevel, chanceLevel);
+            case WAVE_ATTACK -> upgradeSuccessWaveAttack(player, amount);
+        }
+    }
+
+    public void setUpgradedAndUpgradeable(Menu menu, Integer level, Integer slotOne, Integer slotTwo, Integer slotThree, Integer slotFour) {
+        if (level == 0) {
+            setLevelToLow(menu, slotTwo);
+            setLevelToLow(menu, slotThree);
+            setLevelToLow(menu, slotFour);
+        }
+        if (level == 1) {
+            setUpgradePurchased(menu, slotOne);
+            setLevelToLow(menu, slotThree);
+            setLevelToLow(menu, slotFour);
+        }
+        if (level == 2) {
+            setUpgradePurchased(menu, slotOne);
+            setUpgradePurchased(menu, slotTwo);
+            setLevelToLow(menu, slotFour);
+        }
+        if (level == 3) {
+            setUpgradePurchased(menu, slotOne);
+            setUpgradePurchased(menu, slotTwo);
+            setUpgradePurchased(menu, slotThree);
+        }
+        if (level == 4) {
+            setUpgradePurchased(menu, slotOne);
+            setUpgradePurchased(menu, slotTwo);
+            setUpgradePurchased(menu, slotThree);
+            setUpgradePurchased(menu, slotFour);
+        }
+
+    }
+
     public void upgradeSuccessArcherQueen(Player player, Integer healthLevel, Integer radiusLevel, Integer speedLevel) {
         if (healthLevel != null)
             ZombieArena.getInstance().dataManager.updateArcherQueenHealthUpgradeLevel(player, healthLevel);
@@ -35,7 +112,6 @@ public class UpgradeGUIHandler {
             ZombieArena.getInstance().dataManager.updateArcherQueenSpeedUpgradeLevel(player, speedLevel);
         //TODO withdraw correct amount of money from player
         EconomyHandler.withDrawMoney(player, (ZombieArena.getInstance()).config.getArcherQueenhealthUpgradeLevelOneCost());
-
         Messages.sendMessage(player, "defenseUpgradeSuccess");
     }
 
@@ -65,11 +141,15 @@ public class UpgradeGUIHandler {
         Messages.sendMessage(player, "defenseUpgradeSuccess");
     }
 
-    public void upgradeSuccessRegularMob(Player player, Integer armorlevel) {
+    public void upgradeSuccessRegularMob(Player player, Integer armorlevel, Integer chanceLevel) {
         if (armorlevel != null)
             ZombieArena.getInstance().dataManager.updateRegularMobArmorUpgradeLevel(player, armorlevel);
+        if (chanceLevel != null)
+            ZombieArena.getInstance().dataManager.updateRegularMobChanceUpgradeLevel(player, chanceLevel);
         //TODO withdraw correct amount of money from player
         EconomyHandler.withDrawMoney(player, (ZombieArena.getInstance()).config.getRegularMobArmorUpgradeLevelOneCost());
+
+        refreshMenu(player, ZombieArena.getInstance().regularMobArmorUpgradeGUI.RegularMobArmorUpgradeGUI(player));
 
         Messages.sendMessage(player, "defenseUpgradeSuccess");
     }
