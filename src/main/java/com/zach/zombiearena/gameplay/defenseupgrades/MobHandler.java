@@ -1,5 +1,6 @@
 package com.zach.zombiearena.gameplay.defenseupgrades;
 
+import com.zach.zombiearena.ZombieArena;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
 import net.citizensnpcs.api.npc.NPCRegistry;
@@ -17,9 +18,8 @@ public class MobHandler {
 
     public void mobCreator(Player attacker, EntityType entityType, int health, double speed, ItemStack helmet, ItemStack chestplate, ItemStack leggings, ItemStack boots) {
         NPC npc = CitizensAPI.getNPCRegistry().createNPC(entityType, "Zombie " + attacker.getUniqueId());
-        //npc.spawn(ZombieArena.getInstance().wavesHandler.ranSpawn.get(attacker.getUniqueId()).get(ZombieArena.getInstance().wavesHandler.random.nextInt(ZombieArena.getInstance().wavesHandler.maxNum)));
+        npc.spawn(ZombieArena.getInstance().wavesHandler.ranSpawn.get(attacker.getUniqueId()).get(ZombieArena.getInstance().wavesHandler.random.nextInt(ZombieArena.getInstance().wavesHandler.maxNum)));
 
-        npc.spawn(attacker.getLocation());
         if (npc.isSpawned()) {
             LivingEntity entity = (LivingEntity) npc.getEntity();
             npc.getNavigator().setTarget(attacker, true);

@@ -66,17 +66,17 @@ public class RegularMobGUI extends RegularMobArmorUpgradeGUI {
         //TODO add other stats
         List<String> lore = new ArrayList<>();
         lore.add(" ");
-        lore.add("&7&lArmor: &f&l" + regularMobArmorUpgradeGUI.getPlayersRegularMobArmor(player));
-        lore.add("&7&lSpawn&8&l-&7&lChance: &f&l" + regularMobArmorUpgradeGUI.getPlayersSpawnChance(player));
+        lore.add("&7&lArmor: &f&l" + regularMobArmorUpgradeGUI.getPlayersRegularMobArmor(player.getUniqueId()));
+        lore.add("&7&lSpawn&8&l-&7&lChance: &f&l" + regularMobArmorUpgradeGUI.getPlayersSpawnChance(player.getUniqueId()));
         return lore;
     }
 
     public List<String> getRegularMobArmorStatsLore(Player player) {
         List<String> lore = new ArrayList<>();
         lore.add(" ");
-        lore.add("&7&lArmor: &f&l" + regularMobArmorUpgradeGUI.getPlayersRegularMobArmor(player));
-        lore.add("&7&lLevel: &f&l" + regularMobArmorUpgradeGUI.getPlayersRegularMobArmorUpgradeLevel(player));
-        lore.add("&7&lSpawn&8&l-&7&lChance: &f&l" + regularMobArmorUpgradeGUI.getPlayersSpawnChance(player));
+        lore.add("&7&lArmor: &f&l" + regularMobArmorUpgradeGUI.getPlayersRegularMobArmor(player.getUniqueId()));
+        lore.add("&7&lLevel: &f&l" + regularMobArmorUpgradeGUI.getPlayersRegularMobArmorUpgradeLevel(player.getUniqueId()));
+        lore.add("&7&lSpawn&8&l-&7&lChance: &f&l" + regularMobArmorUpgradeGUI.getPlayersSpawnChance(player.getUniqueId()));
         return lore;
     }
 }

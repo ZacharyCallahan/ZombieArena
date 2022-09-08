@@ -1,6 +1,9 @@
 package com.zach.zombiearena.gameplay.defenseupgrades;
 
 import com.zach.zombiearena.ZombieArena;
+import com.zach.zombiearena.gameplay.guis.archerqueen.ArcherQueenHealthUpgradeGUI;
+import com.zach.zombiearena.gameplay.guis.archerqueen.ArcherQueenRadiusUpgradeGUI;
+import com.zach.zombiearena.gameplay.guis.archerqueen.ArcherQueenSpeedUpgradeGUI;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.Bukkit;
@@ -25,13 +28,18 @@ public class ArcherQueen {
     private ItemStack itemStack;
     private ItemMeta itemMeta;
 
+    private final ArcherQueenHealthUpgradeGUI archerQueenHealthUpgradeGUI = new ArcherQueenHealthUpgradeGUI();
+    private final ArcherQueenRadiusUpgradeGUI archerQueenRadiusUpgradeGUI = new ArcherQueenRadiusUpgradeGUI();
+    private final ArcherQueenSpeedUpgradeGUI archerQueenSpeedUpgradeGUI = new ArcherQueenSpeedUpgradeGUI();
+
+
     public void spawnArcherQueen(Player attacker) {
         //if the player purchased the archer queen, spawn the archer queen
         if (purchasedArcherQueen.get(attacker.getUniqueId())) {
             ZombieArena.getInstance().mobHandler.mobCreator(
                     attacker,
                     EntityType.valueOf(ZombieArena.getInstance().config.getArcherQueenType()),
-                    ZombieArena.getInstance().config.getArcherQueenHealth(),
+                    archerQueenHealthUpgradeGUI.getPlayersArcherQueenHealth(attacker),
                     ZombieArena.getInstance().config.getArcherQueenSpeed(),
                     archerQueenHelmet(),
                     archerQueenChestplate(),
@@ -40,13 +48,13 @@ public class ArcherQueen {
             );
             int taskID = Bukkit.getScheduler().runTaskTimer(ZombieArena.getInstance(), () -> {
                 for (Entity entity : ZombieArena.getInstance().mobHandler.getNearbyEntities(attacker,
-                        ZombieArena.getInstance().getConfig().getInt("archer-queen.improve-radius"),
+                        archerQueenRadiusUpgradeGUI.getPlayersArcherQueenRadius(attacker),
                         EntityType.valueOf(ZombieArena.getInstance().config.getArcherQueenType()))) {
                     if (entity instanceof LivingEntity) {
                         NPC npc = CitizensAPI.getNPCRegistry().getNPC(entity);
                         if (npc != null) {
                             npc.getNavigator().getLocalParameters().speed((float) (npc.getNavigator().getLocalParameters().speed()
-                                    + ZombieArena.getInstance().getConfig().getDouble("archer-queen.improve-speed-amount")));
+                                    + archerQueenSpeedUpgradeGUI.getPlayersArcherQueenSpeed(attacker)));
                         }
                     }
                 }

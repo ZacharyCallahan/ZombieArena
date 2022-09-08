@@ -4,6 +4,7 @@ import com.zach.zombiearena.Config;
 import com.zach.zombiearena.EconomyHandler;
 import com.zach.zombiearena.Messages;
 import com.zach.zombiearena.ZombieArena;
+import com.zach.zombiearena.gameplay.defenseupgrades.Upgrade;
 import com.zach.zombiearena.gameplay.guis.archerqueen.ArcherQueenGUI;
 import com.zach.zombiearena.gameplay.guis.barbarianking.BarbarianKingGUI;
 import com.zach.zombiearena.gameplay.guis.healerqueen.HealerQueenGUI;
@@ -72,7 +73,7 @@ public class DefenseGUI implements Listener {
                         Player player = (Player) event.getWhoClicked();
                         if (EconomyHandler.hasEnoughMoney(player, config.getArcherQueenPurchaseCost())) {
                             upgradeGUIHandler.defensePurchased(player,
-                                    "archerQueen",
+                                    Upgrade.ARCHER_QUEEN,
                                     config.getArcherQueenPurchaseCost(),
                                     ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.archer-queen-gui.display-name"));
                             refreshMenu(player);
@@ -120,7 +121,7 @@ public class DefenseGUI implements Listener {
                         Player player = (Player) event.getWhoClicked();
                         if (EconomyHandler.hasEnoughMoney(player, config.getBarbarianKingPurchaseCost())) {
                             upgradeGUIHandler.defensePurchased(player,
-                                    "barbarianKing",
+                                    Upgrade.BARBARIAN_KING,
                                     config.getBarbarianKingPurchaseCost(),
                                     ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.barbarian-king-gui.display-name"));
                             refreshMenu(player);
@@ -167,7 +168,7 @@ public class DefenseGUI implements Listener {
                         Player player = (Player) event.getWhoClicked();
                         if (EconomyHandler.hasEnoughMoney(player, config.getHealerQueenPurchaseCost())) {
                             upgradeGUIHandler.defensePurchased(player,
-                                    "healerQueen",
+                                    Upgrade.HEALER_QUEEN,
                                     config.getHealerQueenPurchaseCost(),
                                     ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.healer-queen-gui.display-name"));
                             refreshMenu(player);
@@ -228,7 +229,7 @@ public class DefenseGUI implements Listener {
                         Player player = (Player) event.getWhoClicked();
                         if (EconomyHandler.hasEnoughMoney(player, config.getWaveAttackPurchaseCost())) {
                             upgradeGUIHandler.defensePurchased(player,
-                                    "waveAttack",
+                                    Upgrade.WAVE_ATTACK,
                                     config.getWaveAttackPurchaseCost(),
                                     ZombieArena.getInstance().getConfig().getString("defensegui.upgrades.wave-attack-gui.display-name"));
                             refreshMenu(player);

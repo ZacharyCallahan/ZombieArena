@@ -12,6 +12,8 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
+import java.util.UUID;
+
 public class RegularMobArmorUpgradeGUI {
     UpgradeGUIHandler upgradeGUIHandler = new UpgradeGUIHandler();
 
@@ -49,39 +51,39 @@ public class RegularMobArmorUpgradeGUI {
     }
 
     public void createChanceUpgrades(Player player, Menu menu) {
-        if (getPlayersRegularMobArmorUpgradeLevel(player) == 1) {
+        if (getPlayersRegularMobArmorUpgradeLevel(player.getUniqueId()) == 1) {
             checkUpgradeChanceLevels(player, menu, 1);
         }
-        if (getPlayersRegularMobArmorUpgradeLevel(player) == 2) {
+        if (getPlayersRegularMobArmorUpgradeLevel(player.getUniqueId()) == 2) {
             checkUpgradeChanceLevels(player, menu, 2);
 
         }
-        if (getPlayersRegularMobArmorUpgradeLevel(player) == 3) {
+        if (getPlayersRegularMobArmorUpgradeLevel(player.getUniqueId()) == 3) {
             checkUpgradeChanceLevels(player, menu, 3);
         }
-        if (getPlayersRegularMobArmorUpgradeLevel(player) == 4) {
+        if (getPlayersRegularMobArmorUpgradeLevel(player.getUniqueId()) == 4) {
             checkUpgradeChanceLevels(player, menu, 4);
         }
     }
 
     public void checkUpgradeChanceLevels(Player player, Menu menu, Integer armorLevel) {
-        upgradeGUIHandler.setUpgradedAndUpgradeable(menu, getPlayerChanceUpgradeLevel(player), config.getRegularMobArmorUpgradeLevelOneSlot(),
+        upgradeGUIHandler.setUpgradedAndUpgradeable(menu, getPlayerChanceUpgradeLevel(player.getUniqueId()), config.getRegularMobArmorUpgradeLevelOneSlot(),
                 config.getRegularMobArmorUpgradeLevelTwoSlot(), config.getRegularMobArmorUpgradeLevelThreeSlot(), config.getRegularMobArmorUpgradeLevelFourSlot());
-        if (getPlayerChanceUpgradeLevel(player) == 0) {
+        if (getPlayerChanceUpgradeLevel(player.getUniqueId()) == 0) {
             createChanceUpgradeButton(player, menu, armorLevel, 1);
         }
-        if (getPlayerChanceUpgradeLevel(player) == 1) {
+        if (getPlayerChanceUpgradeLevel(player.getUniqueId()) == 1) {
             createChanceUpgradeButton(player, menu, armorLevel, 2);
         }
-        if (getPlayerChanceUpgradeLevel(player) == 2) {
+        if (getPlayerChanceUpgradeLevel(player.getUniqueId()) == 2) {
             createChanceUpgradeButton(player, menu, armorLevel, 3);
         }
-        if (getPlayersRegularMobArmorUpgradeLevel(player) != 4) {
-            if (getPlayerChanceUpgradeLevel(player) == 3) {
+        if (getPlayersRegularMobArmorUpgradeLevel(player.getUniqueId()) != 4) {
+            if (getPlayerChanceUpgradeLevel(player.getUniqueId()) == 3) {
                 upgradeArmorLevel(menu, player, armorLevel);
             }
         } else {
-            if (getPlayerChanceUpgradeLevel(player) == 3) {
+            if (getPlayerChanceUpgradeLevel(player.getUniqueId()) == 3) {
                 createChanceUpgradeButton(player, menu, armorLevel, 4);
             }
         }
@@ -91,15 +93,15 @@ public class RegularMobArmorUpgradeGUI {
         createChanceUpgradeButton(player, menu, armorLevel + 1, 0);
     }
 
-    public Integer getPlayersRegularMobArmorUpgradeLevel(Player player) {
-        return (ZombieArena.getInstance()).regularMob.regularMobArmorUpgradeLevel.get(player.getUniqueId());
+    public Integer getPlayersRegularMobArmorUpgradeLevel(UUID player) {
+        return ZombieArena.getInstance().regularMob.regularMobArmorUpgradeLevel.get(player);
     }
 
-    public Integer getPlayerChanceUpgradeLevel(Player player) {
-        return (ZombieArena.getInstance()).regularMob.regularMobChanceUpgradeLevel.get(player.getUniqueId());
+    public Integer getPlayerChanceUpgradeLevel(UUID player) {
+        return (ZombieArena.getInstance()).regularMob.regularMobChanceUpgradeLevel.get(player);
     }
 
-    public String getPlayersRegularMobArmor(Player player) {
+    public String getPlayersRegularMobArmor(UUID player) {
         if (getPlayersRegularMobArmorUpgradeLevel(player) == 1)
             return config.getRegularMobArmorLevelOne();
         if (getPlayersRegularMobArmorUpgradeLevel(player) == 2)
@@ -111,7 +113,7 @@ public class RegularMobArmorUpgradeGUI {
         return null;
     }
 
-    public Integer getPlayersSpawnChance(Player player) {
+    public Integer getPlayersSpawnChance(UUID player) {
         if (getPlayersRegularMobArmorUpgradeLevel(player) == 1)
             return config.getRegularMobChanceLevelOne(getPlayerChanceUpgradeLevel(player));
         if (getPlayersRegularMobArmorUpgradeLevel(player) == 2)
@@ -124,22 +126,22 @@ public class RegularMobArmorUpgradeGUI {
     }
 
     public void createChanceUpgradeButton(Player player, Menu menu, Integer armorLevel, Integer chanceLevel) {
-        if (getPlayerChanceUpgradeLevel(player) == 0) {
+        if (getPlayerChanceUpgradeLevel(player.getUniqueId()) == 0) {
             upgradeGUIHandler.createUpgradeButtons(menu, config.getRegularMobArmorUpgradeLevelOneSlot(), config.getRegularMobArmorUpgradeLevelOneDisplayName(),
                     config.getRegularMobArmorUpgradeLevelOneLore(), config.getRegularMobArmorUpgradeLevelOneCost(), Upgrade.REGULAR_MOB, armorLevel, chanceLevel,
                     null, null, null, null, null);
         }
-        if (getPlayerChanceUpgradeLevel(player) == 1) {
+        if (getPlayerChanceUpgradeLevel(player.getUniqueId()) == 1) {
             upgradeGUIHandler.createUpgradeButtons(menu, config.getRegularMobArmorUpgradeLevelTwoSlot(), config.getRegularMobArmorUpgradeLevelTwoDisplayName(),
                     config.getRegularMobArmorUpgradeLevelTwoLore(), config.getRegularMobArmorUpgradeLevelTwoCost(), Upgrade.REGULAR_MOB, armorLevel, chanceLevel,
                     null, null, null, null, null);
         }
-        if (getPlayerChanceUpgradeLevel(player) == 2) {
+        if (getPlayerChanceUpgradeLevel(player.getUniqueId()) == 2) {
             upgradeGUIHandler.createUpgradeButtons(menu, config.getRegularMobArmorUpgradeLevelThreeSlot(), config.getRegularMobArmorUpgradeLevelThreeDisplayName(),
                     config.getRegularMobArmorUpgradeLevelThreeLore(), config.getRegularMobArmorUpgradeLevelThreeCost(), Upgrade.REGULAR_MOB, armorLevel, chanceLevel,
                     null, null, null, null, null);
         }
-        if (getPlayerChanceUpgradeLevel(player) == 3) {
+        if (getPlayerChanceUpgradeLevel(player.getUniqueId()) == 3) {
             upgradeGUIHandler.createUpgradeButtons(menu, config.getRegularMobArmorUpgradeLevelFourSlot(), config.getRegularMobArmorUpgradeLevelFourDisplayName(),
                     config.getRegularMobArmorUpgradeLevelFourLore(), config.getRegularMobArmorUpgradeLevelFourCost(), Upgrade.REGULAR_MOB, armorLevel, chanceLevel,
                     null, null, null, null, null);

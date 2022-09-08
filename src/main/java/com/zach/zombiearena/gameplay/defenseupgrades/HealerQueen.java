@@ -1,6 +1,9 @@
 package com.zach.zombiearena.gameplay.defenseupgrades;
 
 import com.zach.zombiearena.ZombieArena;
+import com.zach.zombiearena.gameplay.guis.healerqueen.HealerQueenHealUpgradeGUI;
+import com.zach.zombiearena.gameplay.guis.healerqueen.HealerQueenHealthUpgradeGUI;
+import com.zach.zombiearena.gameplay.guis.healerqueen.HealerQueenRadiusUpgradeGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -23,11 +26,15 @@ public class HealerQueen {
     private ItemStack itemStack;
     private ItemMeta itemMeta;
 
+    private final HealerQueenHealthUpgradeGUI healerQueenHealthUpgradeGUI = new HealerQueenHealthUpgradeGUI();
+    private final HealerQueenRadiusUpgradeGUI healerQueenRadiusUpgradeGUI = new HealerQueenRadiusUpgradeGUI();
+    private final HealerQueenHealUpgradeGUI healerQueenHealUpgradeGUI = new HealerQueenHealUpgradeGUI();
+
     public void spawnHealerQueen(Player attacker) {
         ZombieArena.getInstance().mobHandler.mobCreator(
                 attacker,
                 EntityType.valueOf(ZombieArena.getInstance().config.getHealerQueenType()),
-                ZombieArena.getInstance().config.getHealerQueenHealth(),
+                healerQueenHealthUpgradeGUI.getPlayersHealerQueenHealth(attacker),
                 ZombieArena.getInstance().config.getHealerQueenSpeed(),
                 healerQueenHelmet(),
                 healerQueenChestplate(),
@@ -37,13 +44,12 @@ public class HealerQueen {
         int taskID = Bukkit.getScheduler().runTaskTimer(ZombieArena.getInstance(), () -> {
 
             for (Entity entity : ZombieArena.getInstance().mobHandler.getNearbyEntities(attacker,
-                    ZombieArena.getInstance().getConfig().getInt("healer-queen.heal-radius"),
+                    healerQueenRadiusUpgradeGUI.getPlayersHealerQueenRadius(attacker),
                     EntityType.valueOf(ZombieArena.getInstance().config.getHealerQueenType()))) {
                 if (entity instanceof LivingEntity livingEntity) {
                     if (livingEntity.getHealth() <= livingEntity.getMaxHealth() - 1) {
-                        livingEntity.setHealth(livingEntity.getHealth() + ZombieArena.getInstance().getConfig().getInt("healer-queen.heal-amount"));
+                        livingEntity.setHealth(livingEntity.getHealth() + healerQueenHealUpgradeGUI.getPlayersHealerQueenHeal(attacker));
                         ZombieArena.getInstance().mobHandler.spawnParticles(entity);
-                        System.out.println("task running");
                     }
                 }
             }

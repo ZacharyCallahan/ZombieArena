@@ -328,31 +328,19 @@ public class Config {
     }
 
     public Integer getHealerQueenSpeed() {
-        return ZombieArena.getInstance().getConfig().getInt("healer-queen.default-speed");
+        return ZombieArena.getInstance().getConfig().getInt("healer-queen.speed");
     }
 
     public Integer getRegularMobHealth() {
-        return ZombieArena.getInstance().getConfig().getInt("regular-mob.default-health");
+        return ZombieArena.getInstance().getConfig().getInt("regular-mob.health");
     }
 
     public Double getRegularMobSpeed() {
-        return ZombieArena.getInstance().getConfig().getDouble("regular-mob.default-speed");
+        return ZombieArena.getInstance().getConfig().getDouble("regular-mob.speed");
     }
 
     public String getRegularMobType() {
         return ZombieArena.getInstance().getConfig().getString("regular-mob.entity-type");
-    }
-
-    public String getTankMobType() {
-        return ZombieArena.getInstance().getConfig().getString("tank-mob.entity-type");
-    }
-
-    public int getTankMobHealth() {
-        return ZombieArena.getInstance().getConfig().getInt("tank-mob.default-health");
-    }
-
-    public Double getTankMobSpeed() {
-        return ZombieArena.getInstance().getConfig().getDouble("tank-mob-level-one.default-speed");
     }
 
     public Double getArcherQueenRadiusUpgradeLevelOneCost() {

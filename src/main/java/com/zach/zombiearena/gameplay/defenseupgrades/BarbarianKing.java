@@ -1,6 +1,9 @@
 package com.zach.zombiearena.gameplay.defenseupgrades;
 
 import com.zach.zombiearena.ZombieArena;
+import com.zach.zombiearena.gameplay.guis.barbarianking.BarbarianKingArmorUpgradeGUI;
+import com.zach.zombiearena.gameplay.guis.barbarianking.BarbarianKingHealthUpgradeGUI;
+import com.zach.zombiearena.gameplay.guis.barbarianking.BarbarianKingRadiusUpgradeGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -22,12 +25,15 @@ public class BarbarianKing {
     public HashMap<UUID, Boolean> purchasedBarbarianKing = new HashMap<>();
     private ItemStack itemStack;
     private ItemMeta itemMeta;
+    private final BarbarianKingHealthUpgradeGUI barbarianKingHealthUpgradeGUI = new BarbarianKingHealthUpgradeGUI();
+    private final BarbarianKingRadiusUpgradeGUI barbarianKingRadiusUpgradeGUI = new BarbarianKingRadiusUpgradeGUI();
+    private final BarbarianKingArmorUpgradeGUI barbarianKingArmorUpgradeGUI = new BarbarianKingArmorUpgradeGUI();
 
     public void spawnBarbarianKing(Player attacker) {
         ZombieArena.getInstance().mobHandler.mobCreator(
                 attacker,
                 EntityType.valueOf(ZombieArena.getInstance().config.getBarbarianKingType()),
-                ZombieArena.getInstance().config.getBarbarianKingHealth(),
+                barbarianKingHealthUpgradeGUI.getPlayersBarbarianKingHealth(attacker),
                 ZombieArena.getInstance().config.getBarbarianKingSpeed(),
                 barbarianKingHelmet(),
                 barbarianKingChest(),
@@ -36,13 +42,13 @@ public class BarbarianKing {
         );
         int taskID = Bukkit.getScheduler().runTaskTimer(ZombieArena.getInstance(), () -> {
             for (Entity entity : ZombieArena.getInstance().mobHandler.getNearbyEntities(attacker,
-                    ZombieArena.getInstance().getConfig().getInt("barbarian-king.upgrade-radius"),
+                    barbarianKingRadiusUpgradeGUI.getPlayersBarbarianKingRadius(attacker),
                     EntityType.valueOf(ZombieArena.getInstance().config.getBarbarianKingType()))) {
                 if (entity instanceof LivingEntity livingEntity) {
-                    livingEntity.getEquipment().setHelmet(new ItemStack(Material.valueOf(ZombieArena.getInstance().getConfig().getString("barbarian-king.upgrade-armor-type") + "_HELMET")));
-                    livingEntity.getEquipment().setChestplate(new ItemStack(Material.valueOf(ZombieArena.getInstance().getConfig().getString("barbarian-king.upgrade-armor-type") + "_CHESTPLATE")));
-                    livingEntity.getEquipment().setLeggings(new ItemStack(Material.valueOf(ZombieArena.getInstance().getConfig().getString("barbarian-king.upgrade-armor-type") + "_LEGGINGS")));
-                    livingEntity.getEquipment().setBoots(new ItemStack(Material.valueOf(ZombieArena.getInstance().getConfig().getString("barbarian-king.upgrade-armor-type") + "_BOOTS")));
+                    livingEntity.getEquipment().setHelmet(new ItemStack(Material.valueOf(barbarianKingArmorUpgradeGUI.getPlayersBarbarianKingArmor(attacker) + "_HELMET")));
+                    livingEntity.getEquipment().setChestplate(new ItemStack(Material.valueOf(barbarianKingArmorUpgradeGUI.getPlayersBarbarianKingArmor(attacker) + "_CHESTPLATE")));
+                    livingEntity.getEquipment().setLeggings(new ItemStack(Material.valueOf(barbarianKingArmorUpgradeGUI.getPlayersBarbarianKingArmor(attacker) + "_LEGGINGS")));
+                    livingEntity.getEquipment().setBoots(new ItemStack(Material.valueOf(barbarianKingArmorUpgradeGUI.getPlayersBarbarianKingArmor(attacker) + "_BOOTS")));
                 }
             }
         }, 0, 20).getTaskId();

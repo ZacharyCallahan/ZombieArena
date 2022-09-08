@@ -2,6 +2,8 @@ package com.zach.zombiearena.gameplay;
 
 import com.zach.zombiearena.Messages;
 import com.zach.zombiearena.ZombieArena;
+import com.zach.zombiearena.gameplay.defenseupgrades.RegularMob;
+import com.zach.zombiearena.gameplay.guis.regularmob.RegularMobArmorUpgradeGUI;
 import com.zach.zombiearena.utils.ProbabilityUntilities;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
@@ -15,16 +17,17 @@ import java.util.Iterator;
 import java.util.UUID;
 
 public class Waves {
-    public HashMap<UUID, Integer> endOfWaveAttackLevel = new HashMap<>();
     public HashMap<UUID, Integer> waveManagerRunnables = new HashMap<>();
     public HashMap<UUID, Integer> waveSpawningRunnables = new HashMap<>();
-    public HashMap<UUID, Integer> regularMobUpgradeLevel = new HashMap<>();
     int sectionNumber = 0;
     ConfigurationSection section;
     HashMap<UUID, Integer> waveTimer = new HashMap<>();
     HashMap<UUID, Integer> gracePeriod = new HashMap<>();
     HashMap<UUID, Integer> waveNumber = new HashMap<>();
     ProbabilityUntilities probabilities = new ProbabilityUntilities();
+    private final RegularMobArmorUpgradeGUI regularMobArmorUpgradeGUI = new RegularMobArmorUpgradeGUI();
+
+    private final RegularMob regularMob = new RegularMob();
 
     public void startGame(Player attacker, UUID defender) {
 
@@ -90,36 +93,37 @@ public class Waves {
     }
 
     public void endOfWaveAttackerLevelCheck(Player attacker, UUID defenderUUID) {
-        switch (endOfWaveAttackLevel.get(defenderUUID)) {
+        switch (attacker.getPing()) {
             case 0:
                 for (int i = 0; i < ZombieArena.getInstance().getConfig().getInt("end-of-wave-attack.default"); i++) {
-                    spawnRandomMob(attacker);
+                    spawnRandomMob(attacker, defenderUUID);
                 }
                 break;
             case 1:
                 for (int i = 0; i < ZombieArena.getInstance().getConfig().getInt("end-of-wave-attack.upgrade-one"); i++) {
-                    spawnRandomMob(attacker);
+                    spawnRandomMob(attacker, defenderUUID);
                 }
                 break;
             case 2:
                 for (int i = 0; i < ZombieArena.getInstance().getConfig().getInt("end-of-wave-attack.upgrade-two"); i++) {
-                    spawnRandomMob(attacker);
+                    spawnRandomMob(attacker, defenderUUID);
                 }
                 break;
             case 3:
                 for (int i = 0; i < ZombieArena.getInstance().getConfig().getInt("end-of-wave-attack.upgrade-three"); i++) {
-                    spawnRandomMob(attacker);
+                    spawnRandomMob(attacker, defenderUUID);
                 }
                 break;
             case 4:
                 for (int i = 0; i < ZombieArena.getInstance().getConfig().getInt("end-of-wave-attack.upgrade-four"); i++) {
-                    spawnRandomMob(attacker);
+                    spawnRandomMob(attacker, defenderUUID);
                 }
                 break;
         }
     }
 
     public void spawnHealerQueenOnRoundFive(Player attacker) {
+
 
         //TODO: spawn the correct healer queen based on what level the player is
 
@@ -136,7 +140,7 @@ public class Waves {
         //if the player has purchased the archer queen, spawn the archer queen
         if (ZombieArena.getInstance().archerQueen.purchasedArcherQueen.get(attacker.getUniqueId())) {
             if (getWaveNumber(attacker.getUniqueId()) == null) return;
-            if (getWaveNumber(attacker.getUniqueId()) == 5) {
+            if (getWaveNumber(attacker.getUniqueId()) == 10) {
                 ZombieArena.getInstance().archerQueen.spawnArcherQueen(attacker);
             }
         }
@@ -182,7 +186,7 @@ public class Waves {
             ZombieArena.getInstance().wavesHandler.addSpawns(defender, attacker.getUniqueId(), ZombieArena.getInstance().wavesHandler.ranSpawn);
             int taskID = Bukkit.getScheduler().runTaskTimer(ZombieArena.getInstance(), () -> {
                         addSpawnChances(defender);
-                        spawnRandomMob(attacker);
+                        spawnRandomMob(attacker, defender);
                     }, 0,
                     getSpawnRate(waveNumber) * 20).getTaskId();
             waveSpawningRunnables.put(attacker.getUniqueId(), taskID);
@@ -211,39 +215,19 @@ public class Waves {
     public void addSpawnChances(UUID defenderUUID) {
         probabilities.clearChances();
 
-        switch (regularMobUpgradeLevel.get(defenderUUID)) {
-            case 0 ->
-                    probabilities.addChance("Regular", ZombieArena.getInstance().getConfig().getInt("regular-mob.spawn-chance"));
-            case 1 -> {
-                probabilities.addChance("Regular", ZombieArena.getInstance().getConfig().getInt("regular-mob.spawn-chance") - ZombieArena.getInstance().getConfig().getInt("regular-mob.upgrade-one.spawn-chance"));
-                probabilities.addChance("Regular-Level-One", ZombieArena.getInstance().getConfig().getInt("regular-mob.upgrade-one.spawn-chance"));
-            }
-            case 2 -> {
-                probabilities.addChance("Regular", ZombieArena.getInstance().getConfig().getInt("regular-mob.spawn-chance") - ZombieArena.getInstance().getConfig().getInt("regular-mob.upgrade-two.spawn-chance"));
-                probabilities.addChance("Regular-Level-Two", ZombieArena.getInstance().getConfig().getInt("regular-mob.upgrade-two.spawn-chance"));
-            }
-            case 3 -> {
-                probabilities.addChance("Regular", ZombieArena.getInstance().getConfig().getInt("regular-mob.spawn-chance") - ZombieArena.getInstance().getConfig().getInt("regular-mob.upgrade-three.spawn-chance"));
-                probabilities.addChance("Regular-Level-Three", ZombieArena.getInstance().getConfig().getInt("regular-mob.upgrade-three.spawn-chance"));
-            }
-            case 4 -> {
-                probabilities.addChance("Regular", ZombieArena.getInstance().getConfig().getInt("regular-mob.spawn-chance") - ZombieArena.getInstance().getConfig().getInt("regular-mob.upgrade-four.spawn-chance"));
-                probabilities.addChance("Regular-Level-Four", ZombieArena.getInstance().getConfig().getInt("regular-mob.upgrade-four.spawn-chance"));
-            }
+        if (regularMobArmorUpgradeGUI.getPlayersRegularMobArmorUpgradeLevel(defenderUUID) == 1) {
+            probabilities.addChance("Regular", ZombieArena.getInstance().getConfig().getInt("regular-mob.spawn-chance"));
+        } else {
+            probabilities.addChance("Regular", ZombieArena.getInstance().getConfig().getInt("regular-mob.spawn-chance") - regularMobArmorUpgradeGUI.getPlayersSpawnChance(defenderUUID));
+            probabilities.addChance("Regular-Upgraded", regularMobArmorUpgradeGUI.getPlayersSpawnChance(defenderUUID));
         }
     }
 
-    public void spawnRandomMob(Player attacker) {
+    public void spawnRandomMob(Player attacker, UUID defender) {
         Object random = probabilities.getRandomElement();
         if (random.equals("Regular")) ZombieArena.getInstance().regularMob.spawnRegularMob(attacker);
-        if (random.equals("Regular-Level-One"))
-            ZombieArena.getInstance().regularMob.spawnRegularMobUpgradeOne(attacker);
-        if (random.equals("Regular-Level-Two"))
-            ZombieArena.getInstance().regularMob.spawnRegularMobUpgradeTwo(attacker);
-        if (random.equals("Regular-Level-Three"))
-            ZombieArena.getInstance().regularMob.spawnRegularMobUpgradeThree(attacker);
-        if (random.equals("Regular-Level-Four"))
-            ZombieArena.getInstance().regularMob.spawnRegularMobUpgradeFour(attacker);
+        if (random.equals("Regular-Upgraded"))
+            ZombieArena.getInstance().regularMob.spawnRegularMobUpgraded(attacker, defender);
     }
 
     public void looseLife(NPC npc) {

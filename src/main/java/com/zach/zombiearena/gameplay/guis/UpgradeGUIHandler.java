@@ -167,17 +167,17 @@ public class UpgradeGUIHandler {
         Messages.sendNotEnoughMoneyMessage(player, cost, "defenseUpgradeFail");
     }
 
-    public void defensePurchased(Player player, String defense, Double cost, String defenseName) {
-        if (defense.equals("archerQueen")) {
+    public void defensePurchased(Player player, Upgrade upgrade, Double cost, String defenseName) {
+        if (upgrade == Upgrade.ARCHER_QUEEN) {
             ZombieArena.getInstance().dataManager.updatePurchasedArcherQueen(player, true);
         }
-        if (defense.equals("barbarianKing")) {
+        if (upgrade == Upgrade.BARBARIAN_KING) {
             ZombieArena.getInstance().dataManager.updatePurchasedBarbarianKing(player, true);
         }
-        if (defense.equals("healerQueen")) {
+        if (upgrade == Upgrade.HEALER_QUEEN) {
             ZombieArena.getInstance().dataManager.updatePurchasedHealerQueen(player, true);
         }
-        if (defense.equals("waveAttack")) {
+        if (upgrade == Upgrade.REGULAR_MOB) {
             ZombieArena.getInstance().dataManager.updatePurchasedWaveAttack(player, true);
         }
         //TODO add other if statements for the other defenses
